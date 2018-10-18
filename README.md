@@ -1,6 +1,6 @@
-![Logo](https://i.imgur.com/2GdqkHG.png)
-
-# Skela
+<h1 align="center">
+<img src="https://i.imgur.com/2GdqkHG.png" style="display: block; margin: 0 auto">
+</h1>
 
 Skela is an opinionated but still fairly barebones WordPress theme. 93% of the work on this project was in choosing a name and logo.
 
