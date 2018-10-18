@@ -72,7 +72,7 @@ class ThemeManager
         wp_enqueue_script('vendor', SKELA_THEME_URL . '/dist/vendor.js', array(), SKELA_THEME_VERSION, true);
 
         // enqueue custom js file, with cache busting
-        wp_register_script('script.js', SKELA_THEME_URL . '/dist/app.js', array(), SKELA_THEME_VERSION, true);
+        wp_enqueue_script('script.js', SKELA_THEME_URL . '/dist/app.js', array(), SKELA_THEME_VERSION, true);
     }
 
     /**
