@@ -2,53 +2,56 @@
 
 # Skela
 
-Skela is an opinionated but still fairly barebones WordPress theme.
+Skela is an opinionated but still fairly barebones WordPress theme. 93% of the work on this project was in choosing a name and logo.
+
+It's currently only really intended for use by Upstatement and their best friends.
 
 ## 🎁 What It's Got
 
--   Full [Timber](https://www.upstatement.com/timber/) integration, of course. ![Jaredzilla](https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/42425/jaredzilla-1369410877.gif)
--   Built in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
--   Easily create documentation using [Flatdoc](http://ricostacruz.com/flatdoc/)
--   A Github !!! [pull request template](https://google.com)
--   Repositories, managers, services and models for a very object oriented approach to organizing your WordPress data.
-    -   Managers do things like setup your theme (register option pages, hide dashboard widgets, enqueue JS and CSS), create custom post types and taxonomies, and setup basic WordPress defaults.
-    -   Models hold and extend your data. Have a press release post type that needs a bunch of extra functions? Create a class for them here, extending Timber\Post, and put your logic here so you can keep your Twig clean.
-    -   Repositories are a good place to put query related logic, let get me all the posts from September in the hot dog category.
-    -   Services are for more low lying functions, like routing.
--   JS and SCSS in place, enqueued, and ready to be added to.
-    -   Includes an example of how to use [code splitting](https://webpack.js.org/guides/code-splitting/)
--   Webpack via [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) so you don't need to look at all the useless parts. Comes with:
-    -   Autoprefixer
-    -   [Vendor file extraction](https://laravel-mix.com/docs/2.1/extract)
-    -   Browsersync
-    -   Support for [code splitting](https://webpack.js.org/guides/code-splitting/)
--   Linting!
-    -   For your SCSS linting, stylelint (see `.stylelintrc`)
-    -   For your Javascript code styles, prettier (see `.prettierrc`)
-    -   For your Javascript linting, eslint (see `.eslintrc.json`)
-    -   For your PHP linting, phpcs (see `phpcs.xml.dist`)
-    -   For automatic PHP lint fixing, phpcbf
--   Testing!
-    -   Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
-    -   Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
--   [Husky](https://github.com/typicode/husky), to automatic run these lints and tests <img src="https://i.imgur.com/n9pF1TA.jpg" width="30px">
--   WordPress plugin management via composer
--   Some really great plugins
-    -   Advanced Custom Fields
-    -   WP Migrate DB Pro
-    -   WP Environment Indicator 😀
--   Some useful PHP libraries
-    -   phpdotenv
-    -   carbon
-    -   whoops
+- Full [Timber](https://www.upstatement.com/timber/) integration, of course. ![Jaredzilla](https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/42425/jaredzilla-1369410877.gif)
+- Built in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
+- Easily create documentation using [Flatdoc](http://ricostacruz.com/flatdoc/)
+- A Github [pull request template](https://github.com/Upstatement/skela-wp-theme/blob/master/.github/pull_request_template.md)
+- Repositories, managers, services and models for a very object oriented approach to organizing your WordPress data.
+  - Managers do things like setup your theme (register option pages, hide dashboard widgets, enqueue JS and CSS), create custom post types and taxonomies, and setup basic WordPress defaults.
+  - Models hold and extend your data. Have a press release post type that needs a bunch of extra functions? Create a class for them here, extending Timber\Post, and put your logic here so you can keep your Twig clean.
+  - Repositories are a good place to put query related logic, let get me all the posts from September in the hot dog category.
+  - Services are for more low lying functions, like routing.
+- JS and SCSS in place, enqueued, and ready to be added to.
+  - Includes an example of how to use [code splitting](https://webpack.js.org/guides/code-splitting/)
+- Webpack via [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) so you don't need to look at all the useless parts. Comes with:
+  - Autoprefixer
+  - [Vendor file extraction](https://laravel-mix.com/docs/2.1/extract)
+  - Browsersync
+  - Support for [code splitting](https://webpack.js.org/guides/code-splitting/)
+- Linting!
+  - For your SCSS linting, stylelint (see `.stylelintrc`)
+  - For your Javascript code styles, prettier (see `.prettierrc`)
+  - For your Javascript linting, eslint (see `.eslintrc.json`)
+  - For your PHP linting, phpcs (see `phpcs.xml.dist`)
+  - For automatic PHP lint fixing, phpcbf
+- Testing!
+  - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
+  - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
+- [Husky](https://github.com/typicode/husky), to automatic run these lints and tests <img src="https://i.imgur.com/n9pF1TA.jpg" width="30px">
+- WordPress plugin management via composer
+- Some really great plugins
+  - Advanced Custom Fields
+  - WP Migrate DB Pro
+  - WP Environment Indicator 😀
+- Some useful PHP libraries
+  - phpdotenv
+  - carbon
+  - whoops
+- A sample setup for Travis (`.travis.yml`) with deployment (`scripts/deploy.sh`)
 
 ## 🏠 Making it your own
 
 Do a **case-sensitive** search and replace for
 
--   skela
--   Skela
--   SKELA
+- skela
+- Skela
+- SKELA
 
 and replace those with your new and exciting theme name
 
@@ -72,11 +75,13 @@ At Upstatement we use a Docker setup neatly packed into something called Ups Doc
 
 4. Create a file called `.env` in this directory and populate it with configuration from the `scaffold - Dotenv (Local)` file in 1Password
 
-5. Run the install command:
+5. If you would like to use the ACF and WP Migrate DB Pro plugins, you need to get the license keys (check 1Password) and paste them into `composer.json` where you see `ACF_KEY` and `WP_MIGRATE_KEY`. If not, remove these entries from the `repositories` and `require` sections
 
-    ```
-    ./bin/install
-    ```
+6. Run the install command:
+
+   ```
+   ./bin/install
+   ```
 
 Once completed, you should be able to access your WordPress installation via `ups.dock`. The default login is `admin / password`
 
