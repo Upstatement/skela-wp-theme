@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Menu from './components/menu';
 
 $(document).ready(() => {
-    Menu.init();
+    new Menu();
 
     // This is an example of how to do code splitting. The JS in this
     // referenced file will only be loaded on that page. Good for
