@@ -17,8 +17,11 @@
     },
     "author": "Upstatement",
     "devDependencies": {
+        "babel-eslint": "^10.0.1",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
         "browser-sync": "^2.26.3",
         "browser-sync-webpack-plugin": "^2.0.1",
+        "bundlesize": "^0.17.0",
         "eslint": "^5.4.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^3.0.1",
@@ -35,7 +38,6 @@
         "stylelint-scss": "^3.1.0"
     },
     "dependencies": {
-        "babel-eslint": "^8.2.6",
         "jquery": "^3.3.1"
     },
     "license": "ISC",
