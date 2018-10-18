@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/Qv18zRb.png)
+![Logo](https://i.imgur.com/2GdqkHG.png)
 
 # Skela
 
