@@ -33,7 +33,7 @@ It's currently only really intended for use by Upstatement and their best friend
 - Testing!
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
-- [Husky](https://github.com/typicode/husky), to automatic run these lints and tests <img src="https://i.imgur.com/n9pF1TA.jpg" width="30px">
+- [Husky](https://github.com/typicode/husky), to automatic run these lints and tests <img src="https://i.imgur.com/n9pF1TA.jpg" width="15px">
 - WordPress plugin management via composer
 - Some really great plugins
   - Advanced Custom Fields
@@ -87,7 +87,7 @@ Once completed, you should be able to access your WordPress installation via `up
 
 If you need to SSH into your container, from your project root run `docker-compose exec wordpress /bin/bash`
 
-## Development Workflow
+## 📈 Development Workflow
 
 1. Run `nvm use` to ensure you're using the correct version of Node
 2. Run `./bin/start` to start the backend / static build server
