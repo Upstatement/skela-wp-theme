@@ -1,0 +1,9 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+Front page
+
+{% for post in posts %}
+{{ post.title }}<br>
+{% endfor %}
+{% endblock %}

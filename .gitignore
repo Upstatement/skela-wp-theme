@@ -1,0 +1,7 @@
+/.env
+node_modules
+/vendor/
+mix-manifest.json
+dist
+.eslintcache
+.stylelintcache

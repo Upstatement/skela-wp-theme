@@ -1,0 +1,7 @@
+package.json
+**/*.scss
+**/*.html
+**/*.php
+**/*.css
+**/*.yml
+webpack.mix.js

@@ -1,0 +1,62 @@
+{
+    "name": "skela",
+    "version": "0.0.1",
+    "description": "WordPress child theme for Skela",
+    "repository": "git@github.com:Upstatement/skela-wordpress.git",
+    "scripts": {
+        "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "precommit": "pretty-quick --staged && npm run lint:scripts && npm run lint:styles && npm run lint:php",
+        "lint:scripts": "eslint static/js/**/*.js --cache",
+        "lint:styles": "stylelint 'static/sass/**/*.scss' --cache -f string --syntax scss",
+        "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
+        "fix:php": "./vendor/bin/phpcbf",
+        "test:bundlesize": "bundlesize",
+        "test:a11y": "node tests/pa11y.js"
+    },
+    "author": "Upstatement",
+    "devDependencies": {
+        "browser-sync": "^2.26.3",
+        "browser-sync-webpack-plugin": "^2.0.1",
+        "eslint": "^5.4.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^3.0.1",
+        "eslint-plugin-import": "^2.11.0",
+        "eslint-plugin-prettier": "^2.6.0",
+        "husky": "^0.14.3",
+        "laravel-mix": "^2.1.14",
+        "pa11y": "^5.0.4",
+        "prettier": "^1.12.1",
+        "pretty-quick": "^1.4.1",
+        "stylelint": "^9.2.0",
+        "stylelint-config-sass-guidelines": "^5.0.0",
+        "stylelint-order": "^1.0.0",
+        "stylelint-scss": "^3.1.0"
+    },
+    "dependencies": {
+        "babel-eslint": "^8.2.6",
+        "jquery": "^3.3.1"
+    },
+    "license": "ISC",
+    "testing": {
+        "urls": {
+            "local": "https://skela.ups.dock",
+            "staging": "",
+            "production": ""
+        },
+        "accessibility": {
+            "compliance": "Section508"
+        }
+    },
+    "bundlesize": [
+        {
+            "path": "./dist/app.js",
+            "maxSize": "10 kB"
+        },
+        {
+            "path": "./dist/vendor.js",
+            "maxSize": "110 kB"
+        }
+    ]
+}
