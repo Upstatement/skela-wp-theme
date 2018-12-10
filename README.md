@@ -73,7 +73,7 @@ At Upstatement we use a Docker setup neatly packed into something called Ups Doc
 
 3. Run `composer update`
 
-4. Create a file called `.env` in this directory and populate it with configuration from the `scaffold - Dotenv (Local)` file in 1Password
+4. Create a file called `.env` in this directory and populate it with configuration from the `.env.sample` file in 1Password
 
 5. If you would like to use the ACF and WP Migrate DB Pro plugins, you need to get the license keys (check 1Password) and paste them into `composer.json` where you see `ACF_KEY` and `WP_MIGRATE_KEY`. If not, remove these entries from the `repositories` and `require` sections
 
