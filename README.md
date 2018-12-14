@@ -49,9 +49,9 @@ It's currently only really intended for use by Upstatement and their best friend
 
 Do a **case-sensitive** search and replace for
 
-- skela
-- Skela
-- SKELA
+- `skela`
+- `Skela`
+- `SKELA`
 
 and replace those with your new and exciting theme name
 
@@ -79,7 +79,7 @@ At Upstatement we use a Docker setup neatly packed into something called Ups Doc
 
 6. Run the install command:
 
-   ```
+   ```bash
    ./bin/install
    ```
 
@@ -95,6 +95,22 @@ If you need to SSH into your container, from your project root run `docker-compo
 
 Quitting this process (`Ctrl-C`) will shut down the container.
 
-## wp-cli
+## Common wp-cli commands
 
 If you've installed this using ups-dock, you can run wp-cli by typing `./wp-docker [command]`
+
+```bash
+docker-compose exec wordpress wp [command]
+```
+
+Export the database
+
+```bash
+docker-compose exec wordpress wp db export - > dbdump.sql
+```
+
+SSH into the WordPress container
+
+```bash
+docker-compose exec wordpress /bin/bash
+```
