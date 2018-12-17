@@ -4,8 +4,8 @@ set -e
 
 # Ensure MySQL connection is up before proceeding.
 until mysql -uwordpress -pwordpress -hdb wordpress; do
-    >&2 echo "Waiting for MySQL ..."
-    sleep 1
+  >&2 echo "Waiting for MySQL ..."
+  sleep 1
 done
 
 # Configure WordPress

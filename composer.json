@@ -1,87 +1,87 @@
 {
-    "name": "upstatement/skela-wordpress",
-    "authors": [
-        {
-            "name": "Upstatement",
-            "email": "tech@upstatement.com"
-        }
-    ],
-    "description": "WordPress theme",
-    "license": "proprietary",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://wpackagist.org"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "advanced-custom-fields/advanced-custom-fields-pro",
-                "version": "5.7.7",
-                "type": "wordpress-plugin",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ACF_KEY&t=5.7.7"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "deliciousbrains/wp-migrate-db-pro",
-                "type": "wordpress-plugin",
-                "version": "1.8.6",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.8.6"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "deliciousbrains/wp-migrate-db-pro-media-files",
-                "type": "wordpress-plugin",
-                "version": "1.4.10",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.4.10"
-                }
-            }
-        }
-    ],
-    "extra": {
-        "installer-paths": {
-            "plugins/{$name}/": [
-                "wpackagist-plugin/*",
-                "type:wordpress-plugin"
-            ]
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "7.2"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Skela\\": "src"
-        }
-    },
-    "require": {
-        "advanced-custom-fields/advanced-custom-fields-pro": "5.7.7",
-        "deliciousbrains/wp-migrate-db-pro": "1.8.6",
-        "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.10",
-        "wpackagist-plugin/wp-environment-indicator": "^1.0",
-        "vlucas/phpdotenv": "^2.5",
-        "timber/timber": "^1.7",
-        "nesbot/carbon": "^1.33"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.3",
-        "friendsofphp/php-cs-fixer": "^2.11",
-        "filp/whoops": "^2.2",
-        "symfony/var-dumper": "^4.1"
+  "name": "upstatement/skela-wordpress",
+  "authors": [
+    {
+      "name": "Upstatement",
+      "email": "tech@upstatement.com"
     }
+  ],
+  "description": "WordPress theme",
+  "license": "proprietary",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.7.7",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ACF_KEY&t=5.7.7"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "deliciousbrains/wp-migrate-db-pro",
+        "type": "wordpress-plugin",
+        "version": "1.8.6",
+        "dist": {
+          "type": "zip",
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.8.6"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "deliciousbrains/wp-migrate-db-pro-media-files",
+        "type": "wordpress-plugin",
+        "version": "1.4.10",
+        "dist": {
+          "type": "zip",
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.4.10"
+        }
+      }
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "plugins/{$name}/": [
+        "wpackagist-plugin/*",
+        "type:wordpress-plugin"
+      ]
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.2"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Skela\\": "src"
+    }
+  },
+  "require": {
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.7.7",
+    "deliciousbrains/wp-migrate-db-pro": "1.8.6",
+    "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.10",
+    "wpackagist-plugin/wp-environment-indicator": "^1.0",
+    "vlucas/phpdotenv": "^2.5",
+    "timber/timber": "^1.7",
+    "nesbot/carbon": "^1.33"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.3",
+    "friendsofphp/php-cs-fixer": "^2.11",
+    "filp/whoops": "^2.2",
+    "symfony/var-dumper": "^4.1"
+  }
 }
