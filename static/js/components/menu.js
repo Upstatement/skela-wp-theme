@@ -1,11 +1,11 @@
 class Menu {
-    constructor() {
-        this.initialize();
-    }
+  constructor() {
+    this.initialize();
+  }
 
-    initialize() {
-        console.log('Menu initialized');
-    }
+  initialize() {
+    console.warn('Menu initialized');
+  }
 }
 
 export default Menu;
