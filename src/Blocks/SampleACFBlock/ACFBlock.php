@@ -2,7 +2,7 @@
 /**
  * Example for creating custom block that uses ACF fields
  */
-namespace Skela\Blocks\ACFBlock;
+namespace Skela\Blocks\SampleACFBlock;
 
 use Timber\Timber;
 
@@ -13,18 +13,16 @@ class ACFBlock
      */
     public function __construct()
     {
-                add_action('acf/init', array($this,'createACFBlock'));
+        add_action('acf/init', array($this,'createACFBlock'));
     }
-     /**
-      * Uses ACF function to register custom blocks
-      *
-      * @return void
-      */
+    /**
+     * Uses ACF function to register custom blocks
+     *
+     * @return void
+     */
     public function createACFBlock()
     {
-        // check function exists
         if (function_exists('acf_register_block')) {
-         // register RelatedArticles block
             acf_register_block(
                 array(
                     'name'            => 'acfBlock',
@@ -39,16 +37,16 @@ class ACFBlock
             );
         }
     }
-     /**
-      * Get info from the related ACF fields
-      * and then render corrosponding template
-      *
-      * @param array  $block      The block settings and attributes.
-      * @param string $content    The block content (empty content).
-      * @param bool   $is_preview True during AJAX preview.
-      *
-      * @return void
-      */
+    /**
+     * Get info from the related ACF fields
+     * and then render corrosponding template
+     *
+     * @param array  $block      The block settings and attributes.
+     * @param string $content    The block content (empty content).
+     * @param bool   $is_preview True during AJAX preview.
+     *
+     * @return void
+     */
     public function renderACFBlock($block, $content, $is_preview)
     {
         $templates = ['templates/components/acf-block.twig', 'templates/components/acf-block.twig'];
@@ -59,7 +57,6 @@ class ACFBlock
         $context['some_headline'] = get_field('some_headline');
         $context['some_text'] = get_field('some_text');
 
-         // ob_start();
         if ($is_preview) {
             echo "Preview mode is not supported for related articles. Please change to Edit mode by clicking the pencil icon in the toolbar above.";
         } else {
