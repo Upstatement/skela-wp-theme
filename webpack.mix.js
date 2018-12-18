@@ -6,10 +6,12 @@ mix
   })
   .disableNotifications()
   .js('static/js/app.js', 'dist/')
+  .js('static/js/admin.js', 'dist/')
   .sass('static/scss/app.scss', 'dist/')
+  .sass('static/scss/admin.scss', 'dist/')
+
   .js('src/Blocks/Blocks.js', 'dist/blocks.build.js')
   .sass('src/Blocks/editor.scss', 'dist/block-editor.build.css')
-  .sass('src/Blocks/style.scss', 'dist/block-style.build.css')
   .options({
     autoprefixer: {
       options: {

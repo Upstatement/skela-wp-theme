@@ -17,11 +17,11 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.7.7",
+        "version": "5.8.0-beta3",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ACF_KEY&t=5.7.7"
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY=&t=5.8.0-beta3"
         }
       }
     },
@@ -70,7 +70,7 @@
     }
   },
   "require": {
-    "advanced-custom-fields/advanced-custom-fields-pro": "5.7.7",
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.8.0-beta3",
     "deliciousbrains/wp-migrate-db-pro": "1.8.6",
     "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.10",
     "wpackagist-plugin/wp-environment-indicator": "^1.0",

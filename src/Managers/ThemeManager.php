@@ -76,6 +76,20 @@ class ThemeManager
     }
 
     /**
+     * Enqueue JS and CSS for WP admin panel
+     *
+     * @return void
+     */
+    public function enqueueAdminScripts()
+    {
+        wp_enqueue_style('admin-styles', SKELA_THEME_URL . '/dist/admin.css');
+
+        wp_enqueue_script('manifest', SKELA_THEME_URL . '/dist/manifest.js', array(), SKELA_THEME_VERSION, false);
+        wp_enqueue_script('vendor', SKELA_THEME_URL . '/dist/vendor.js', array(), SKELA_THEME_VERSION, false);
+        wp_enqueue_script('admin.js', SKELA_THEME_URL . '/dist/admin.js', array(), SKELA_THEME_VERSION, false);
+    }
+
+    /**
      * Adds ability to check if we are on the homepage in a twig file
      *
      * @param array $context Timber context
