@@ -13,24 +13,9 @@ class Blocks
      */
     public function __construct()
     {
-        add_action('enqueue_block_assets', array($this,'enqueueBlockAssets'));
         add_action('enqueue_block_editor_assets', array($this,'enqueueBlockEditorAssets'));
 
         new SampleACFBlock\ACFBlock();
-    }
-
-    /**
-     * Enqueue Gutenberg block assets for both frontend + backend.
-     *
-     * @return null
-     */
-    public function enqueueBlockAssets()
-    {
-        wp_enqueue_style(
-            'block-style-css', // Handle.
-            SKELA_THEME_URL . '/dist/block-style.build.css', // Block style CSS.
-            array( 'wp-blocks' ) // Dependency to include the CSS after it.
-        );
     }
 
     /**
@@ -44,7 +29,7 @@ class Blocks
         wp_enqueue_script(
             'block-js', // Handle.
             SKELA_THEME_URL . '/dist/blocks.build.js', // Block.block.build.js: We register the block here. Built with Webpack.
-            array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+            array( 'wp-blocks', 'wp-i18n', 'wp-element', 'manifest', 'vendor', 'wp-editor'), // Dependencies, defined above.
             true // Enqueue the script in the footer.
         );
 
