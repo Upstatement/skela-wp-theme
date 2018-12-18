@@ -44,10 +44,10 @@ add_action(
     'after_setup_theme',
     function () {
         $managers = [
-            new \Skela\Managers\CustomPostsManager(),
-            // new \Skela\Managers\CustomPostsManager(),
             // new \Skela\Managers\TaxonomiesManager(),
-            new \Skela\Managers\WordPressManager()
+            new \Skela\Managers\WordPressManager(),
+            new \Skela\Managers\GutenbergManager(),
+            new \Skela\Managers\CustomPostsManager(),
         ];
 
         $themeManager = new ThemeManager($managers);
