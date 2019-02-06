@@ -1,4 +1,6 @@
-<img src="https://i.imgur.com/2GdqkHG.png" alt="Skela" style="display: block; margin: 0 auto">
+<p style="text-align: center">
+  <img src="https://i.imgur.com/2GdqkHG.png" alt="Skela" style="display: block; margin: 0 auto">
+<p>
 
 # Skela
 
@@ -168,6 +170,6 @@ We welcome all contributions to our projects! Filing bugs, feature requests, cod
 
 Upstatement strives to provide a welcoming, inclusive environment for all users. To hold ourselves accountable to that mission, we have a strictly-enforced [code of conduct](CODE_OF_CONDUCT.md).
 
-## <img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="20" /> About Upstatement
+## <img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement
 
 [Upstatement](https://www.upstatement.com/) is a digital transformation studio headquartered in Boston, MA that imagines and builds exceptional digital experiences. Make sure to check out our [services](https://www.upstatement.com/services/), [work](https://www.upstatement.com/work/), and [open positions](https://www.upstatement.com/jobs/)!
