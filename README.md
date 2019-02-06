@@ -4,22 +4,22 @@
 
 > Skela is an opinionated but still fairly barebones WordPress theme
 
-Skela is an opinionated but still fairly barebones WordPress theme. Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data (more on that [here](#object-oriented-approach)).
+Skela is an opinionated but still fairly barebones WordPress theme. Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data (more on that [here](#-object-oriented-approach)).
 
 ## Table of Contents
 
 - [Skela](#skela)
   - [Table of Contents](#table-of-contents)
-  - [What's in the Box](#whats-in-the-box)
-  - [System Requirements](#system-requirements)
-  - [Installation](#installation)
-  - [Getting Started](#getting-started)
-  - [Object-Oriented Approach](#object-oriented-approach)
-  - [Contributing](#contributing)
-  - [Code of Conduct](#code-of-conduct)
-  - [About Upstatement](#about-upstatement)
+  - [What's in the Box](#-whats-in-the-box)
+  - [System Requirements](#-system-requirements)
+  - [Installation](#-installation)
+  - [Getting Started](#-getting-started)
+  - [Object-Oriented Approach](#-object-oriented-approach)
+  - [Contributing](#c-ontributing)
+  - [Code of Conduct](#c-ode-of-conduct)
+  - [About Upstatement](#-about-upstatement)
 
-## What's in the Box
+## 🎁 What's in the Box
 
 - Full [Timber](https://www.upstatement.com/timber/) integration (of course)
 - Built-in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
@@ -41,7 +41,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
 - CI setup for [Travis](https://travis-ci.com/) (with [deployment](scripts/deploy.sh))
 
-## System Requirements
+## 💻 System Requirements
 
 Before you can start on your theme, you first need a way to run a LAMP/LEMP (Linux, Apache/nginx, MySQL, PHP) stack on your machine.
 
@@ -51,7 +51,7 @@ We recommend our very own Docker setup, we neatly packed into something called U
 
 2. Install [ups-dock](https://github.com/upstatement/ups-dock)
 
-## Installation
+## 🛠 Installation
 
 ### Updating theme name
 
@@ -95,7 +95,7 @@ Once completed, you should be able to access your WordPress installation via [`u
 
 If prompted for a login, the default in your `.env` file is `admin / password`
 
-## Getting Started
+## 🏃‍ Getting Started
 
 ### Development workflow
 
@@ -114,23 +114,23 @@ Quitting this process (`Ctrl-C`) will shut down the container.
 
 If you've installed this theme using `ups-dock`, you can run `wp-cli` by typing `./wp-docker [command]`
 
-```bash
-docker-compose exec wordpress wp [command]
+```shell
+$ docker-compose exec wordpress wp [command]
 ```
 
 To export the databse, use the following command:
 
-```bash
-docker-compose exec wordpress wp db export - > dbdump.sql
+```shell
+$ docker-compose exec wordpress wp db export - > dbdump.sql
 ```
 
 To SSH into the WordPress container, use the following command:
 
-```bash
-docker-compose exec wordpress /bin/bash
+```shell
+$ docker-compose exec wordpress /bin/bash
 ```
 
-## Object-Oriented Approach
+## 🔄 Object-Oriented Approach
 
 Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data.
 
@@ -160,14 +160,14 @@ It could be used in situations like the following:
 
 Services are for more low-lying functions, like routing.
 
-## Contributing
+## 👨‍👩‍👧‍👦 Contributing
 
 We welcome all contributions to our projects! Filing bugs, feature requests, code changes, docs changes, or anything else you'd like to contribute are all more than welcome! More information about contributing can be found in the [contributing guidelines](.github/CONTRIBUTING.md).
 
-## Code of Conduct
+## 📗 Code of Conduct
 
 Upstatement strives to provide a welcoming, inclusive environment for all users. To hold ourselves accountable to that mission, we have a strictly-enforced [code of conduct](CODE_OF_CONDUCT.md).
 
-## About Upstatement
+## <img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="20" /> About Upstatement
 
 [Upstatement](https://www.upstatement.com/) is a digital transformation studio headquartered in Boston, MA that imagines and builds exceptional digital experiences. Make sure to check out our [services](https://www.upstatement.com/services/), [work](https://www.upstatement.com/work/), and [open positions](https://www.upstatement.com/jobs/)!
