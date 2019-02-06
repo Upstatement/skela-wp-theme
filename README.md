@@ -1,4 +1,4 @@
-<p style="text-align: center">
+<p align="center">
   <img src="https://i.imgur.com/2GdqkHG.png" alt="Skela" style="display: block; margin: 0 auto">
 <p>
 
