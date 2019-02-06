@@ -11,7 +11,7 @@ It's currently only really intended for use by Upstatement and their best friend
 - Full [Timber](https://www.upstatement.com/timber/) integration, of course. ![Jaredzilla](https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/42425/jaredzilla-1369410877.gif)
 - Built in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
 - Easily create documentation using [Flatdoc](http://ricostacruz.com/flatdoc/)
-- A Github [pull request template](https://github.com/Upstatement/skela-wp-theme/blob/master/.github/pull_request_template.md)
+- A Github [pull request template](.github/PULL_REQUEST_TEMPLATE.md)
 - Repositories, managers, services and models for a very object oriented approach to organizing your WordPress data.
   - Managers do things like setup your theme (register option pages, hide dashboard widgets, enqueue JS and CSS), create custom post types and taxonomies, and setup basic WordPress defaults.
   - Models hold and extend your data. Have a press release post type that needs a bunch of extra functions? Create a class for them here, extending Timber\Post, and put your logic here so you can keep your Twig clean.
