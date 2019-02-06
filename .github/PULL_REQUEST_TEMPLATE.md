@@ -12,10 +12,10 @@
 
 ## TODOs:
 
--   [ ] Updated editor documentation
--   [ ] Updated Trello status
+- [ ] Updated editor documentation
+- [ ] Updated Trello status
 
 ### Optional:
 
--   [ ] <a href="https://cpi-pa11y.herokuapp.com/" target="_blank">Run and add accessibility test</a>
--   [ ] Add Cypress interaction test
+- [ ] <a href="https://cpi-pa11y.herokuapp.com/" target="_blank">Run and add accessibility test</a>
+- [ ] Add Cypress interaction test
