@@ -6,7 +6,7 @@
   <title>{% if wp_title %}{{ wp_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
   {{ function( 'wp_head' ) }}
 
-  <link rel="stylesheet" id="newshour-theme-css" href="{{ theme.link }}/dist/app.css?v={{ css_last_modified }}" type="text/css" media="all" />
+  <link rel="stylesheet" href="{{ theme.link }}/dist/app.css?v={{ css_last_modified }}" type="text/css" media="all" />
 </head>
 
 <body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %}">
