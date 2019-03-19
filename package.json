@@ -26,9 +26,9 @@
     }
   ],
   "scripts": {
-    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:styles": "stylelint 'static/sass/**/*.scss' --cache -f string --syntax scss",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
@@ -48,20 +48,23 @@
     "@upstatement/eslint-config": "^0.3.1",
     "@upstatement/prettier-config": "^0.3.0",
     "babel-eslint": "^10.0.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "bundlesize": "^0.17.0",
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "husky": "^1.2.1",
-    "laravel-mix": "^2.1.14",
+    "laravel-mix": "^4.0.15",
     "pa11y": "^5.1.0",
     "prettier": "^1.15.3",
     "pretty-quick": "^1.8.0",
+    "sass": "^1.17.3",
+    "sass-loader": "7.*",
     "stylelint": "^9.9.0",
     "stylelint-config-sass-guidelines": "^5.3.0",
     "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.4.1"
+    "stylelint-scss": "^3.4.1",
+    "vue-template-compiler": "^2.6.9"
   }
 }

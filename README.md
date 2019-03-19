@@ -29,7 +29,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
 - Built-in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
 - Easy documentation creation with [Flatdoc](http://ricostacruz.com/flatdoc/)
 - Webpack via [Laravel Mix](https://github.com/JeffreyWay/laravel-mix)
-  - Comes packed with [autoprefixer](https://github.com/postcss/autoprefixer), [vendor file extraction](https://laravel-mix.com/docs/2.1/extract), [Browsersync](https://www.browsersync.io/), and support for [code splitting](https://webpack.js.org/guides/code-splitting/)!
+  - Comes packed with [autoprefixer](https://github.com/postcss/autoprefixer), [vendor file extraction](https://laravel-mix.com/docs/4.0/extract), [Browsersync](https://www.browsersync.io/)!
 - Some really great WordPress plugins (and plugin management provided by [Composer](https://getcomposer.org/))
   - [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/)
   - [WP Migrate DP Pro](https://deliciousbrains.com/wp-migrate-db-pro/)
@@ -83,17 +83,17 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 2. Run `nvm install` to ensure you're using the correct version of Node.
 
-    _Note: If you are switching to projects with other versions of Node, we recommend using something like [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which will automatically run `nvm use`_
+   _Note: If you are switching to projects with other versions of Node, we recommend using something like [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which will automatically run `nvm use`_
 
 3. Run `composer update`
 
 4. Copy the `.env.sample` into a new `.env` file
 
-6. Run the install command:
+5. Run the install command:
 
-    ```shell
-    $ ./bin/install
-    ```
+   ```shell
+   $ ./bin/install
+   ```
 
 Once completed, you should be able to access your WordPress installation via [`ups.dock`](http://ups.dock)!
 
@@ -106,9 +106,10 @@ If prompted for a login, the default in your `.env` file is `admin / password`
 1. Run `nvm use` to ensure you're using the correct version of Node
 
 2. Run the start command to start the backend / static build server:
-    ```shell
-    $ ./bin/start
-    ```
+
+   ```shell
+   $ ./bin/start
+   ```
 
 3. Open the `Local` URL that appears below `[Browsersync] Access URLs:` in your browser (https://localhost:3000/)
 
