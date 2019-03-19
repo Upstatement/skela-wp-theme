@@ -55,13 +55,16 @@
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "husky": "^1.2.1",
-    "laravel-mix": "^2.1.14",
+    "laravel-mix": "^4.0.15",
     "pa11y": "^5.1.0",
     "prettier": "^1.15.3",
     "pretty-quick": "^1.8.0",
+    "sass": "^1.17.3",
+    "sass-loader": "7.*",
     "stylelint": "^9.9.0",
     "stylelint-config-sass-guidelines": "^5.3.0",
     "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.4.1"
+    "stylelint-scss": "^3.4.1",
+    "vue-template-compiler": "^2.6.9"
   }
 }
