@@ -48,7 +48,7 @@
     "@upstatement/eslint-config": "^0.3.1",
     "@upstatement/prettier-config": "^0.3.0",
     "babel-eslint": "^10.0.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "bundlesize": "^0.17.0",
