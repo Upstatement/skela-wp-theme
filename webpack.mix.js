@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 mix
+  .setPublicPath('dist/')
   .options({
     processCssUrls: false,
   })
