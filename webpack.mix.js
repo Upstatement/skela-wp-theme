@@ -19,7 +19,7 @@ mix
       },
     },
   })
-  .extract(['jquery'])
+  .extract()
   .autoload({
     jquery: ['$', 'window.jQuery'],
   })
