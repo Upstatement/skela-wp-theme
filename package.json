@@ -42,7 +42,7 @@
     }
   },
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.4.0"
   },
   "devDependencies": {
     "@upstatement/eslint-config": "^0.3.1",
