@@ -26,6 +26,11 @@ echo
 docker-compose exec wordpress wp plugin activate --all
 echo
 
+echo "Updating WordPress..."
+echo
+docker-compose exec wordpress wp core update
+echo
+
 echo "-------------------------------"
 echo "Install completed successfully!"
 echo "-------------------------------"
