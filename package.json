@@ -30,7 +30,6 @@
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint:scripts": "eslint static/js/**/*.js --cache",
-    "lint:styles": "stylelint 'static/sass/**/*.scss' --cache -f string --syntax scss",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",
     "test:bundlesize": "bundlesize",
@@ -38,7 +37,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run lint:scripts && npm run lint:styles && npm run lint:php"
+      "pre-commit": "pretty-quick --staged && npm run lint:scripts && npm run lint:php"
     }
   },
   "dependencies": {
@@ -62,10 +61,6 @@
     "pretty-quick": "^1.11.1",
     "sass": "^1.21.0",
     "sass-loader": "7.*",
-    "stylelint": "^10.1.0",
-    "stylelint-config-sass-guidelines": "^6.0.0",
-    "stylelint-order": "^3.0.0",
-    "stylelint-scss": "^3.8.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
