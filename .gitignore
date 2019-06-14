@@ -1,0 +1,23 @@
+# folders
+vendor
+dist
+uploads/*
+!uploads/.gitkeep
+plugins/*
+!plugins/.gitkeep
+
+# files
+.env
+min-manifest.json
+
+# caching and debuging
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
+
+# OS/IDE specific files
+.vscode/
+.DS_Store

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+create_containers() {
+  docker-compose up --build -d
+}
+
+echo "Bringing up project containers..."
+echo
+create_containers
+echo
+
+echo "Installing NPM packages..."
+echo
+npm install
+echo
+
+echo "Installing Composer libraries..."
+echo
+composer update
+echo
+
+echo "Activating WordPress plugins..."
+echo
+docker-compose exec wordpress wp plugin activate --all
+echo
+
+echo "Updating WordPress..."
+echo
+docker-compose exec wordpress wp core update
+echo
+
+echo "-------------------------------"
+echo "Install completed successfully!"
+echo "-------------------------------"
+echo

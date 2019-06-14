@@ -1,0 +1,13 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.sample-block {
+  border: 0.2rem solid #000;
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 2rem;
+}

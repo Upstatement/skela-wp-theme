@@ -1,0 +1,40 @@
+version: '3.5'
+services:
+  wordpress:
+    build:
+      context: .
+      args:
+        - WORDPRESS_THEME_NAME
+    volumes:
+      - ./:/var/www/html/wp-content/themes/${WORDPRESS_THEME_NAME}
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./uploads:/var/www/html/wp-content/uploads
+    depends_on:
+      - db
+    env_file: .env
+    networks:
+      - proxy
+      - default
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      # See https://hub.docker.com/_/mysql/
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+      BLACKFIRE_CLIENT_ID: f97746c8-6219-4d69-88b1-36df77d0a38e
+      BLACKFIRE_CLIENT_TOKEN: 50d41e7e07b84a8de467324b0e0afab57f5d85547117fcbbed04f2b3424167a3
+      BLACKFIRE_SERVER_ID: 717b6c43-9257-4f18-8b7a-b8854f6b06ff
+      BLACKFIRE_SERVER_TOKEN: 01b91d13f54e5a91a27eb14824654813465a79ea9f7b2dd7083001839f1d73f1
+volumes:
+  db_data:
+networks:
+  proxy:
+    name: ups-dock
+    external: true

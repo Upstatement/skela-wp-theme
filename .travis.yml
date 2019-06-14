@@ -1,0 +1,33 @@
+language: php
+php:
+  - '7.2'
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+env:
+  global:
+cache:
+  directories:
+    - node_modules
+    - vendor
+    - ~/.cache
+before_install:
+install:
+  - composer install
+  - npm install
+  - npm run production
+script:
+  - npm run lint:scripts && npm run lint:styles && npm run lint:php
+jobs:
+  include:
+    - stage: deploy
+      script: skip
+      deploy: &pantheon
+        provider: script
+        script: bash scripts/deploy.sh
+        skip_cleanup: true
+        on:
+          branch: develop
+    - stage: 'Tests'
+      script: npm run test:bundlesize
