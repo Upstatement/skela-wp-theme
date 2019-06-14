@@ -19,6 +19,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [Installation](#-installation)
   - [Getting Started](#-getting-started)
   - [Object-Oriented Approach](#-object-oriented-approach)
+  - [Gutenberg](#-gutenberg)
   - [Contributing](#c-ontributing)
   - [Code of Conduct](#c-ode-of-conduct)
   - [About Upstatement](#-about-upstatement)
@@ -39,7 +40,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [carbon](https://carbon.nesbot.com/)
   - [whoops](https://github.com/filp/whoops)
 - Linting and testing
-  - SCSS, JS, and PHP linting thanks to [stylelint](https://github.com/stylelint/stylelint), [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+  - JS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
@@ -164,6 +165,10 @@ It could be used in situations like the following:
 ### Services
 
 Services are for more low-lying functions, like routing.
+
+## 📰 Gutenberg
+
+Skela has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
 
 ## 👨‍👩‍👧‍👦 Contributing
 
