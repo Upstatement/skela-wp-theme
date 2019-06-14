@@ -1,6 +1,10 @@
 <?php
 /**
  * Example for creating custom block that uses ACF fields
+ *
+ * In order to have this example work, you first have to create
+ * a new custom field block with two ACF fields named some_headline and some_text,
+ * and show the field group if the block is equal to ACF Block
  */
 namespace Skela\Blocks\SampleACFBlock;
 
@@ -22,8 +26,8 @@ class ACFBlock
      */
     public function createACFBlock()
     {
-        if (function_exists('acf_register_block')) {
-            acf_register_block(
+        if (function_exists('acf_register_block_type')) {
+            acf_register_block_type(
                 array(
                     'name'            => 'acfBlock',
                     'title'           => __('ACF Block'),
@@ -49,18 +53,12 @@ class ACFBlock
      */
     public function renderACFBlock($block, $content, $is_preview)
     {
-        $templates = ['templates/components/acf-block.twig', 'templates/components/acf-block.twig'];
-
         // If the block renders info from TimberTheme, TimberSite, etc., then uncomment the following:
         // $context = Timber::get_context();
 
         $context['some_headline'] = get_field('some_headline');
         $context['some_text'] = get_field('some_text');
 
-        if ($is_preview) {
-            echo "Preview mode is not supported for related articles. Please change to Edit mode by clicking the pencil icon in the toolbar above.";
-        } else {
-            Timber::render($templates, $context);
-        }
+        Timber::render(['templates/components/acf-block.twig'], $context);
     }
 }
