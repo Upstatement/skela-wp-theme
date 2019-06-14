@@ -17,11 +17,11 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.8.0-beta3",
+        "version": "5.8.1",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.0-beta3"
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.1"
         }
       }
     },
@@ -30,10 +30,10 @@
       "package": {
         "name": "deliciousbrains/wp-migrate-db-pro",
         "type": "wordpress-plugin",
-        "version": "1.8.6",
+        "version": "1.9.8",
         "dist": {
           "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.8.6"
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGREATE_KEY&site_url=skela.ups.dock?v=1.9.8"
         }
       }
     },
@@ -42,10 +42,10 @@
       "package": {
         "name": "deliciousbrains/wp-migrate-db-pro-media-files",
         "type": "wordpress-plugin",
-        "version": "1.4.10",
+        "version": "1.4.14",
         "dist": {
           "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.4.10"
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGREATE_KEY&site_url=skela.ups.dock?v=1.4.14"
         }
       }
     }
@@ -70,18 +70,18 @@
     }
   },
   "require": {
-    "advanced-custom-fields/advanced-custom-fields-pro": "5.8.0-beta3",
-    "deliciousbrains/wp-migrate-db-pro": "1.8.6",
-    "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.10",
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.8.1",
+    "deliciousbrains/wp-migrate-db-pro": "1.9.8",
+    "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.14",
     "wpackagist-plugin/wp-environment-indicator": "^1.0",
-    "vlucas/phpdotenv": "^2.5",
-    "timber/timber": "^1.7",
-    "nesbot/carbon": "^1.33"
+    "vlucas/phpdotenv": "^3.3",
+    "timber/timber": "^1.10",
+    "nesbot/carbon": "^2.19"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.3",
-    "friendsofphp/php-cs-fixer": "^2.11",
-    "filp/whoops": "^2.2",
-    "symfony/var-dumper": "^4.1"
+    "squizlabs/php_codesniffer": "^3.4",
+    "friendsofphp/php-cs-fixer": "^2.15",
+    "filp/whoops": "^2.3",
+    "symfony/var-dumper": "^4.3"
   }
 }
