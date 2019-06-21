@@ -1,9 +1,11 @@
 {% extends "layouts/base.twig" %}
 
 {% block pageBody %}
-Front page
 
+<ul>
 {% for post in posts %}
-{{ post.title }}<br>
+  <li><a href="{{ post.link }}">{{ post.title }}</a></li>
 {% endfor %}
+</ul>
+
 {% endblock %}
