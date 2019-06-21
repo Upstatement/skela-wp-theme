@@ -1,15 +1,18 @@
 <?php
 
-
-
-
-
+/**
+ * Custom block for inserting a list of Related articles
+ *
+ * Requires an Related Articles field group with two custom fields:
+ * - header_text (Text)
+ * - chosen_articles (Repeater) with the following sub field:
+ *     - related_article (Post Object)
+ * Set this field group if the block is equal to Related Articles
+ */
 namespace Skela\Blocks\RelatedArticles;
 
 use Timber\Timber;
 use Timber\PostQuery;
-
-// use Skela\Models\ScaffoldPost;
 
 class RelatedArticles
 {

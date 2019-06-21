@@ -10,7 +10,7 @@
  *     - 3-symmetrical : 3 Symmetrical
  *     - 3-asymmetrical : 3 Asymmetrical
  * - imageLayoutCrop (True / False)
- * Set this field group if the block is equal to ACF Block
+ * Set this field group if the block is equal to Image Layout
  */
 
 namespace Skela\Blocks\ImageLayout;
