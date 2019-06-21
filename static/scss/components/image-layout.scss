@@ -29,7 +29,7 @@
     }
   }
 }
-.image-layout__image-wrap {
+.image-layout__figure {
   position: relative;
   z-index: 1;
 }
@@ -41,7 +41,7 @@
   width: 100%;
 }
 
-.image-layout__image-caption {
+.image-layout__caption {
   z-index: 1;
   position: absolute;
   bottom: 0;
