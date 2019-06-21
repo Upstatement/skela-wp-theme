@@ -1,1 +1,15 @@
 @import 'base/reset';
+
+// Temp styles
+body {
+  padding: 50px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// Blocks
+@import 'components/related-articles';
+@import 'components/image-layout';

@@ -1,0 +1,58 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+/* ImageBlock editor styles */
+
+$image-path: 'block-editor-images/';
+
+$opacity-active: 1;
+$opacity-inactive: 0.3;
+
+div[data-name='imageLayoutLayout'] {
+  .acf-radio-list {
+    padding-top: 70px;
+  }
+  label {
+    opacity: $opacity-inactive;
+    transition: opacity 0.3s;
+    width: 140px;
+    &.selected {
+      opacity: $opacity-active;
+    }
+  }
+
+  input[type='radio'] {
+    opacity: $opacity-inactive;
+    position: relative;
+
+    &::after {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      border-radius: 0;
+      content: '';
+      display: block;
+      height: 60px;
+      left: 20px;
+      position: absolute;
+      top: -80px;
+      width: 80px;
+    }
+  }
+
+  input[value='2-symmetrical']:after {
+    background-image: url('#{$image-path}2-symmetrical.png');
+  }
+  input[value='2-asymmetrical']:after {
+    background-image: url('#{$image-path}2-asymmetrical.png');
+  }
+  input[value='3-symmetrical']:after {
+    background-image: url('#{$image-path}3-symmetrical.png');
+  }
+  input[value='3-asymmetrical']:after {
+    background-image: url('#{$image-path}3-asymmetrical.png');
+  }
+}

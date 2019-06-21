@@ -16,6 +16,9 @@ class Blocks
         add_action('enqueue_block_editor_assets', array($this,'enqueueBlockEditorAssets'));
 
         new SampleACFBlock\ACFBlock();
+        new RelatedArticles\RelatedArticles();
+        new ImageLayout\ImageLayout();
+
     }
 
     /**
