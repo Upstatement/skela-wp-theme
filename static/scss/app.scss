@@ -1,7 +1,13 @@
 @import 'base/reset';
 
-// Temp styles
+// Blocks
+@import 'components/related-articles';
+@import 'components/image-layout';
+
+// Temp page styles
 body {
+  margin: 0 auto;
+  max-width: 1000px;
   padding: 50px;
 }
 
@@ -9,7 +15,3 @@ img {
   display: block;
   max-width: 100%;
 }
-
-// Blocks
-@import 'components/related-articles';
-@import 'components/image-layout';
