@@ -50,6 +50,10 @@ add_action(
             new \Skela\Managers\CustomPostsManager(),
         ];
 
+        if (function_exists('acf_add_local_field_group')) {
+            $managers[] = new \Skela\Managers\ACFManager();
+        }
+
         $themeManager = new ThemeManager($managers);
         $themeManager->run();
     }
