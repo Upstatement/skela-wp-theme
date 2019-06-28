@@ -1,0 +1,180 @@
+[
+  {
+    "key": "group_5cdef47b943c9",
+    "title": "Image Layout",
+    "fields": [
+      {
+        "key": "field_5cdef487a8fcc",
+        "label": "Images",
+        "name": "imageLayoutImages",
+        "type": "gallery",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "min": "",
+        "max": "",
+        "insert": "append",
+        "library": "all",
+        "min_width": "",
+        "min_height": "",
+        "min_size": "",
+        "max_width": "",
+        "max_height": "",
+        "max_size": "",
+        "mime_types": "",
+        "return_format": "array",
+        "preview_size": "medium"
+      },
+      {
+        "key": "field_5cdef49aa8fcd",
+        "label": "Layout",
+        "name": "imageLayoutLayout",
+        "type": "radio",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "choices": {
+          "2-symmetrical": "2 Symmetrical",
+          "2-asymmetrical": "2 Asymmetrical",
+          "3-symmetrical": "3 Symmetrical",
+          "3-asymmetrical": "3 Asymmetrical"
+        },
+        "allow_null": 0,
+        "other_choice": 0,
+        "default_value": "",
+        "layout": "horizontal",
+        "return_format": "value",
+        "save_other_choice": 0
+      },
+      {
+        "key": "field_5cdeffb837320",
+        "label": "Crop image to same aspect ratio?",
+        "name": "imageLayoutCrop",
+        "type": "true_false",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "message": "",
+        "default_value": 0,
+        "ui": 1,
+        "ui_on_text": "",
+        "ui_off_text": ""
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/imagelayout"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+  },
+  {
+    "key": "group_5cd5a5077e357",
+    "title": "Related Articles",
+    "fields": [
+      {
+        "key": "field_5cd5a5401a9eb",
+        "label": "Header text",
+        "name": "header_text",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "Related Articles",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_5cd5a50d1a9e9",
+        "label": "Chosen articles",
+        "name": "chosen_articles",
+        "type": "repeater",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "collapsed": "",
+        "min": 1,
+        "max": 4,
+        "layout": "table",
+        "button_label": "Add an article",
+        "sub_fields": [
+          {
+            "key": "field_5cd5c5733d782",
+            "label": "Related Article",
+            "name": "related_article",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+          }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/relatedarticles"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+  }
+]

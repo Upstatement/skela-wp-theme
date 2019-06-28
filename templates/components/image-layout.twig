@@ -1,0 +1,20 @@
+
+<div class="image-layout image-layout--{{ layout }}">
+
+  {% set imageCountToUse = '2' in layout ? 2 : 3  %}
+  {% set imagesToUse = images[0 : imageCountToUse] %}
+  {% set resizeWidth = 600 %}
+  {% set resizeHeight = cropToSameRatio ? 400 : null %}
+
+  {% for image in imagesToUse %}
+    <figure class="image-layout__figure">
+      <img alt="{{ image.alt }}" class="image-layout__img" src="{{ image.src | resize(resizeWidth, resizeHeight) }}" />
+      {% if image.caption | length %}
+        <figcaption class="image-layout__caption">
+          {{ image.caption }}
+        </figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
+</div>
+

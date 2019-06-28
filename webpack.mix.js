@@ -10,9 +10,9 @@ mix
   .js('static/js/admin.js', 'dist')
   .sass('static/scss/app.scss', 'dist')
   .sass('static/scss/admin.scss', 'dist')
-
   .js('src/Blocks/Blocks.js', 'dist/blocks.build.js')
   .sass('src/Blocks/editor.scss', 'dist/block-editor.build.css')
+  .copy('src/Blocks/**/*.png', 'dist/block-editor-images/')
   .options({
     autoprefixer: {
       options: {

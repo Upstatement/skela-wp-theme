@@ -1,0 +1,18 @@
+{% if relatedArticles is not empty %}
+  <div class="related-articles">
+      <div class="related-articles__inner">
+      {% if relatedArticlesHeader %}
+        <h3 class="related-articles__head">{{ relatedArticlesHeader }}</h3>
+      {% endif %}
+      {% if relatedArticles %}
+        <ul class="related-articles__list">
+          {% for article in relatedArticles %}
+            <li class="related-articles__item">
+              <a class="related-articles__link" href="{{ article.link }}">{{ article.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      </div>
+  </div>
+{% endif %}
