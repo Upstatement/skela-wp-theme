@@ -8,7 +8,7 @@
 
   {% for image in imagesToUse %}
     <figure class="image-layout__figure">
-      <img class="image-layout__img" src="{{ image.src | resize(resizeWidth, resizeHeight) }}" />
+      <img alt="{{ image.alt }}" class="image-layout__img" src="{{ image.src | resize(resizeWidth, resizeHeight) }}" />
       {% if image.caption | length %}
         <figcaption class="image-layout__caption">
           {{ image.caption }}
