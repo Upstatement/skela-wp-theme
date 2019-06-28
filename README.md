@@ -170,12 +170,27 @@ Services are for more low-lying functions, like routing.
 
 Skela has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
 
-There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block
-using ACF functions that includes two fields. Those fields are rendered in the file `templates/components/acf-block.twig`.
+There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields. Those fields are rendered in the file `templates/components/acf-block.twig`.
 
 Note that in order to get this example to work, you need to create a ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF block.
 
 Read more details on [creating Gutenberg blocks using ACF](https://www.advancedcustomfields.com/resources/blocks/)
+
+### Included Custom Blocks
+
+Two custom Gutenberg blocks are included with Skela:
+
+- Related Articles
+- Image Layout
+
+These include basic styles so they can work out of the box. They _require_ the Advanced Custom Field plugin to function. If you do not plan to use ACF, you can disable these blocks by removing the applicable lines in the constructor function of `/src/Blocks/Blocks.php`
+
+These fields are managed using PHP in the file `/src/Managers/ACFManager.php`. You can make updates to the fields here. If you would rather using the ACF to make updates to these fields:
+
+1. Under `Advanced Custom Fields -> Tools`, import the JSON file in `/gutenberg-acf-backups/`
+2. Make updates to the fields
+3. Go to `Advanced Custom Fields -> Tools` and generate the PHP code
+4. Update the PHP code in `/src/Managers/ACFManager.php`. Make sure to only update the PHP code for one layout group at a time, as they are separated by function in the manager file.
 
 ## 👨‍👩‍👧‍👦 Contributing
 
