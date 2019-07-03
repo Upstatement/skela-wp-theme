@@ -4,6 +4,7 @@
  *
  */
 
+$context = Timber::context();
 
 // Page title.
 $context['wp_title'] = '404 Not Found';
