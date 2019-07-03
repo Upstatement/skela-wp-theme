@@ -5,7 +5,7 @@
 
 use Skela\Repositories\PostTypeRepository;
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $postTypeRepo = new PostTypeRepository();
 $latestPosts = $postTypeRepo->latestPosts(10, null, [], null)->get();

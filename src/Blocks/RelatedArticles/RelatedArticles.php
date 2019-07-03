@@ -62,7 +62,7 @@ class RelatedArticles
      */
     public function renderRelatedArticlesBlock($block, $content, $is_preview)
     {
-        $context = Timber::get_context();
+        $context = Timber::context();
         $context['relatedArticlesHeader'] = get_field('header_text');
         $relatedArticles = get_field('chosen_articles');
         $relatedArticlesIDs = [];

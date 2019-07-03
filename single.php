@@ -3,7 +3,7 @@
  * Single post / article
  */
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 // Get post
 $post = Timber::get_post();

@@ -54,7 +54,7 @@ class ACFBlock
     public function renderACFBlock($block, $content, $is_preview)
     {
         // If the block renders info from TimberTheme, TimberSite, etc., then uncomment the following:
-        // $context = Timber::get_context();
+        // $context = Timber::context();
 
         $context['some_headline'] = get_field('some_headline');
         $context['some_text'] = get_field('some_text');
