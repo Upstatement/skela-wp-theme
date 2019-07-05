@@ -13,13 +13,6 @@ mix
   .js('src/Blocks/Blocks.js', 'dist/blocks.build.js')
   .sass('src/Blocks/editor.scss', 'dist/block-editor.build.css')
   .copy('src/Blocks/**/*.png', 'dist/block-editor-images/')
-  .options({
-    autoprefixer: {
-      options: {
-        browsers: ['defaults', '> .5% in US', 'last 3 iOS versions', 'ie >= 10'],
-      },
-    },
-  })
   .extract()
   .autoload({
     jquery: ['$', 'window.jQuery'],
