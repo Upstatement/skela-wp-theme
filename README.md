@@ -54,9 +54,17 @@ We recommend our very own Docker setup, we neatly packed into something called U
 
 1. Install [Docker for Mac](https://www.docker.com/docker-mac)
 
-2. Install [ups-dock](https://github.com/upstatement/ups-dock)
+2. Install [ups-dock](https://github.com/upstatement/ups-dock) (_Note that you can stop after the installation steps and come back to this README_)
 
 ## 🛠 Installation
+
+### Clone the repository
+
+This repository is _just_ for your WordPress theme. WordPress itself lives elsewhere. 
+
+If you are using [ups-dock](https://github.com/upstatement/ups-dock), you can clone this repository to anywhere (i.e. your `/Sites/`/ folder).
+
+If you are using another local development solution, or if you're a madman and are cloning this directly to a live server, it might live in the `/wp-content/themes` directory.
 
 ### Updating theme name
 
@@ -88,6 +96,8 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 3. Run `composer update`
 
+4. If you're *not* using ups-dock, you can stop here! Otherwise...
+
 4. Copy the `.env.sample` into a new `.env` file
 
 5. Run the install command:
@@ -111,6 +121,8 @@ If prompted for a login, the default in your `.env` file is `admin / password`
    ```shell
    $ ./bin/start
    ```
+
+   Not using ups-dock? You can instead `npm run watch`
 
 3. Open the `Local` URL that appears below `[Browsersync] Access URLs:` in your browser (https://localhost:3000/)
 
