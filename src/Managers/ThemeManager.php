@@ -169,7 +169,7 @@ class ThemeManager
     {
         $menu_redirect = isset($_GET['page']) ? $_GET['page'] : false;
         if ($menu_redirect == 'link-to-docs') {
-            header('Location: https://' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cpi/documentation');
+            header('Location: https://' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/skela/documentation');
             exit();
         }
     }
