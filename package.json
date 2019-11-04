@@ -7,7 +7,7 @@
   "license": "ISC",
   "testing": {
     "urls": {
-      "local": "https://skela.ups.dock",
+      "local": "http://skela.ups.dock",
       "staging": "",
       "production": ""
     },

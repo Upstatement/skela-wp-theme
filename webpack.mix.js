@@ -18,6 +18,6 @@ mix
     jquery: ['$', 'window.jQuery'],
   })
   .browserSync({
-    proxy: 'https://skela.ups.dock',
+    proxy: 'http://skela.ups.dock',
     files: ['dist/**/*.+(css|js)', '*.php', 'templates/**/*.twig'],
   });
