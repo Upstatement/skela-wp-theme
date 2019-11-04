@@ -33,7 +33,7 @@
         "version": "1.9.8",
         "dist": {
           "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGREATE_KEY&site_url=skela.ups.dock?v=1.9.8"
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.9.8"
         }
       }
     },
@@ -45,7 +45,7 @@
         "version": "1.4.14",
         "dist": {
           "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGREATE_KEY&site_url=skela.ups.dock?v=1.4.14"
+          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.4.14"
         }
       }
     }
