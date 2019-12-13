@@ -1,17 +1,16 @@
-@import 'base/reset';
+@charset 'UTF-8';
 
-// Blocks
+// ---------------------------------------------------------------------------
+// BASE STYLES
+// ---------------------------------------------------------------------------
+
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/global';
+
+// ---------------------------------------------------------------------------
+// COMPONENTS
+// ---------------------------------------------------------------------------
+
 @import 'components/related-articles';
 @import 'components/image-layout';
-
-// Temp page styles
-body {
-  margin: 0 auto;
-  max-width: 1000px;
-  padding: 50px;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}

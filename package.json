@@ -26,41 +26,59 @@
     }
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --mode development",
+    "watch": "NODE_ENV=development webpack --progress --hide-modules --watch --mode development",
+    "production": "NODE_ENV=production webpack --progress --hide-modules --mode production",
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",
     "test:bundlesize": "bundlesize",
     "test:a11y": "node tests/pa11y.js"
   },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run lint:scripts && npm run lint:php"
+      "pre-commit": "lint-staged && npm run lint:scripts && npm run lint:php"
     }
   },
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "lazysizes": "^5.1.2"
   },
   "devDependencies": {
-    "@upstatement/eslint-config": "^0.4.2",
-    "@upstatement/prettier-config": "^0.3.0",
-    "babel-eslint": "^10.0.1",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.7.2",
+    "@upstatement/eslint-config": "^0.4.3",
+    "@upstatement/prettier-config": "^0.3.0",
+    "autoprefixer": "^9.7.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "bundlesize": "^0.17.2",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "husky": "^2.4.1",
-    "laravel-mix": "^4.0.16",
+    "css-loader": "^3.2.0",
+    "dotenv-webpack": "^1.7.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "file-loader": "^5.0.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "pa11y": "^5.1.0",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1",
-    "sass": "^1.21.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.19.1",
+    "sass": "^1.23.7",
     "sass-loader": "7.*",
-    "vue-template-compiler": "^2.6.10"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-modernizr-loader": "^5.0.0"
   }
 }

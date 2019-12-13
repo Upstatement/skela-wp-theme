@@ -14,23 +14,37 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
 
 - [Skela](#skela)
   - [Table of Contents](#table-of-contents)
-  - [What's in the Box](#-whats-in-the-box)
-  - [System Requirements](#-system-requirements)
-  - [Installation](#-installation)
-  - [Getting Started](#-getting-started)
-  - [Object-Oriented Approach](#-object-oriented-approach)
-  - [Gutenberg](#-gutenberg)
-  - [Contributing](#c-ontributing)
-  - [Code of Conduct](#c-ode-of-conduct)
-  - [About Upstatement](#-about-upstatement)
+  - [🎁 What's in the Box](#-whats-in-the-box)
+  - [💻 System Requirements](#-system-requirements)
+  - [🛠 Installation](#-installation)
+    - [Clone the repository](#clone-the-repository)
+    - [Updating theme name](#updating-theme-name)
+    - [ACF and WP Migrate DB Pro](#acf-and-wp-migrate-db-pro)
+    - [Setup](#setup)
+  - [🏃‍ Getting Started](#-getting-started)
+    - [Development workflow](#development-workflow)
+    - [Common wp-cli commands](#common-wp-cli-commands)
+  - [🔄 Object-Oriented Approach](#-object-oriented-approach)
+    - [Managers](#managers)
+    - [Models](#models)
+    - [Repositories](#repositories)
+    - [Services](#services)
+  - [📰 Gutenberg](#-gutenberg)
+    - [Included Custom Blocks](#included-custom-blocks)
+  - [👨‍👩‍👧‍👦 Contributing](#-contributing)
+  - [📗 Code of Conduct](#-code-of-conduct)
+  - [<img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement](#-about-upstatement)
 
 ## 🎁 What's in the Box
 
-- Full [Timber](https://www.upstatement.com/timber/) integration (of course)
+- Full [Timber](https://www.upstatement.com/timber/) integration
 - Built-in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands
 - Easy documentation creation with [Flatdoc](http://ricostacruz.com/flatdoc/)
-- Webpack via [Laravel Mix](https://github.com/JeffreyWay/laravel-mix)
-  - Comes packed with [autoprefixer](https://github.com/postcss/autoprefixer), [vendor file extraction](https://laravel-mix.com/docs/4.0/extract), [Browsersync](https://www.browsersync.io/)!
+- Code bundling with [Webpack](https://webpack.js.org/), including:
+  - [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
+  - [Autoprefixer](https://github.com/postcss/autoprefixer)
+  - [CSS Extraction](https://www.npmjs.com/package/mini-css-extract-plugin)
+  - [Environment Variable Injection](https://www.npmjs.com/package/dotenv-webpack)
 - Some really great WordPress plugins (and plugin management provided by [Composer](https://getcomposer.org/))
   - [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/)
   - [WP Migrate DP Pro](https://deliciousbrains.com/wp-migrate-db-pro/)
@@ -40,7 +54,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [carbon](https://carbon.nesbot.com/)
   - [whoops](https://github.com/filp/whoops)
 - Linting and testing
-  - JS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+  - JS, CSS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
@@ -60,7 +74,7 @@ We recommend our very own Docker setup, we neatly packed into something called U
 
 ### Clone the repository
 
-This repository is _just_ for your WordPress theme. WordPress itself lives elsewhere. 
+This repository is _just_ for your WordPress theme. WordPress itself lives elsewhere.
 
 If you are using [ups-dock](https://github.com/upstatement/ups-dock), you can clone this repository to anywhere (i.e. your `/Sites/`/ folder).
 
@@ -96,14 +110,14 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 3. Run `composer update`
 
-4. If you're *not* using ups-dock, you can stop here! Otherwise...
+4. If you're _not_ using ups-dock, you can stop here! Otherwise...
 
-4. Copy the `.env.sample` into a new `.env` file
+5. Copy the `.env.sample` into a new `.env` file
 
-5. Run the install command:
+6. Run the install command:
 
    ```shell
-   $ ./bin/install
+   ./bin/install
    ```
 
 Once completed, you should be able to access your WordPress installation via [`ups.dock`](http://ups.dock)!
@@ -119,7 +133,7 @@ If prompted for a login, the default in your `.env` file is `admin / password`
 2. Run the start command to start the backend / static build server:
 
    ```shell
-   $ ./bin/start
+   ./bin/start
    ```
 
    Not using ups-dock? You can instead `npm run watch`
@@ -130,22 +144,30 @@ Quitting this process (`Ctrl-C`) will shut down the container.
 
 ### Common `wp-cli` commands
 
-If you've installed this theme using `ups-dock`, you can run `wp-cli` by typing `./wp-docker [command]`
+If you've installed this theme using `ups-dock`, you can run `wp-cli` by typing `./bin/wp [command]`.
+
+Start the Docker containers with `./bin/start` and then run any of the following commands in a separate shell:
 
 ```shell
-$ docker-compose exec wordpress wp [command]
+./bin/wp [command]
 ```
 
-To export the databse, use the following command:
+To export the database, use the following command:
 
 ```shell
-$ docker-compose exec wordpress wp db export - > dbdump.sql
+./bin/wp db export - > dbdump.sql
+```
+
+To export the database and gzip it, use the following command:
+
+```shell
+./bin/wp db export - | gzip -3 > init.sql.gz
 ```
 
 To SSH into the WordPress container, use the following command:
 
 ```shell
-$ docker-compose exec wordpress /bin/bash
+docker-compose exec wordpress /bin/bash
 ```
 
 ## 🔄 Object-Oriented Approach
