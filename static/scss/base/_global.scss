@@ -95,3 +95,9 @@ a {
 pre {
   font-family: monospace;
 }
+
+#content {
+  &:focus {
+    outline: 0;
+  }
+}
