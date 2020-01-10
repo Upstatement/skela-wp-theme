@@ -1,14 +1,11 @@
 <?php
 /**
- * Front page
+ * Page
  */
-
-use Skela\Models\SkelaPost;
 
 $context = Timber::context();
 
-$post = new SkelaPost();
-$context['post'] = $post;
+$page = Timber::get_post();
+$context['page'] = $page;
 
-// Render view.
 Timber::render('pages/page.twig', $context);
