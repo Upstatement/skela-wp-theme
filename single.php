@@ -5,7 +5,6 @@
 
 $context = Timber::context();
 
-// Get post
 $post = Timber::get_post();
 $context['article'] = $post;
 
