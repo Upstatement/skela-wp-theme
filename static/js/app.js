@@ -1,4 +1,10 @@
 import $ from 'jquery';
+/* eslint-disable */
+import LazySizes from 'lazysizes';
+import Unveilhooks from 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
+/* eslint-enable */
+
+// Components
 import Menu from './components/menu';
 
 $(document).ready(() => {

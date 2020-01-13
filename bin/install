@@ -18,17 +18,17 @@ echo
 
 echo "Installing Composer libraries..."
 echo
-composer update
+./bin/composer install
 echo
 
 echo "Activating WordPress plugins..."
 echo
-docker-compose exec wordpress wp plugin activate --all
+./bin/wp plugin activate --all
 echo
 
 echo "Updating WordPress..."
 echo
-docker-compose exec wordpress wp core update
+./bin/wp core update
 echo
 
 echo "-------------------------------"

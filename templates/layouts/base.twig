@@ -11,8 +11,12 @@
 
 <body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %}">
 
-  {% block pageBody %}
-  {% endblock %}
+  <a href="#content" class="skip-to-content" tabindex="0">Skip to content</a>
+
+  <main id="content" tabindex="-1">
+    {% block pageBody %}
+    {% endblock %}
+  </main>
 
   {{ function( 'wp_footer' ) }}
 

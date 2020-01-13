@@ -67,8 +67,6 @@ class ThemeManager
         // Remove default Gutenberg CSS
         wp_deregister_style('wp-block-library');
 
-        // enqueue vendor script output from webpack
-        wp_enqueue_script('manifest', SKELA_THEME_URL . '/dist/manifest.js', array(), SKELA_THEME_VERSION, true);
         wp_enqueue_script('vendor', SKELA_THEME_URL . '/dist/vendor.js', array(), SKELA_THEME_VERSION, true);
 
         // enqueue custom js file, with cache busting
@@ -84,7 +82,6 @@ class ThemeManager
     {
         wp_enqueue_style('admin-styles', SKELA_THEME_URL . '/dist/admin.css');
 
-        wp_enqueue_script('manifest', SKELA_THEME_URL . '/dist/manifest.js', array(), SKELA_THEME_VERSION, false);
         wp_enqueue_script('vendor', SKELA_THEME_URL . '/dist/vendor.js', array(), SKELA_THEME_VERSION, false);
         wp_enqueue_script('admin.js', SKELA_THEME_URL . '/dist/admin.js', array(), SKELA_THEME_VERSION, false);
     }
@@ -106,7 +103,7 @@ class ThemeManager
     /**
      * Register nav menus
      *
-      @return void
+     * @return void
      */
     public function registerMenus()
     {

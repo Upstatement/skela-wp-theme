@@ -31,7 +31,7 @@ class Blocks
         // Scripts.
         wp_enqueue_script(
             'block-js', // Handle.
-            SKELA_THEME_URL . '/dist/blocks.build.js', // Block.block.build.js: We register the block here. Built with Webpack.
+            SKELA_THEME_URL . '/dist/blocks.js', // Block.block.js: We register the block here. Built with Webpack.
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'manifest', 'vendor', 'wp-editor'), // Dependencies, defined above.
             true // Enqueue the script in the footer.
         );
@@ -39,7 +39,7 @@ class Blocks
         // Styles.
         wp_enqueue_style(
             'block-editor-css', // Handle.
-            SKELA_THEME_URL . '/dist/block-editor.build.css', // Block editor CSS.
+            SKELA_THEME_URL . '/dist/blocks.css', // Block editor CSS.
             array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
         );
     }
