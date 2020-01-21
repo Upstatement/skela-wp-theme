@@ -1,13 +1,27 @@
 {% extends "layouts/base.twig" %}
 
 {% block pageBody %}
+<div class="page">
 
-<img class="lazyload" src="{{ site.theme.link }}/static/img/skela.png" alt="Skela banner" />
+  {# This is how you add a local image #}
+  <img class="lazyload" src="{{ site.theme.link }}/static/img/skela.png" alt="Skela banner" />
 
-<ul>
-{% for post in posts %}
-  <li><a href="{{ post.link }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+  <br><br><br>
+
+  <h1><a href="{{ site.url }}">{{ site.name }}</a></h1>
+
+  <br><br>
+
+  <h2>Posts</h2>
+
+  <br>
+
+  <ul>
+  {# Posts come from front-page.php #}
+  {% for post in posts %}
+    <li><a href="{{ post.link }}">{{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}

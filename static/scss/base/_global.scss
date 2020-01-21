@@ -4,12 +4,13 @@
 
 html {
   color: $c-black;
-  font-size: 16px;
+  font-size: $fs-base;
   line-height: 1em;
+  font-family: $ff-body;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
   text-size-adjust: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -97,7 +98,49 @@ pre {
 }
 
 #content {
+  padding: 50px;
+  min-height: 100vh;
+
   &:focus {
     outline: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Front page demo styles
+// ---------------------------------------------------------------------------
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 3em;
+    text-align: center;
+  }
+  h2 {
+    font-size: 2em;
+  }
+
+  img {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  ul {
+    list-style: initial;
+    padding-left: 30px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .logo {
+    color: $c-gray;
+    width: 120px;
+    height: auto;
   }
 }
