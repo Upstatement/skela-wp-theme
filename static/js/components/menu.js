@@ -4,7 +4,8 @@ class Menu {
   }
 
   initialize() {
-    console.warn('Menu initialized');
+    // eslint-disable-next-line
+    console.log('💀');
   }
 }
 

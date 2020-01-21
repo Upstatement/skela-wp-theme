@@ -13,10 +13,16 @@
 
   <a href="#content" class="skip-to-content" tabindex="0">Skip to content</a>
 
+  {% include "includes/svgs.twig" %}
+
   <main id="content" tabindex="-1">
     {% block pageBody %}
     {% endblock %}
   </main>
+
+  {% block footer %}
+    {% include "components/footer.twig" %}
+  {% endblock %}
 
   {{ function( 'wp_footer' ) }}
 
