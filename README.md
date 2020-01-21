@@ -47,7 +47,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [Environment Variable Injection](https://www.npmjs.com/package/dotenv-webpack)
 - Some really great WordPress plugins (and plugin management provided by [Composer](https://getcomposer.org/))
   - [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/)
-  - [WP Migrate DP Pro](https://deliciousbrains.com/wp-migrate-db-pro/)
+  - [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/)
   - [WP Environment Indicator](https://github.com/jon-heller/wp-environment-indicator)
 - Some useful PHP libraries
   - [phpdotenv](https://github.com/vlucas/phpdotenv)
@@ -92,7 +92,7 @@ with your new and exciting theme name!
 
 ### ACF and WP Migrate DB Pro
 
-If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DP Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
+If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
 
 1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
 
