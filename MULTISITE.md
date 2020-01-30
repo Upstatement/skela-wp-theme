@@ -1,9 +1,8 @@
-# Setting Up Wordpress Multisite with Skela
-
 # 🌐 Configuring Multisite
 ## 🔗 Limitations
 
 Currently, Skela only supports Multisite with subdirectories. If you must use subdomains, Skela is the wrong system for you. 
+
 
 
 ## ✅ Enable Multisite
@@ -36,6 +35,7 @@ Then save and quit Vim (`:wq`) and exit the docker container by typing `exit`.
 * This step is important to do first, *before* inserting the code in the next step and running `./bin/start`. If you run before enabling Multisite, it will not work and you cannot revert. If this happens, refer to the **Troubleshooting** section to destroy the Docker container and start over.
 
 
+
 ## 🖋 Install your WordPress network
 
 Now that Multisite is enabled, we can actually set up your multisite network through WordPress’s Network Setup page.
@@ -44,8 +44,8 @@ If your container is not already running, start the server by running  `./bin/st
 
 In your browser, go to **YOURSITENAME**.ups.dock/wp-admin. It will prompt you to log in. The default credentials are:
 
-**username:** admin
-**password:** password
+    username: admin
+    password: password
 
 You’ll first need to disable all plugins that are currently activated. Visit the **Plugins » Installed Plugins** page and select all plugins. Select ‘Deactivate’ from the ‘Bulk Actions’ dropdown menu and then click the ‘Apply’ button.
 
@@ -60,12 +60,13 @@ Next, you need to tell WordPress what kind of domain structure you will be using
 
 Provide a title for your network and make sure that the email address in the Network Admin Email field is correct.
 
-Click the `I``nstall` button to continue. 
+Click the `Install` button to continue. 
 
 
 ----------
 
 *After selecting your domain structure, you cannot change it. If you wish to change your domain structure, refer to the **Troubleshooting** section to destroy the Docker container and start over.
+
 
 
 ## 🛠 Configure Scripts and Nginx 
@@ -108,6 +109,7 @@ Save the files and rerun `./bin/start`.
 After this, you will need to log out and log back into WordPress to access multisite.
 
 
+
 ## ➕ Add Sites
 
 The best way to ensure that WordPress multisite is working properly is to add a new site to your network!
@@ -118,11 +120,11 @@ To add a new site, navigate to **My Sites » Network Admin » Sites** from the h
 ![](https://paper-attachments.dropbox.com/s_E2E20ECA9384D2EC84AC7E267F57CE88F99A1E729B7D89FCC58370D717AC0FD7_1580360656682_image.png)
 
 
-To add a new site, click on the ‘Add New’ button at the top.
+To add a new site, click on the `Add New` button at the top.
 
-On the ‘Add New Site’ page, provide the site’s address. You don’t need to type the full address, just the part you want to use as subdomain or sub-directory.
+On the `Add New Site` page, provide the site’s address. You don’t need to type the full address, just the part you want to use as subdomain or sub-directory.
 
-Add a site title, and enter the site admin’s email address. Click on the ‘Add Site’ button in the bottom left when you’re done.
+Add a site title, and enter the site admin’s email address. Click on the `Add Site` button in the bottom left when you’re done.
 
 Make sure you’re able to visit your new site’s home page and WordPress dashboard without error.
 
@@ -138,6 +140,7 @@ From the terminal, run the following line:
     ./bin/wp db export - | gzip -3 > init.sql.gz
 
 This will export your local WordPress database as a gzipped SQL file at the root of your project. Move this file into the  `conf/mysql` directory in your project. You may need to create the `mysql` folder if it’s not already there.
+
 
 
 # 🧐 Troubleshooting
