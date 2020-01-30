@@ -226,6 +226,10 @@ These fields are managed using PHP in the file `/src/Managers/ACFManager.php`. Y
 3. Go to `Advanced Custom Fields -> Tools` and generate the PHP code
 4. Update the PHP code in `/src/Managers/ACFManager.php`. Make sure to only update the PHP code for one layout group at a time, as they are separated by function in the manager file.
 
+## 🌐 Configuring Multisite
+
+If you wish to enable WordPress Multsite, consult [this guide](MULTISITE.md).
+
 ## 👨‍👩‍👧‍👦 Contributing
 
 We welcome all contributions to our projects! Filing bugs, feature requests, code changes, docs changes, or anything else you'd like to contribute are all more than welcome! More information about contributing can be found in the [contributing guidelines](.github/CONTRIBUTING.md).
