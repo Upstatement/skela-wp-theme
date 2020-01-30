@@ -13,19 +13,24 @@ In a regular WordPress installation, `wp-config.php` would be on your local mach
 
 With the container running in your terminal (`./bin/start`), open another terminal window and run the following command:
 
-
-    docker-compose exec wordpress /bin/bash
+```zsh
+docker-compose exec wordpress /bin/bash
+```
 
 This will give you access to all of the files in your Docker container. To open the file `wp-config.php` file with Vim, type:
 
 
-    vi wp-config.php
+```zsh
+vi wp-config.php
+```
 
 Scroll down to the line where it says `**/* That's all, stop editing! Happy publishing. */**` ****Right **above** this line, paste the following:
 
 
-    /* Multisite */
-    define('WP_ALLOW_MULTISITE', true);                                                                       
+```javascript
+/* Multisite */
+define('WP_ALLOW_MULTISITE', true);
+```                                                                     
 
 Then save and quit Vim (`:wq`) and exit the docker container by typing `exit`.
 
@@ -78,13 +83,15 @@ Open the project in a code editor.
 In `scripts/setup.sh`, paste the following code block **below** the line says `define('WP_DEBUG', true);`
 
 
-    /* Multisite */
-     define('MULTISITE', true);
-     define('SUBDOMAIN_INSTALL', false);
-     define('DOMAIN_CURRENT_SITE', 'YOURSITENAME.ups.dock');
-     define('PATH_CURRENT_SITE', '/');
-     define('SITE_ID_CURRENT_SITE', 1);
-     define('BLOG_ID_CURRENT_SITE', 1);
+```javascript
+/* Multisite */
+ define('MULTISITE', true);
+ define('SUBDOMAIN_INSTALL', false);
+ define('DOMAIN_CURRENT_SITE', 'YOURSITENAME.ups.dock');
+ define('PATH_CURRENT_SITE', '/');
+ define('SITE_ID_CURRENT_SITE', 1);
+ define('BLOG_ID_CURRENT_SITE', 1);
+ ```
 
 Don’t forget to change **YOURSITENAME** to the name of your project.
 
@@ -93,14 +100,15 @@ Notice you’re not directly modifying `wp-config.php` in the docker container t
 
 Next, in `conf/nginx/nginx-site.conf`, locate the line where it says `**# Override base location to work with WordPress pretty permalinks**`**.** Right **before** this line, paste the following block:
 
-
-    # WordPress Multisite Subdirectory Rules   
-    # https://wordpress.org/support/article/nginx/#wordpress-multisite-subdirectory-rules      
-    if (!-e $request_filename) {          
-      rewrite /wp-admin$ $scheme://$host$request_uri/ permanent;          
-      rewrite ^(/[^/]+)?(/wp-.*) $2 last;          
-      rewrite ^(/[^/]+)?(/.*\.php) $2 last;      
-    }
+```javascript
+# WordPress Multisite Subdirectory Rules   
+# https://wordpress.org/support/article/nginx/#wordpress-multisite-subdirectory-rules      
+if (!-e $request_filename) {          
+  rewrite /wp-admin$ $scheme://$host$request_uri/ permanent;          
+  rewrite ^(/[^/]+)?(/wp-.*) $2 last;          
+  rewrite ^(/[^/]+)?(/.*\.php) $2 last;      
+}
+```
 
 This config will allow nginx to play nice with your subdirectory-based multisite network.
 
@@ -136,8 +144,9 @@ In order for others working on your project to easily get multisite up and runni
 
 From the terminal, run the following line:
 
-
-    ./bin/wp db export - | gzip -3 > init.sql.gz
+```zsh
+./bin/wp db export - | gzip -3 > init.sql.gz
+```
 
 This will export your local WordPress database as a gzipped SQL file at the root of your project. Move this file into the  `conf/mysql` directory in your project. You may need to create the `mysql` folder if it’s not already there.
 
@@ -147,8 +156,9 @@ This will export your local WordPress database as a gzipped SQL file at the root
 
 If things go wrong and you need to start over with your Docker container, run the following line from your terminal to destroy your Docker container.
 
-
-    docker-compose down -v --remove-orphans
+```zsh
+docker-compose down -v --remove-orphans
+```
 
 Then, reinstall with `./bin/install`. 
 
