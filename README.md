@@ -34,7 +34,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [🌐 Configuring Multisite](#-configuring-multisite)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
-  - [About Upstatement](#-about-upstatement)
+  - [About Upstatement](#about-upstatement)
 
 ## 🎁 What's in the Box
 

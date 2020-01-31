@@ -5,10 +5,10 @@
 - [🌐 Configuring Multisite with Skela](#-configuring-multisite-with-skela)
   - [📚 Step 0: Recommended Reading](#-step-0-recommended-reading)
   - [✅ Step 1: Enable Multisite](#-step-1-enable-multisite)
-  - [🖋Step 2: Install your WordPress network](#-step-2-install-your-wordpress-network)
-  - [🛠Step 3: Configure Scripts and Nginx](#-step-3-configure-scripts-and-nginx)
+  - [🖋 Step 2: Install your WordPress network](#-step-2-install-your-wordpress-network)
+  - [🛠 Step 3: Configure Scripts and Nginx](#-step-3-configure-scripts-and-nginx)
   - [➕ Step 4: Add a site to your network](#-step-4-add-a-site-to-your-network)
-  - [➡️ Step 5: Export your local database](#-step-5-export-your-local-database)
+  - [📤 Step 5: Export your local database](#-step-5-export-your-local-database)
   - [🧐 Troubleshooting](#-troubleshooting)
 
 ## 📚 Step 0: Recommended Reading
