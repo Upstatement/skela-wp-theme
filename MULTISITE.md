@@ -45,7 +45,7 @@ Then save and quit Vim (`:wq`) and exit the docker container by typing `exit`.
 
 > NOTE: This step is important to do first, _before_ inserting the code in the next step and running `./bin/start`. If you run before enabling Multisite, it will not work and you cannot revert. If this happens, refer to the [Troubleshooting](#-troubleshooting) section to destroy the Docker container and start over.
 
-## 🖋Step 2: Install your WordPress network
+## 🖋 Step 2: Install your WordPress network
 
 If your container is not already running, start the server by running `./bin/start`.
 
@@ -65,7 +65,7 @@ Click the `Install` button to continue.
 
 > NOTE: After selecting your domain structure, you cannot change it. If you wish to change your domain structure, refer to the [Troubleshooting](#-troubleshooting) section to destroy the Docker container and start over.
 
-## 🛠Step 3: Configure Scripts and Nginx
+## 🛠 Step 3: Configure Scripts and Nginx
 
 WordPress will then provide you some code you need to add to your files in order to enable your network.
 
@@ -123,7 +123,7 @@ Add a site title, and enter the site admin’s email address. Click on the `Add 
 
 Make sure you’re able to visit your new site’s home page and WordPress dashboard without error.
 
-## ➡️ Step 5: Export your local database
+## 📤 Step 5: Export your local database
 
 In order for others working on your project to easily get multisite up and running in their environments, you can export your local WordPress database and commit it to source control to be used upon project installation.
 
