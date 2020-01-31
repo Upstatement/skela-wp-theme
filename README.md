@@ -31,9 +31,10 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
     - [Services](#services)
   - [📰 Gutenberg](#-gutenberg)
     - [Included Custom Blocks](#included-custom-blocks)
+  - [🌐 Configuring Multisite](#-configuring-multisite)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
-  - [<img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement](#-about-upstatement)
+  - [About Upstatement](#-about-upstatement)
 
 ## 🎁 What's in the Box
 
@@ -238,6 +239,6 @@ We welcome all contributions to our projects! Filing bugs, feature requests, cod
 
 Upstatement strives to provide a welcoming, inclusive environment for all users. To hold ourselves accountable to that mission, we have a strictly-enforced [code of conduct](CODE_OF_CONDUCT.md).
 
-## <img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement
+## About Upstatement
 
 [Upstatement](https://www.upstatement.com/) is a digital transformation studio headquartered in Boston, MA that imagines and builds exceptional digital experiences. Make sure to check out our [services](https://www.upstatement.com/services/), [work](https://www.upstatement.com/work/), and [open positions](https://www.upstatement.com/jobs/)!
