@@ -30,6 +30,7 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
     - [Repositories](#repositories)
     - [Services](#services)
   - [📰 Gutenberg](#-gutenberg)
+    - [Creating Custom ACF Blocks](#creating-custom-acf-blocks)
     - [Included Custom Blocks](#included-custom-blocks)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
@@ -209,6 +210,35 @@ There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`.
 Note that in order to get this example to work, you need to create a ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF block.
 
 Read more details on [creating Gutenberg blocks using ACF](https://www.advancedcustomfields.com/resources/blocks/)
+
+### Creating Custom ACF Blocks
+
+1. Create a new ACF block class file in `/src/Blocks`.
+
+   There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields.
+
+   > Note that in order to get this example to work, you need to create an ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF Block.
+
+2. Create a new twig file to render the ACF fields.
+
+   The example block fields are rendered in the file `templates/components/acf-block.twig`.
+
+3. Invoke the ACF block class in `/src/Blocks/Blocks.php`.
+
+4. Add your new Gutenberg block to the array returned in the `allowBlocks` function in `/src/Managers/GutenbergManager.php`.
+
+   ```php
+    public function allowBlocks($allowed_blocks)
+    {
+        return array(
+            ...
+            'acf/acfBlock',
+            ...
+        );
+    }
+   ```
+
+Read more about [creating Gutenberg blocks using ACF](https://www.advancedcustomfields.com/resources/blocks/)
 
 ### Included Custom Blocks
 
