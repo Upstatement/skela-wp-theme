@@ -1,7 +1,5 @@
 # 🌐 Configuring Multisite with Skela
 
-> **NOTE:** Currently, Skela only supports Multisite with **subdirectories**. If you must use subdomains, Skela is the wrong tool for you.
-
 - [🌐 Configuring Multisite with Skela](#-configuring-multisite-with-skela)
   - [📚 Step 0: Recommended Reading](#-step-0-recommended-reading)
   - [✅ Step 1: Enable Multisite](#-step-1-enable-multisite)
@@ -45,6 +43,14 @@ Then save and quit Vim (`:wq`) and exit the docker container by typing `exit`.
 
 > NOTE: This step is important to do first, _before_ inserting the code in the next step and running `./bin/start`. If you run before enabling Multisite, it will not work and you cannot revert. If this happens, refer to the [Troubleshooting](#-troubleshooting) section to destroy the Docker container and start over.
 
+**If you plan on using sub-domains as your domain structure,** change the `VIRTUAL_HOST` value in your `.env` file:
+
+```shell
+VIRTUAL_HOST=YOURSITENAME.ups.dock,*.YOURSITENAME.ups.dock
+```
+
+Don’t forget to replace **YOURSITENAME** with the name of your project.
+
 ## 🖋 Step 2: Install your WordPress network
 
 If your container is not already running, start the server by running `./bin/start`.
@@ -57,7 +63,7 @@ Then, navigate to the **Tools » Network Setup** page to configure your multisit
 
 ![Create a Network of WordPress Sites page](https://i0.wp.com/wordpress.org/support/files/2018/11/network-create.png?fit=1024%2C743&ssl=1)
 
-Next, you need to tell WordPress what kind of domain structure you will be using for your network’s sites: sub-domains (`site1.upstatement.com`) or sub-directories(`upstatement.com/site`). Currently, Skela only supports subdirectories. Select subdirectories.
+Next, you need to tell WordPress what kind of domain structure you will be using for your network’s sites: sub-domains (`site1.upstatement.com`) or sub-directories(`upstatement.com/site`).
 
 Provide a title for your network and make sure that the email address in the Network Admin Email field is correct.
 
