@@ -59,11 +59,6 @@ class ThemeManager
      */
     public function enqueue()
     {
-        // don't use WordPress jquery in production. (admin bar and wordpress debug bar needs it in development)
-        if (WP_ENV != 'development') {
-            wp_deregister_script('jquery');
-        }
-
         // Remove default Gutenberg CSS
         wp_deregister_style('wp-block-library');
 
