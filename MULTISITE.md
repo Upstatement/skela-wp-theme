@@ -97,7 +97,7 @@ Don’t forget to replace **YOURSITENAME** with the name of your project.
 
 Notice that you’re not directly modifying `wp-config.php` in the Docker container this time — instead you're adding this code block to the setup script. This is because this script is run when you set up your docker container (`./bin/install`), which we'll be doing shortly. The code block above will automatically be added to `wp-config.php`.
 
-Next, in `conf/nginx/nginx-site.conf`, locate the line where it says `# Override base location to work with WordPress pretty permalinks`. Right **above** this line, paste the following block:
+**If you plan on using sub-directories as your domain structure,** go to `conf/nginx/nginx-site.conf` and locate the line where it says `# Override base location to work with WordPress pretty permalinks`. Right **above** this line, paste the following block:
 
 ```conf
 # WordPress Multisite Subdirectory Rules
@@ -111,6 +111,7 @@ if (!-e $request_filename) {
 
 This config will allow nginx to play nice with your subdirectory-based multisite network.
 
+Run `docker-compose build`.
 Save the files and re-run `./bin/start`.
 
 After this, you will need to log out and log back into the WordPress dashboard to access multisite.
