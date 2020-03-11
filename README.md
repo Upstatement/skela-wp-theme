@@ -32,9 +32,10 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [📰 Gutenberg](#-gutenberg)
     - [Creating Custom ACF Blocks](#creating-custom-acf-blocks)
     - [Included Custom Blocks](#included-custom-blocks)
+  - [🌐 Configuring Multisite](#-configuring-multisite)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
-  - [<img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement](#-about-upstatement)
+  - [About Upstatement](#about-upstatement)
 
 ## 🎁 What's in the Box
 
@@ -256,6 +257,10 @@ These fields are managed using PHP in the file `/src/Managers/ACFManager.php`. Y
 3. Go to `Advanced Custom Fields -> Tools` and generate the PHP code
 4. Update the PHP code in `/src/Managers/ACFManager.php`. Make sure to only update the PHP code for one layout group at a time, as they are separated by function in the manager file.
 
+## 🌐 Configuring Multisite
+
+If you wish to enable WordPress Multsite, consult [this guide](MULTISITE.md).
+
 ## 👨‍👩‍👧‍👦 Contributing
 
 We welcome all contributions to our projects! Filing bugs, feature requests, code changes, docs changes, or anything else you'd like to contribute are all more than welcome! More information about contributing can be found in the [contributing guidelines](.github/CONTRIBUTING.md).
@@ -264,6 +269,6 @@ We welcome all contributions to our projects! Filing bugs, feature requests, cod
 
 Upstatement strives to provide a welcoming, inclusive environment for all users. To hold ourselves accountable to that mission, we have a strictly-enforced [code of conduct](CODE_OF_CONDUCT.md).
 
-## <img src="https://www.upstatement.com/static/img/favicon/favicon-32x32.png" width="32" /> About Upstatement
+## About Upstatement
 
 [Upstatement](https://www.upstatement.com/) is a digital transformation studio headquartered in Boston, MA that imagines and builds exceptional digital experiences. Make sure to check out our [services](https://www.upstatement.com/services/), [work](https://www.upstatement.com/work/), and [open positions](https://www.upstatement.com/jobs/)!
