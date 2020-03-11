@@ -4,9 +4,9 @@
 
 # Skela
 
-> Skela is an opinionated but still fairly barebones WordPress theme
+> An Upstatement-flavored starter theme for WordPress
 
-Skela is an opinionated but still fairly barebones WordPress theme. Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data (more on that [here](#-object-oriented-approach)).
+Skela utilizes repositories, managers, services and models for an object-oriented approach to organizing your WordPress data (more on that [here](#-object-oriented-approach)).
 
 <a href="https://snyk.io/test/github/Upstatement/skela-wp-theme?targetFile=package.json"><img src="https://snyk.io/test/github/Upstatement/skela-wp-theme/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/Upstatement/skela-wp-theme?targetFile=package.json" style="max-width:100%;"></a>
 

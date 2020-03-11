@@ -13,10 +13,14 @@ if [ ! -f wp-config.php ]; then
 	echo "Configuring WordPress..."
 	wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --extra-php <<PHP
 // This allows the WordPress site to run securly behind the ups-dock reverse proxy
-if ( strpos( \$_SERVER['HTTP_X_FORWARDED_PROTO'], 'https' ) !== false ) {
+if (strpos(\$_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
 	\$_SERVER['HTTPS'] = 'on';
 }
-define( 'WP_DEBUG', true );
+
+/* Logging */
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', '/var/www/html/logs/error.log');
+define('WP_DEBUG_DISPLAY', false);
 PHP
 fi
 
