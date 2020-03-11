@@ -29,18 +29,6 @@ Dotenv\Dotenv::create(__DIR__)->safeLoad();
 $timber = new Timber\Timber();
 Timber::$dirname = array('templates');
 
-// Cache twig in staging and production.
-if (WP_ENV !== 'development') {
-    Timber::$cache = true;
-}
-
-/**
- * Customize Twig cache location to a more web-server friendly location.
- */
-add_filter('timber/cache/location', function() {
-    return WP_CONTENT_DIR . '/uploads/cache/twig';
-});
-
 add_action(
     'after_setup_theme',
     function () {
