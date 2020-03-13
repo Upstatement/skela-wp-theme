@@ -5,33 +5,52 @@ set -e
 read -p "Please enter your new WordPress theme name: " ORIGINAL
 
 HYPHENATED=`echo "${ORIGINAL}" | tr " " -`
-echo $HYPHENATED
-
 LOWERCASE=`echo "${HYPHENATED}" | tr '[A-Z]' '[a-z]'`
-echo $LOWERCASE
-
 UPPERCASE=`echo "${HYPHENATED}" | tr '[a-z]' '[A-Z]'`
-echo $UPPERCASE
-
 TITLECASE=`echo "${HYPHENATED}" | tr '-' '\n' | awk '{printf "%s%s", toupper(substr($0,0,1)), substr($0,2)}'`
-echo $TITLECASE
 
 echo ""
 
-echo "Replacing 'skela' with $LOWERCASE"
-echo `sed -i '' "s/skela/${LOWERCASE}/" .env`
-echo `sed -i '' "s/skela/${LOWERCASE}/" .env.sample`
-echo `sed -i '' "s/skela/${LOWERCASE}/" composer.json`
-echo `sed -i '' "s/skela/${LOWERCASE}/" composer.lock`
-echo `sed -i '' "s/skela/${LOWERCASE}/" package-lock.json`
-echo `sed -i '' "s/skela/${LOWERCASE}/" package.json`
-echo `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
-echo `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
-echo `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
-echo `sed -i '' "s/skela/${LOWERCASE}/" src/Managers/ThemeManager.php`
-echo `sed -i '' "s/skela/${LOWERCASE}/" templates/pages/front-page.twig`
+replace_lowercase() {
+  eval `sed -i '' "s/skela/${LOWERCASE}/" .env`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" .env.sample`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" composer.json`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" composer.lock`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" package-lock.json`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" package.json`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" src/Managers/ThemeManager.php`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" templates/pages/front-page.twig`
+}
 
-echo "Replacing 'SKELA' with $UPPERCASE"
+replace_uppercase() {
+  eval `sed -i '' "s/SKELA/${UPPERCASE}/" functions.php`
+  eval `sed -i '' "s/SKELA/${UPPERCASE}/" src/**/*.php`
+}
 
+replace_titlecase() {
+  eval `sed -i '' "s/Skela/${TITLECASE}/" .env`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" .env.sample`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" composer.json`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" front-page.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" functions.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" index.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" style.css`
+  eval `sed -i '' "s/SKELA/${TITLECASE}/" src/**/*.php`
+}
 
-echo "Replacing 'Skela' with $TITLECASE"
+echo "Replacing 'skela' with '$LOWERCASE'"
+replace_lowercase
+
+echo "Replacing 'SKELA' with '$UPPERCASE'"
+replace_uppercase
+
+echo "Replacing 'Skela' with '$TITLECASE'"
+replace_titlecase
+
+echo "-------------------------------"
+echo "Done!"
+echo "-------------------------------"
+echo
