@@ -16,11 +16,11 @@ echo $UPPERCASE
 TITLECASE=`echo "${HYPHENATED}" | tr '-' '\n' | awk '{printf "%s%s", toupper(substr($0,0,1)), substr($0,2)}'`
 echo $TITLECASE
 
-# skela
-echo "Replacing 'skela' with xyz"
 
-# Skela
-echo "Replacing 'Skela' with xyz"
+echo "Replacing 'skela' with $LOWERCASE"
+echo `sed -i '' "s/replaceme/${LOWERCASE}/" .env.sample`
 
-# SKELA
-echo "Replacing 'SKELA' with xyz"
+echo "Replacing 'SKELA' with $UPPERCASE"
+
+
+echo "Replacing 'Skela' with $TITLECASE"

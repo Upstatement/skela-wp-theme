@@ -106,7 +106,7 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 5. Copy the `.env.sample` into a new `.env` file
 
-6. In `package.json`, update repository and author information
+6. In `package.json` and `composer.json`, update repository and author information
 
 7. Run the theme command
 
