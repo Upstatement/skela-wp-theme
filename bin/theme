@@ -49,8 +49,3 @@ replace_uppercase
 
 echo "Replacing 'Skela' with '$TITLECASE'"
 replace_titlecase
-
-echo "-------------------------------"
-echo "Done!"
-echo "-------------------------------"
-echo

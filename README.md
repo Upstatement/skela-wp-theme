@@ -108,7 +108,7 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 6. In `package.json` and `composer.json`, update repository and author information
 
-7. Run the theme command
+7. Run the theme command and follow the prompt, which will do a find an replace of `skela`, `SKELA`, and `Skela` with your desired theme name
 
    ```shell
    ./bin/theme
