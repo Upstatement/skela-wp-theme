@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+read -p "Please enter your new WordPress theme name: " ORIGINAL
+
+HYPHENATED=`echo "${ORIGINAL}" | tr " " -`
+echo $HYPHENATED
+
+LOWERCASE=`echo "${HYPHENATED}" | tr '[A-Z]' '[a-z]'`
+echo $LOWERCASE
+
+UPPERCASE=`echo "${HYPHENATED}" | tr '[a-z]' '[A-Z]'`
+echo $UPPERCASE
+
+TITLECASE=`echo "${HYPHENATED}" | tr '-' '\n' | awk '{printf "%s%s", toupper(substr($0,0,1)), substr($0,2)}'`
+echo $TITLECASE
+
+# skela
+echo "Replacing 'skela' with xyz"
+
+# Skela
+echo "Replacing 'Skela' with xyz"
+
+# SKELA
+echo "Replacing 'SKELA' with xyz"

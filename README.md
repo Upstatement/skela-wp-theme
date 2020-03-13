@@ -82,16 +82,6 @@ If you are using [ups-dock](https://github.com/upstatement/ups-dock), you can cl
 
 If you are using another local development solution, or if you're a madman and are cloning this directly to a live server, it might live in the `/wp-content/themes` directory.
 
-### Updating theme name
-
-In order to make this theme your own, do a **case-sensitive** search-and-replace of
-
-- `skela`
-- `Skela`
-- `SKELA`
-
-with your new and exciting theme name!
-
 ### ACF and WP Migrate DB Pro
 
 If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
@@ -116,7 +106,15 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
 
 5. Copy the `.env.sample` into a new `.env` file
 
-6. Run the install command:
+6. In `package.json`, update repository and author information
+
+7. Run the theme command
+
+   ```shell
+   ./bin/theme
+   ```
+
+8. Run the install command
 
    ```shell
    ./bin/install
