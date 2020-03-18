@@ -4,11 +4,9 @@
 
 # Skela
 
-> Skela is an opinionated but still fairly barebones WordPress theme
+> An Upstatement-flavored starter theme for WordPress
 
-Skela is an opinionated but still fairly barebones WordPress theme. Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data (more on that [here](#-object-oriented-approach)).
-
-<a href="https://snyk.io/test/github/Upstatement/skela-wp-theme?targetFile=package.json"><img src="https://snyk.io/test/github/Upstatement/skela-wp-theme/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/Upstatement/skela-wp-theme?targetFile=package.json" style="max-width:100%;"></a>
+Skela utilizes repositories, managers, services, and models for an [object-oriented approach](<(#-object-oriented-approach)>) to organizing your WordPress data.
 
 ## Table of Contents
 
@@ -16,13 +14,12 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
   - [Table of Contents](#table-of-contents)
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
-  - [🛠 Installation](#-installation)
+  - [🗂 Project Setup](#-project-setup)
     - [Clone the repository](#clone-the-repository)
-    - [Updating theme name](#updating-theme-name)
-    - [ACF and WP Migrate DB Pro](#acf-and-wp-migrate-db-pro)
-    - [Setup](#setup)
-  - [🏃‍ Getting Started](#-getting-started)
-    - [Development workflow](#development-workflow)
+    - [Update the theme name](#update-the-theme-name)
+    - [Plugin activation](#plugin-activation)
+  - [🛠 Installation](#-installation)
+  - [🏃‍ Development Workflow](#development-workflow)
     - [Common wp-cli commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
@@ -66,45 +63,43 @@ Skela is an opinionated but still fairly barebones WordPress theme. Skela utiliz
 
 Before you can start on your theme, you first need a way to run a LAMP/LEMP (Linux, Apache/nginx, MySQL, PHP) stack on your machine.
 
-We recommend our very own Docker setup, we neatly packed into something called Ups Dock. To install it follow these steps:
+We recommend our very own Docker setup called Ups Dock. To install it follow these steps:
 
 1. Install [Docker for Mac](https://www.docker.com/docker-mac)
 
-2. Install [ups-dock](https://github.com/upstatement/ups-dock) (_Note that you can stop after the installation steps and come back to this README_)
+2. Install [Ups Dock](https://github.com/upstatement/ups-dock) by following the installation steps in the [README](https://github.com/upstatement/ups-dock#installation)
 
-## 🛠 Installation
+## 🗂 Project Setup
 
 ### Clone the repository
 
-This repository is _just_ for your WordPress theme. WordPress itself lives elsewhere.
+This repository is _just_ for your WordPress theme. The WordPress installation itself lives elsewhere.
 
-If you are using [ups-dock](https://github.com/upstatement/ups-dock), you can clone this repository to anywhere (i.e. your `/Sites/`/ folder).
+If you are using [Ups Dock](https://github.com/upstatement/ups-dock), you can clone this repository to anywhere on your local machine (i.e. your `/Sites/`/ folder).
 
 If you are using another local development solution, or if you're a madman and are cloning this directly to a live server, it might live in the `/wp-content/themes` directory.
 
-### ACF and WP Migrate DB Pro
+### Plugin activation
 
 If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
 
 1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
 
-2. In `composer.json`, search-and-replace `ACF_KEY` and `WP_MIGRATE_KEY` with the respective license keys
+2. In `composer.json`, search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with the respective license keys
 
-_Note: if opting out of one or both of these plugins, **remove** the desired entries from the `repositories` and `require` sections in `composer.json`_
+_**NOTE:** If opting out of one or both of these plugins, **remove** the desired entries from the `repositories` and `require` sections in `composer.json`_
 
-### Setup
+## 🛠 Installation
 
 1. Ensure [NVM](https://github.com/creationix/nvm) and [NPM](https://www.npmjs.com/) are installed globally.
 
 2. Run `nvm install` to ensure you're using the correct version of Node.
 
-   _Note: If you are switching to projects with other versions of Node, we recommend using something like [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which will automatically run `nvm use`_
-
 3. Run `composer update`
 
-4. If you're _not_ using ups-dock, you can stop here! Otherwise...
+4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-5. Copy the `.env.sample` into a new `.env` file
+5. Copy the `.env.sample` into a new `.env` file, and update any necessary env variables
 
 6. In `package.json` and `composer.json`, update repository and author information
 
@@ -120,31 +115,33 @@ _Note: if opting out of one or both of these plugins, **remove** the desired ent
    ./bin/install
    ```
 
-Once completed, you should be able to access your WordPress installation via [`ups.dock`](http://ups.dock)!
+   Once completed, you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
 
-If prompted for a login, the default in your `.env` file is `admin / password`
+   If prompted for a login, the default credentials in your `.env` file is `admin` / `password`
 
-## 🏃‍ Getting Started
-
-### Development workflow
+## 🏃‍ Development Workflow
 
 1. Run `nvm use` to ensure you're using the correct version of Node
 
-2. Run the start command to start the backend / static build server:
+2. Run the start command to start the container and webpack server
 
    ```shell
    ./bin/start
    ```
 
-   Not using ups-dock? You can instead `npm run watch`
+   Not using Ups Dock? Run `npm run watch` instead
 
-3. Open the `Local` URL that appears below `[Browsersync] Access URLs:` in your browser (https://localhost:3000/)
+3. Visit the localhost URL in your browser
 
-Quitting this process (`Ctrl-C`) will shut down the container.
+   By default this is https://localhost:3000/, which proxies your project's Ups Dock URL (i.e. https://skela.ups.dock)
+
+4. Access the WP Admin Dashboard at `/wp-admin` (i.e. https://skela.ups.dock/wp-admin)
+
+To shut down the container and development server, type `Ctrl+C`
 
 ### Common `wp-cli` commands
 
-If you've installed this theme using `ups-dock`, you can run `wp-cli` by typing `./bin/wp [command]`.
+If you've installed this theme using Ups Dock, you can run `wp-cli` by typing `./bin/wp [command]`.
 
 Start the Docker containers with `./bin/start` and then run any of the following commands in a separate shell:
 
