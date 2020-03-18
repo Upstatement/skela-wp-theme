@@ -1,7 +1,7 @@
 {
   "name": "skela",
   "version": "1.0.0",
-  "description": "WordPress child theme for Skela",
+  "description": "An Upstatement-flavored starter theme for WordPress",
   "author": "Upstatement",
   "repository": "git@github.com:Upstatement/skela-wordpress.git",
   "license": "ISC",
@@ -24,6 +24,10 @@
       "path": "./dist/vendor.js",
       "maxSize": "110 kB"
     }
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
   ],
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --mode development",
