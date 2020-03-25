@@ -109,7 +109,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
 4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-5. Copy the `.env.sample` into a new `.env` file, and update any necessary env variables
+5. Copy the `.env.sample` into a new `.env` file, and update any necessary `environment` variables in `docker-compose.yml`
 
 6. Run the install script
 
@@ -119,7 +119,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
    Once completed, you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
 
-   If prompted for a login, the default credentials in your `.env` file is `admin` / `password`
+   If prompted for a login, the default credentials (configurable via `docker-compose.yml`) is `admin` / `password`
 
 ## 🏃‍ Development Workflow
 
