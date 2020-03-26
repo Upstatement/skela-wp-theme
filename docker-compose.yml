@@ -49,6 +49,9 @@ services:
       # and it adds significantly to boot time with larger codebases.
       SKIP_CHOWN: 1
 
+      # Set the time zone
+      TZ: America/New_York
+
     networks:
       - proxy
       - default

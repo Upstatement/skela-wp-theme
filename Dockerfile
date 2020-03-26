@@ -4,7 +4,8 @@ RUN apk update && apk add \
   mysql-client \
   openssl \
   msmtp \
-  less
+  less \
+  tzdata
 
 # Configure msmtp
 RUN { \
