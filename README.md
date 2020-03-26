@@ -57,7 +57,7 @@ Skela utilizes repositories, managers, services, and models for an [object-orien
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
-- CI setup for [Travis](https://travis-ci.com/) (with [deployment](scripts/deploy.sh))
+- CI setup for [Travis](https://travis-ci.com/) (with [deployment](bin/deploy))
 
 ## 💻 System Requirements
 
