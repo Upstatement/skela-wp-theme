@@ -1,11 +1,10 @@
 FROM richarvey/nginx-php-fpm:1.9.0
 
-RUN apk update
-
-RUN apk add \
+RUN apk update && apk add \
   mysql-client \
   openssl \
-  msmtp
+  msmtp \
+  less
 
 # Configure msmtp
 RUN { \

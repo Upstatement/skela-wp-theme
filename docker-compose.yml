@@ -45,11 +45,6 @@ services:
       # and it adds significantly to boot time with larger codebases.
       SKIP_CHOWN: 1
 
-      # This var ensures that output renders correctly when a program outputs content
-      # to the console
-      # See https://github.com/wp-cli/wp-cli/issues/3840#issuecomment-318067057
-      PAGER: more
-
     networks:
       - proxy
       - default
