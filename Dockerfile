@@ -1,4 +1,4 @@
-FROM richarvey/nginx-php-fpm:1.5.0
+FROM richarvey/nginx-php-fpm:1.9.0
 
 RUN apk update
 
