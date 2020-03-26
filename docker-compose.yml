@@ -26,6 +26,10 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
+      # Defined in `.env`, which is automatically loaded by `docker-compose`
+      # See https://docs.docker.com/compose/environment-variables/#the-env-file
+      WORDPRESS_THEME_NAME: ${WORDPRESS_THEME_NAME}
+
       # Runtime configuration for upstatement/ups-dock
       # See https://github.com/upstatement/ups-dock
       UPS_DOCK_NAME: Skela
