@@ -24,7 +24,7 @@ replace_titlecase() {
   eval `sed -i '' "s/Skela/${TITLECASE}/" front-page.php`
   eval `sed -i '' "s/Skela/${TITLECASE}/" functions.php`
   eval `sed -i '' "s/Skela/${TITLECASE}/" index.php`
-  eval `sed -i '' "s/SKELA/${TITLECASE}/" src/**/*.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" src/**/*.php`
 }
 
 replace_lowercase() {
