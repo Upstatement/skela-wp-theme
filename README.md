@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/2GdqkHG.png" alt="Skela" style="display: block; margin: 0 auto">
+  <img src="https://i.imgur.com/2GdqkHG.png" alt="Banner" style="display: block; margin: 0 auto">
 <p>
 
 # Skela
@@ -103,7 +103,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
 6. In `package.json` and `composer.json`, update repository and author information
 
-7. Run the theme command and follow the prompt, which will do a find an replace of `skela`, `SKELA`, and `Skela` with your desired theme name
+7. Run the theme command and follow the prompt, which will set up the project with your desired theme name
 
    ```shell
    ./bin/theme
@@ -169,7 +169,7 @@ docker-compose exec wordpress /bin/bash
 
 ## 🔄 Object-Oriented Approach
 
-Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data.
+This theme utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data.
 
 ### Managers
 
@@ -199,7 +199,7 @@ Services are for more low-lying functions, like routing.
 
 ## 📰 Gutenberg
 
-Skela has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
+This theme has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
 
 There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields. Those fields are rendered in the file `templates/components/acf-block.twig`.
 
@@ -238,7 +238,7 @@ Read more about [creating Gutenberg blocks using ACF](https://www.advancedcustom
 
 ### Included Custom Blocks
 
-Two custom Gutenberg blocks are included with Skela:
+Two custom Gutenberg blocks are included:
 
 - Related Articles
 - Image Layout
