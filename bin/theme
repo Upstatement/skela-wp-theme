@@ -4,10 +4,11 @@ set -e
 
 read -p "Please enter your new WordPress theme name: " ORIGINAL
 
-HYPHENATED=`echo "${ORIGINAL}" | tr " " -`
-LOWERCASE=`echo "${HYPHENATED}" | tr '[A-Z]' '[a-z]'`
-UPPERCASE=`echo "${HYPHENATED}" | tr '[a-z]' '[A-Z]'`
-TITLECASE=`echo "${HYPHENATED}" | tr '-' '\n' | awk '{printf "%s%s", toupper(substr($0,0,1)), substr($0,2)}'`
+KEBABCASE=`echo "${ORIGINAL}" | tr " " -`
+SNAKECASE=`echo "${ORIGINAL}" | tr " " _`
+LOWERCASE=`echo "${KEBABCASE}" | tr '[A-Z]' '[a-z]'`
+UPPERCASE=`echo "${SNAKECASE}" | tr '[a-z]' '[A-Z]'`
+TITLECASE=`echo "${KEBABCASE}" | tr '-' '\n' | awk '{printf "%s%s", toupper(substr($0,0,1)), substr($0,2)}'`
 
 echo ""
 
