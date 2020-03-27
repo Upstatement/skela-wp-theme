@@ -14,7 +14,7 @@ services:
       - db
     environment:
       # WordPress install configuration
-      WORDPRESS_TITLE: 'Skela Site'
+      WORDPRESS_TITLE: 'Skela'
       WORDPRESS_URL: https://skela.ups.dock
       WORDPRESS_ADMIN_USER: admin
       WORDPRESS_ADMIN_EMAIL: admin@example.com
