@@ -13,6 +13,7 @@ echo ""
 
 replace_theme_name() {
   eval `sed -i '' "s/Skela/${ORIGINAL}/" .env`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" .env.sample`
   eval `sed -i '' "s/Skela/${ORIGINAL}/" docker-compose.yml`
   eval `sed -i '' "s/Skela/${ORIGINAL}/" MULTISITE.md`
   eval `sed -i '' "s/Skela/${ORIGINAL}/" README.md`
@@ -28,13 +29,18 @@ replace_titlecase() {
 }
 
 replace_lowercase() {
-  eval `sed -i '' "s/skela/${LOWERCASE}/" composer.json`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" composer.lock`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" .env`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" .env.sample`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" composer.json`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" composer.lock`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" docker-compose.yml`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" MULTISITE.md`
   eval `sed -i '' "s/skela/${LOWERCASE}/" package-lock.json`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" package.json`
+  eval `sed -i '' "s/"skela"/"${LOWERCASE}"/" package.json`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" package.json`
   eval `sed -i '' "s/#skela/#${LOWERCASE}/" README.md`
   eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" README.md`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" webpack.config.js`
   eval `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
   eval `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
   eval `sed -i '' "s/skela/${LOWERCASE}/" src/Managers/ThemeManager.php`
@@ -46,14 +52,14 @@ replace_uppercase() {
 }
 
 
-echo "Replacing theme name"
-replace_theme_name
+# echo "Replacing theme name"
+# replace_theme_name
 
-echo "Replacing 'Skela' with '$TITLECASE'"
-replace_titlecase
+# echo "Replacing 'Skela' with '$TITLECASE'"
+# replace_titlecase
 
-# echo "Replacing 'skela' with '$LOWERCASE'"
-# replace_lowercase
+echo "Replacing 'skela' with '$LOWERCASE'"
+replace_lowercase
 
 # echo "Replacing 'SKELA' with '$UPPERCASE'"
 # replace_uppercase
