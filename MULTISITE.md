@@ -81,7 +81,7 @@ You can ignore the instructions in the second part regarding `.htaccess` because
 
 Next, open your Skela project in a code editor.
 
-In `scripts/setup.sh`, paste the following code block **below** the line says `define('WP_DEBUG', true);`
+In `docker/scripts/setup.sh`, paste the following code block **below** the line says `define('WP_DEBUG', true);`
 
 ```php
 /* Multisite */
@@ -97,7 +97,7 @@ Don’t forget to replace **YOURSITENAME** with the name of your project.
 
 Notice that you’re not directly modifying `wp-config.php` in the Docker container this time — instead you're adding this code block to the setup script. This is because this script is run when you set up your docker container (`./bin/install`), which we'll be doing shortly. The code block above will automatically be added to `wp-config.php`.
 
-**If you plan on using sub-directories as your domain structure,** go to `conf/nginx/nginx-site.conf` and locate the line where it says `# Override base location to work with WordPress pretty permalinks`. Right **above** this line, paste the following block:
+**If you plan on using sub-directories as your domain structure,** go to `docker/conf/nginx/nginx-site.conf` and locate the line where it says `# Override base location to work with WordPress pretty permalinks`. Right **above** this line, paste the following block:
 
 ```conf
 # WordPress Multisite Subdirectory Rules
@@ -140,9 +140,9 @@ From the terminal, run the following command:
 ./bin/wp db export - | gzip -3 > init.sql.gz
 ```
 
-This will export your local WordPress database as a gzipped SQL file at the root of your project. Move this file into the `conf/mysql` directory in your project. You may need to create the `mysql` folder if it’s not already there.
+This will export your local WordPress database as a gzipped SQL file at the root of your project. Move this file into the `docker/conf/mysql` directory in your project. You may need to create the `mysql` folder if it’s not already there.
 
-Then, uncomment line 21 of `docker-compose.yml` to add the initial dump file to your project installation process.
+Then, uncomment line 63 of `docker-compose.yml` to add the initial dump file to your project installation process.
 
 ## 🧐 Troubleshooting
 

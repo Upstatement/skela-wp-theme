@@ -57,7 +57,7 @@ Skela utilizes repositories, managers, services, and models for an [object-orien
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
-- CI setup for [Travis](https://travis-ci.com/) (with [deployment](scripts/deploy.sh))
+- CI setup for [Travis](https://travis-ci.com/) (with [deployment](bin/deploy))
 
 ## 💻 System Requirements
 
@@ -99,7 +99,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
 4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-5. Copy the `.env.sample` into a new `.env` file, and update any necessary env variables
+5. Copy the `.env.sample` into a new `.env` file, and update any necessary `environment` variables in `docker-compose.yml`
 
 6. In `package.json` and `composer.json`, update repository and author information
 
@@ -117,7 +117,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
    Once completed, you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
 
-   If prompted for a login, the default credentials in your `.env` file is `admin` / `password`
+   If prompted for a login, the default credentials (configurable via `docker-compose.yml`) is `admin` / `password`
 
 ## 🏃‍ Development Workflow
 
@@ -152,13 +152,13 @@ Start the Docker containers with `./bin/start` and then run any of the following
 To export the database, use the following command:
 
 ```shell
-./bin/wp db export - > dbdump.sql
+./bin/wp db export - > docker/conf/mysql/init.sql
 ```
 
 To export the database and gzip it, use the following command:
 
 ```shell
-./bin/wp db export - | gzip -3 > init.sql.gz
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz
 ```
 
 To SSH into the WordPress container, use the following command:

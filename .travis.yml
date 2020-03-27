@@ -25,7 +25,7 @@ jobs:
       script: skip
       deploy: &pantheon
         provider: script
-        script: bash scripts/deploy.sh
+        script: bash bin/deploy
         skip_cleanup: true
         on:
           branch: develop
