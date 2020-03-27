@@ -7,7 +7,7 @@ USER=USER_GOES_HERE
 DESTINATION=remote/path/to/theme
 PLUGINDESTINATION=remote/path/to/plugins
 BASEDIR=$(dirname "$0")
-DEPLOYIGNORE=$BASEDIR/.deployignore
+DEPLOYIGNORE=$BASEDIR/../.deployignore
 
 if [ -z $HOST ] || [ -z $USER ]; then
   echo "Please pass the SFTP host and user name for your site."

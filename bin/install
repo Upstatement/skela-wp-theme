@@ -3,7 +3,8 @@
 set -e
 
 create_containers() {
-  docker-compose up --build -d
+  docker-compose build --no-cache
+  docker-compose up -d
 }
 
 echo "Bringing up project containers..."
@@ -24,11 +25,6 @@ echo
 echo "Activating WordPress plugins..."
 echo
 ./bin/wp plugin activate --all
-echo
-
-echo "Updating WordPress..."
-echo
-./bin/wp core update
 echo
 
 echo "-------------------------------"

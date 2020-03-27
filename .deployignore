@@ -6,11 +6,9 @@
 bin
 composer.json
 composer.lock
-conf
 docker
 docker-compose.yml
 Dockerfile
 node_modules
-scripts
 wp-content
 plugins

@@ -57,7 +57,7 @@ Skela utilizes repositories, managers, services, and models for an [object-orien
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
-- CI setup for [Travis](https://travis-ci.com/) (with [deployment](scripts/deploy.sh))
+- CI setup for [Travis](https://travis-ci.com/) (with [deployment](bin/deploy))
 
 ## 💻 System Requirements
 
@@ -154,13 +154,13 @@ Start the Docker containers with `./bin/start` and then run any of the following
 To export the database, use the following command:
 
 ```shell
-./bin/wp db export - > dbdump.sql
+./bin/wp db export - > docker/conf/mysql/init.sql
 ```
 
 To export the database and gzip it, use the following command:
 
 ```shell
-./bin/wp db export - | gzip -3 > init.sql.gz
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz
 ```
 
 To SSH into the WordPress container, use the following command:

@@ -1,11 +1,11 @@
-FROM richarvey/nginx-php-fpm:1.5.0
+FROM richarvey/nginx-php-fpm:1.9.0
 
-RUN apk update
-
-RUN apk add \
+RUN apk update && apk add \
   mysql-client \
   openssl \
-  msmtp
+  msmtp \
+  less \
+  tzdata
 
 # Configure msmtp
 RUN { \
@@ -37,11 +37,11 @@ RUN wp core download
 
 # Copy custom configuration files into location expected by nginx-php-fpm.
 # See https://github.com/richarvey/nginx-php-fpm/blob/master/docs/nginx_configs.md
-COPY conf /var/www/html/conf
+COPY docker/conf /var/www/html/conf
 
 # Copy startup scripts into location expected by nginx-php-fpm.
 # See https://github.com/richarvey/nginx-php-fpm/blob/master/docs/scripting_templating.md
-COPY scripts /var/www/html/scripts
+COPY docker/scripts /var/www/html/scripts
 
 # Copy the rest of this theme into place
 ARG WORDPRESS_THEME_NAME

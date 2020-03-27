@@ -26,6 +26,10 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
+      # Defined in `.env`, which is automatically loaded by `docker-compose`
+      # See https://docs.docker.com/compose/environment-variables/#the-env-file
+      WORDPRESS_THEME_NAME: ${WORDPRESS_THEME_NAME}
+
       # Runtime configuration for upstatement/ups-dock
       # See https://github.com/upstatement/ups-dock
       UPS_DOCK_NAME: Skela
@@ -45,10 +49,8 @@ services:
       # and it adds significantly to boot time with larger codebases.
       SKIP_CHOWN: 1
 
-      # This var ensures that output renders correctly when a program outputs content
-      # to the console
-      # See https://github.com/wp-cli/wp-cli/issues/3840#issuecomment-318067057
-      PAGER: more
+      # Set the time zone
+      TZ: America/New_York
 
     networks:
       - proxy
@@ -56,7 +58,9 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      # - ./conf/mysql/init.sql.gz:/docker-entrypoint-initdb.d/init.sql.gz
+      # Export an initial DB seed using `wp db export` and load it automatically on first install
+      # See https://hub.docker.com/_/mysql
+      # - ./docker/conf/mysql/init.sql.gz:/docker-entrypoint-initdb.d/init.sql.gz
       - db_data:/var/lib/mysql
     environment:
       # See https://hub.docker.com/_/mysql/
