@@ -12,7 +12,44 @@ services:
       - ./logs:/var/www/html/logs
     depends_on:
       - db
-    env_file: .env
+    environment:
+      # WordPress install configuration
+      WORDPRESS_TITLE: "Skela Site"
+      WORDPRESS_URL: https://skela.ups.dock
+      WORDPRESS_ADMIN_USER: admin
+      WORDPRESS_ADMIN_EMAIL: admin@example.com
+      WORDPRESS_ADMIN_PASSWORD: password
+      
+      # WordPress database configuration
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+      # Runtime configuration for upstatement/ups-dock
+      # See https://github.com/upstatement/ups-dock
+      UPS_DOCK_NAME: Skela
+
+      # Runtime configuration for jwilder/nginx-proxy
+      # See https://github.com/jwilder/nginx-proxy
+      VIRTUAL_HOST: skela.ups.dock
+      HTTPS_METHOD: noredirect
+
+      # Runtime configuration for richarvey/nginx-php-fpm
+      # See https://github.com/richarvey/nginx-php-fpm
+      RUN_SCRIPTS: 1
+
+      # Comment out this next line to avoid permissions issues when not mounting the
+      # theme codebase into the container via `volumes` in `docker-composer.yml`.
+      # We're skipping it by default as it's not strictly required when using `volumes`
+      # and it adds significantly to boot time with larger codebases.
+      SKIP_CHOWN: 1
+
+      # This var ensures that output renders correctly when a program outputs content
+      # to the console
+      # See https://github.com/wp-cli/wp-cli/issues/3840#issuecomment-318067057
+      PAGER: more
+
     networks:
       - proxy
       - default
