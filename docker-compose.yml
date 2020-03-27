@@ -58,7 +58,9 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      # - ./conf/mysql/init.sql.gz:/docker-entrypoint-initdb.d/init.sql.gz
+      # Export an initial DB seed using `wp db export` and load it automatically on first install
+      # See https://hub.docker.com/_/mysql
+      # - ./docker/conf/mysql/init.sql.gz:/docker-entrypoint-initdb.d/init.sql.gz
       - db_data:/var/lib/mysql
     environment:
       # See https://hub.docker.com/_/mysql/
