@@ -154,13 +154,13 @@ Start the Docker containers with `./bin/start` and then run any of the following
 To export the database, use the following command:
 
 ```shell
-./bin/wp db export - > dbdump.sql
+./bin/wp db export - > docker/conf/mysql/init.sql
 ```
 
 To export the database and gzip it, use the following command:
 
 ```shell
-./bin/wp db export - | gzip -3 > init.sql.gz
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz
 ```
 
 To SSH into the WordPress container, use the following command:
