@@ -11,18 +11,33 @@ TITLECASE=`echo "${HYPHENATED}" | tr '-' '\n' | awk '{printf "%s%s", toupper(sub
 
 echo ""
 
+replace_theme_name() {
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" .env`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" docker-compose.yml`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" MULTISITE.md`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" README.md`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/" style.css`
+}
+
+replace_titlecase() {
+  eval `sed -i '' "s/Skela/${TITLECASE}/" composer.json`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" front-page.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" functions.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/" index.php`
+  eval `sed -i '' "s/SKELA/${TITLECASE}/" src/**/*.php`
+}
+
 replace_lowercase() {
-  eval `sed -i '' "s/skela/${LOWERCASE}/" .env`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" .env.sample`
   eval `sed -i '' "s/skela/${LOWERCASE}/" composer.json`
   eval `sed -i '' "s/skela/${LOWERCASE}/" composer.lock`
   eval `sed -i '' "s/skela/${LOWERCASE}/" package-lock.json`
   eval `sed -i '' "s/skela/${LOWERCASE}/" package.json`
+  eval `sed -i '' "s/#skela/#${LOWERCASE}/" README.md`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" README.md`
   eval `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
   eval `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
   eval `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
   eval `sed -i '' "s/skela/${LOWERCASE}/" src/Managers/ThemeManager.php`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" templates/pages/front-page.twig`
 }
 
 replace_uppercase() {
@@ -30,22 +45,15 @@ replace_uppercase() {
   eval `sed -i '' "s/SKELA/${UPPERCASE}/" src/**/*.php`
 }
 
-replace_titlecase() {
-  eval `sed -i '' "s/Skela/${TITLECASE}/" .env`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" .env.sample`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" composer.json`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" front-page.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" functions.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" index.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" style.css`
-  eval `sed -i '' "s/SKELA/${TITLECASE}/" src/**/*.php`
-}
 
-echo "Replacing 'skela' with '$LOWERCASE'"
-replace_lowercase
-
-echo "Replacing 'SKELA' with '$UPPERCASE'"
-replace_uppercase
+echo "Replacing theme name"
+replace_theme_name
 
 echo "Replacing 'Skela' with '$TITLECASE'"
 replace_titlecase
+
+# echo "Replacing 'skela' with '$LOWERCASE'"
+# replace_lowercase
+
+# echo "Replacing 'SKELA' with '$UPPERCASE'"
+# replace_uppercase
