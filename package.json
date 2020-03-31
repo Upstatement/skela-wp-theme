@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An Upstatement-flavored starter theme for WordPress",
   "author": "Upstatement",
-  "repository": "git@github.com:Upstatement/skela-wordpress.git",
+  "repository": "https://github.com/Upstatement/skela-wp-theme",
   "license": "ISC",
   "testing": {
     "urls": {

@@ -75,16 +75,6 @@ If you are using [Ups Dock](https://github.com/upstatement/ups-dock), you can cl
 
 If you are using another local development solution, or if you're a madman and are cloning this directly to a live server, it might live in the `/wp-content/themes` directory.
 
-### Update the theme name
-
-To update the theme name of your site, do a **case-sensitive** search and replace of
-
-- `skela`
-- `Skela`
-- `SKELA`
-
-with your new and exciting theme name!
-
 ### Plugin activation
 
 If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
@@ -105,9 +95,17 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
 4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-5. Copy the `.env.sample` into a new `.env` file, and update any necessary `environment` variables in `docker-compose.yml`
+5. Copy the `.env.sample` into a new `.env` file
 
-6. Run the install script
+6. In `package.json` and `composer.json`, update repository and author information
+
+7. Run the theme command and follow the prompt, which will set up the project with your desired theme name
+
+   ```shell
+   ./bin/rename-theme
+   ```
+
+8. Run the install command
 
    ```shell
    ./bin/install
@@ -167,7 +165,7 @@ docker-compose exec wordpress /bin/bash
 
 ## 🔄 Object-Oriented Approach
 
-Skela utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data.
+This theme utilizes repositories, managers, services and models for a very object-oriented approach to organizing your WordPress data.
 
 ### Managers
 
@@ -197,7 +195,7 @@ Services are for more low-lying functions, like routing.
 
 ## 📰 Gutenberg
 
-Skela has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
+This theme has built-in support for easily creating custom Gutenberg blocks with the help of Advanced Custom Fields. Note that the pro version of ACF is required for this.
 
 There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields. Those fields are rendered in the file `templates/components/acf-block.twig`.
 
@@ -236,7 +234,7 @@ Read more about [creating Gutenberg blocks using ACF](https://www.advancedcustom
 
 ### Included Custom Blocks
 
-Two custom Gutenberg blocks are included with Skela:
+Two custom Gutenberg blocks are included:
 
 - Related Articles
 - Image Layout
