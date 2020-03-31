@@ -95,7 +95,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 
 4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-5. Copy the `.env.sample` into a new `.env` file, and update any necessary `environment` variables in `docker-compose.yml`
+5. Copy the `.env.sample` into a new `.env` file
 
 6. In `package.json` and `composer.json`, update repository and author information
 
