@@ -12,7 +12,6 @@ Skela utilizes repositories, managers, services, and models for an [object-orien
   - [💻 System Requirements](#-system-requirements)
   - [🗂 Project Setup](#-project-setup)
     - [Clone the repository](#clone-the-repository)
-    - [Update the theme name](#update-the-theme-name)
     - [Plugin activation](#plugin-activation)
   - [🛠 Installation](#-installation)
   - [🏃‍ Development Workflow](#development-workflow)
