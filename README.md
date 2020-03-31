@@ -102,7 +102,7 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
 7. Run the theme command and follow the prompt, which will set up the project with your desired theme name
 
    ```shell
-   ./bin/theme
+   ./bin/rename-theme
    ```
 
 8. Run the install command
