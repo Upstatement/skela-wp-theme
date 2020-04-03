@@ -43,11 +43,15 @@
     "*.{js,css,json,md}": [
       "prettier --write",
       "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run lint:scripts && npm run lint:php"
+      "pre-commit": "lint-staged && npm run lint:php"
     }
   },
   "dependencies": {

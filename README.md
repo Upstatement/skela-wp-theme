@@ -2,7 +2,9 @@
 
 > An Upstatement-flavored starter theme for WordPress
 
-Skela utilizes repositories, managers, services, and models for an [object-oriented approach](<(#-object-oriented-approach)>) to organizing your WordPress data.
+Skela utilizes repositories, managers, services, and models for an [object-oriented approach](#-object-oriented-approach) to organizing your WordPress data.
+
+Note that this repository is _just_ for your WordPress theme. The WordPress installation should live elsewhere.
 
 ## Table of Contents
 
@@ -10,9 +12,6 @@ Skela utilizes repositories, managers, services, and models for an [object-orien
   - [Table of Contents](#table-of-contents)
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
-  - [🗂 Project Setup](#-project-setup)
-    - [Clone the repository](#clone-the-repository)
-    - [Plugin activation](#plugin-activation)
   - [🛠 Installation](#-installation)
   - [🏃‍ Development Workflow](#development-workflow)
     - [Common wp-cli commands](#common-wp-cli-commands)
@@ -64,26 +63,6 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 2. Install [Ups Dock](https://github.com/upstatement/ups-dock) by following the installation steps in the [README](https://github.com/upstatement/ups-dock#installation)
 
-## 🗂 Project Setup
-
-### Clone the repository
-
-This repository is _just_ for your WordPress theme. The WordPress installation itself lives elsewhere.
-
-If you are using [Ups Dock](https://github.com/upstatement/ups-dock), you can clone this repository to anywhere on your local machine (i.e. your `/Sites/`/ folder).
-
-If you are using another local development solution, or if you're a madman and are cloning this directly to a live server, it might live in the `/wp-content/themes` directory.
-
-### Plugin activation
-
-If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
-
-1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
-
-2. In `composer.json`, search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with the respective license keys
-
-_**NOTE:** If opting out of one or both of these plugins, **remove** the desired entries from the `repositories` and `require` sections in `composer.json`_
-
 ## 🛠 Installation
 
 1. Ensure [NVM](https://github.com/creationix/nvm) and [NPM](https://www.npmjs.com/) are installed globally.
@@ -113,6 +92,18 @@ _**NOTE:** If opting out of one or both of these plugins, **remove** the desired
    Once completed, you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
 
    If prompted for a login, the default credentials (configurable via `docker-compose.yml`) is `admin` / `password`
+
+### Activating ACF & WP Migrate Plugins (Optional)
+
+If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
+
+1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
+
+2. In `composer.json`, search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with the respective license keys
+
+3. Run `./bin/composer install`
+
+**NOTE:** If opting out of one or both of these plugins, **remove** the desired entries from the `repositories` and `require` sections in `composer.json`
 
 ## 🏃‍ Development Workflow
 
