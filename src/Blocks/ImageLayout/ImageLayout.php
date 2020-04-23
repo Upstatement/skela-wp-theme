@@ -28,6 +28,7 @@ class ImageLayout
     {
         add_action('acf/init', array($this,'createImageLayout'));
     }
+
     /**
      * Uses ACF function to register custom blocks
      *
@@ -44,12 +45,13 @@ class ImageLayout
                     'render_callback'   => array($this, 'renderImageLayout'),
                     'category'          => 'formatting',
                     'icon'              => 'images-alt',
-                    'keywords'          => array( 'image', 'layout' ),
+                    'keywords'          => array('image', 'layout'),
                     'mode'              => 'edit'
                 )
             );
         }
     }
+
     /**
      * Get info from the related ACF fields
      * and then render corrosponding template
@@ -81,5 +83,4 @@ class ImageLayout
             Timber::render($templates, $context);
         }
     }
-
 }
