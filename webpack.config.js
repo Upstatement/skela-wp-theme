@@ -15,8 +15,9 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/wp-content/themes/skela/dist/',
   },
 
   module: {
@@ -70,6 +71,7 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
           chunks: 'all',
+          enforce: true,
         },
       },
     },
