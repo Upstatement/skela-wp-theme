@@ -42,6 +42,7 @@ replace_lowercase() {
   eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" package.json`
   eval `sed -i '' "s/#skela/#${LOWERCASE}/" README.md`
   eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" README.md`
+  eval `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
   eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" webpack.config.js`
   eval `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
   eval `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
