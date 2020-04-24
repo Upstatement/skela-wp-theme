@@ -2,7 +2,7 @@
 
 set -e
 
-read -p "Please enter your new WordPress theme name: " ORIGINAL
+read -p "Please enter your new WordPress theme name (titlecase): " ORIGINAL
 
 KEBABCASE=`echo "${ORIGINAL}" | tr " " -`
 SNAKECASE=`echo "${ORIGINAL}" | tr " " _`
@@ -13,49 +13,46 @@ TITLECASE=`echo "${KEBABCASE}" | tr '-' '\n' | awk '{printf "%s%s", toupper(subs
 echo ""
 
 replace_theme_name() {
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" .env`
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" .env.sample`
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" docker-compose.yml`
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" MULTISITE.md`
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" README.md`
-  eval `sed -i '' "s/Skela/${ORIGINAL}/" style.css`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/g" docker-compose.yml`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/g" MULTISITE.md`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/g" README.md`
+  eval `sed -i '' "s/Skela/${ORIGINAL}/g" style.css`
 }
 
 replace_titlecase() {
-  eval `sed -i '' "s/Skela/${TITLECASE}/" composer.json`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" front-page.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" functions.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" index.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" src/**/*.php`
-  eval `sed -i '' "s/Skela/${TITLECASE}/" src/**/**/*.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" composer.json`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" front-page.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" functions.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" index.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" src/**/*.php`
+  eval `sed -i '' "s/Skela/${TITLECASE}/g" src/**/**/*.php`
 }
 
 replace_lowercase() {
-  eval `sed -i '' "s/skela/${LOWERCASE}/" .env`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" .env.sample`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" composer.json`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" composer.lock`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" docker-compose.yml`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" MULTISITE.md`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" package-lock.json`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" package.json`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" package.json`
-  eval `sed -i '' "s/#skela/#${LOWERCASE}/" README.md`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" README.md`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" webpack.config.js`
-  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/" webpack.config.js`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" bin/composer`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" src/Blocks/SampleBlock/sample-block.js`
-  eval `sed -i '' "s/skela/${LOWERCASE}/" src/Managers/ThemeManager.php`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" .env`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" .env.sample`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/g" composer.json`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/g" composer.lock`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/g" docker-compose.yml`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" MULTISITE.md`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" package-lock.json`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" package.json`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/g" package.json`
+  eval `sed -i '' "s/#skela/#${LOWERCASE}/g" README.md`
+  eval `sed -i '' "s/skela.ups.dock/${LOWERCASE}.ups.dock/g" README.md`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" webpack.config.js`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" bin/composer`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" src/Blocks/SampleBlock/sample-block.js`
+  eval `sed -i '' "s/skela/${LOWERCASE}/g" src/Managers/ThemeManager.php`
 }
 
 replace_uppercase() {
-  eval `sed -i '' "s/SKELA/${UPPERCASE}/" functions.php`
-  eval `sed -i '' "s/SKELA/${UPPERCASE}/" src/**/*.php`
+  eval `sed -i '' "s/SKELA/${UPPERCASE}/g" functions.php`
+  eval `sed -i '' "s/SKELA/${UPPERCASE}/g" src/**/*.php`
 }
 
 
-echo "Replacing theme name"
+echo "Replacing theme name with '$ORIGINAL'"
 replace_theme_name
 
 echo "Replacing 'Skela' with '$TITLECASE'"
