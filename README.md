@@ -100,7 +100,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 2. In `composer.json` add the following to the `"repositories"` array
 
-   ```json
+   ```text
    {
      "type": "package",
      "package": {
