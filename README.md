@@ -45,7 +45,6 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
 - Some useful PHP libraries
   - [phpdotenv](https://github.com/vlucas/phpdotenv)
   - [carbon](https://carbon.nesbot.com/)
-  - [whoops](https://github.com/filp/whoops)
 - Linting and testing
   - JS, CSS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
@@ -101,7 +100,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 2. In `composer.json` add the following to the `"repositories"` array
 
-   ```json
+   ```text
    {
      "type": "package",
      "package": {
