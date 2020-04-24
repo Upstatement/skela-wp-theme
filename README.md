@@ -99,7 +99,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
 
-2. In `composer.json` add the following to the `"repositories"` array.
+2. In `composer.json` add the following to the `"repositories"` array
 
    ```json
    {
@@ -154,7 +154,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 3. Search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with their respective license keys
 
-4. Search and replace `SITE_URL` with your site's URL (i.e. `editorial.ups.dock`)
+4. Search and replace `SITE_URL` with your site's URL (i.e. `skela.ups.dock`)
 
 5. In `composer.json` add the following to the `"require"` object
 
