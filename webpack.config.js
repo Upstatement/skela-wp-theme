@@ -71,6 +71,7 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
           chunks: 'all',
+          enforce: true,
         },
       },
     },
