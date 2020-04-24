@@ -13,7 +13,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
   - [🛠 Installation](#-installation)
-  - [🏃‍ Development Workflow](#development-workflow)
+  - [🏃‍ Development Workflow](#-development-workflow)
     - [Common wp-cli commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
@@ -98,7 +98,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
 
-2. In `composer.json` add the following to the `"repositories"` array.
+2. In `composer.json` add the following to the `"repositories"` array
 
    ```json
    {
@@ -153,7 +153,7 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 3. Search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with their respective license keys
 
-4. Search and replace `SITE_URL` with your site's URL (i.e. `editorial.ups.dock`)
+4. Search and replace `SITE_URL` with your site's URL (i.e. `skela.ups.dock`)
 
 5. In `composer.json` add the following to the `"require"` object
 

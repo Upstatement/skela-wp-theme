@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+docker-compose down -v --remove-orphans
+
+echo "-------------------------------"
+echo "Uninstall completed successfully!"
+echo "-------------------------------"
+echo
