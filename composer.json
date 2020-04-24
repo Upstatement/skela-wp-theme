@@ -12,42 +12,6 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.8.1",
-        "type": "wordpress-plugin",
-        "dist": {
-          "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.1"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "deliciousbrains/wp-migrate-db-pro",
-        "type": "wordpress-plugin",
-        "version": "1.9.8",
-        "dist": {
-          "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.9.8"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "deliciousbrains/wp-migrate-db-pro-media-files",
-        "type": "wordpress-plugin",
-        "version": "1.4.14",
-        "dist": {
-          "type": "zip",
-          "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=skela.ups.dock?v=1.4.14"
-        }
-      }
     }
   ],
   "extra": {
@@ -70,9 +34,6 @@
     }
   },
   "require": {
-    "advanced-custom-fields/advanced-custom-fields-pro": "5.8.1",
-    "deliciousbrains/wp-migrate-db-pro": "1.9.8",
-    "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.14",
     "wpackagist-plugin/wp-environment-indicator": "^1.0",
     "vlucas/phpdotenv": "^3.3",
     "timber/timber": "^1.10",

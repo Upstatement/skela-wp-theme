@@ -13,7 +13,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
   - [🛠 Installation](#-installation)
-  - [🏃‍ Development Workflow](#development-workflow)
+  - [🏃‍ Development Workflow](#-development-workflow)
     - [Common wp-cli commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
@@ -45,7 +45,6 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
 - Some useful PHP libraries
   - [phpdotenv](https://github.com/vlucas/phpdotenv)
   - [carbon](https://carbon.nesbot.com/)
-  - [whoops](https://github.com/filp/whoops)
 - Linting and testing
   - JS, CSS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
@@ -95,15 +94,77 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 ### Activating ACF & WP Migrate Plugins (Optional)
 
-If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, use the following steps:
+If you would like to use the [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) plugins, follow these steps:
 
 1. Purchase license keys from [ACF](https://www.advancedcustomfields.com/pro/#pricing-table) and [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/)
 
-2. In `composer.json`, search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with the respective license keys
+2. In `composer.json` add the following to the `"repositories"` array
 
-3. Run `./bin/composer install`
+   ```text
+   {
+     "type": "package",
+     "package": {
+       "name": "advanced-custom-fields/advanced-custom-fields-pro",
+       "version": "5.8.7",
+       "type": "wordpress-plugin",
+       "dist": {
+         "type": "zip",
+         "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.7"
+       }
+     }
+   },
+   {
+     "type": "package",
+     "package": {
+       "name": "deliciousbrains/wp-migrate-db-pro",
+       "type": "wordpress-plugin",
+       "version": "1.9.10",
+       "dist": {
+         "type": "zip",
+         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.9.10"
+       }
+     }
+   },
+   {
+     "type": "package",
+     "package": {
+       "name": "deliciousbrains/wp-migrate-db-pro-cli",
+       "type": "wordpress-plugin",
+       "version": "1.3.5",
+       "dist": {
+         "type": "zip",
+         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-cli-1.3.5.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL"
+       }
+     }
+   },
+   {
+     "type": "package",
+     "package": {
+       "name": "deliciousbrains/wp-migrate-db-pro-media-files",
+       "type": "wordpress-plugin",
+       "version": "1.4.15",
+       "dist": {
+         "type": "zip",
+         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.4.15"
+       }
+     }
+   }
+   ```
 
-**NOTE:** If opting out of one or both of these plugins, **remove** the desired entries from the `repositories` and `require` sections in `composer.json`
+3. Search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with their respective license keys
+
+4. Search and replace `SITE_URL` with your site's URL (i.e. `skela.ups.dock`)
+
+5. In `composer.json` add the following to the `"require"` object
+
+   ```json
+   "advanced-custom-fields/advanced-custom-fields-pro": "5.8.7",
+   "deliciousbrains/wp-migrate-db-pro": "1.9.10",
+   "deliciousbrains/wp-migrate-db-pro-cli": "1.3.5",
+   "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.15",
+   ```
+
+6. While the container is up, run `./bin/composer install`
 
 ## 🏃‍ Development Workflow
 

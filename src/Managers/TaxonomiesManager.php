@@ -60,6 +60,6 @@ class TaxonomiesManager
             'show_tagcloud'              => true,
             'query_var'                  => 'authors'
         );
-        register_taxonomy('author', array( 'post' ), $authors_args);
+        register_taxonomy('author', array('post'), $authors_args);
     }
 }
