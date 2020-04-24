@@ -13,7 +13,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
   - [🛠 Installation](#-installation)
-  - [🏃‍ Development Workflow](#development-workflow)
+  - [🏃‍ Development Workflow](#-development-workflow)
     - [Common wp-cli commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
