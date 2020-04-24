@@ -17,6 +17,16 @@ if (strpos(\$_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
 	\$_SERVER['HTTPS'] = 'on';
 }
 
+/* Set home / site URL based on incoming request for local development to avoid SSL headaches */
+\$schema = \$_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+\$host = parse_url('$WORDPRESS_URL', PHP_URL_HOST);
+\$port = parse_url('$WORDPRESS_URL', PHP_URL_PORT);
+\$path = parse_url('$WORDPRESS_URL', PHP_URL_PATH);
+\$port = \$port ? ":$port" : '';
+\$url = "\$schema://\${host}\${port}\${path}";
+define('WP_HOME',    \$url);
+define('WP_SITEURL', \$url);
+
 /* Logging */
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', '/var/www/html/logs/error.log');
