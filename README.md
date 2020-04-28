@@ -72,7 +72,7 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 4. Duplicate the contents of `.env.sample` into a new `.env` file
 
-### Option 1: Contributing to Sekal
+### Option 1: Contributing to Skela
 
 1. If you're installing this repository to contribute to Skela, all you need to do next is run the install command
 
