@@ -2,7 +2,6 @@
 .env.sample
 .git
 .gitignore
-.travis.yml
 bin
 composer.json
 composer.lock

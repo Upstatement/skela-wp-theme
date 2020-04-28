@@ -4,15 +4,19 @@ set -e
 
 HOST=HOST_GOES_HERE
 USER=USER_GOES_HERE
-DESTINATION=remote/path/to/theme
-PLUGINDESTINATION=remote/path/to/plugins
+PORT=PORT_GOES_HERE
 BASEDIR=$(dirname "$0")
 DEPLOYIGNORE=$BASEDIR/../.deployignore
+DESTINATION="~/public/wp-content/themes/YOUR_THEME_GOES_HERE"
+PLUGINDESTINATION="~/public/wp-content"
 
 if [ -z $HOST ] || [ -z $USER ]; then
-  echo "Please pass the SFTP host and user name for your site."
+  echo "Please pass the SFTP host, user name, and port for your site."
   exit 1
 fi
+
+echo "Creating temporary directory..."
+ssh $USER@$HOST -p $PORT -o StrictHostKeyChecking=no "mkdir -p ~/_tmp"
 
 echo "Deploying WordPress theme..."
 rsync \
@@ -20,9 +24,9 @@ rsync \
   --exclude-from="$DEPLOYIGNORE" \
   --ipv4 \
   --delete-after \
-  -e 'ssh -p 2222 -o StrictHostKeyChecking=no' \
-  --temp-dir=~/tmp/ \
-  $TRAVIS_BUILD_DIR/* \
+  -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
+  --temp-dir=~/_tmp \
+  . \
   $USER@$HOST:$DESTINATION
 
 echo "Deploying WordPress plugins..."
@@ -30,7 +34,8 @@ rsync \
   -rlvz \
   --ipv4 \
   --exclude=".gitignore" \
-  -e 'ssh -p 2222 -o StrictHostKeyChecking=no' \
-  --temp-dir=~/tmp/ \
-  $TRAVIS_BUILD_DIR/plugins \
+  --exclude="node_modules/" \
+  -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
+  --temp-dir=~/_tmp \
+  plugins \
   $USER@$HOST:$PLUGINDESTINATION

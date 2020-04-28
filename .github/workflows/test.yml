@@ -1,0 +1,37 @@
+name: Test
+
+on: [pull_request]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: node_version
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.node_version.outputs.NVMRC }}'
+
+      - name: Load PHP dependencies
+        uses: php-actions/composer@v1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Lint scripts
+        run: npm run lint:scripts
+
+      - name: Lint PHP
+        run: npm run lint:php
+
+      - name: Check bundlesize
+        run: npm run test:bundlesize
