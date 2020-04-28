@@ -32,7 +32,7 @@
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --mode development",
     "watch": "NODE_ENV=development webpack --progress --hide-modules --watch --mode development",
-    "production": "NODE_ENV=production webpack --progress --hide-modules --mode production",
+    "build": "NODE_ENV=production webpack --progress --hide-modules --mode production",
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",

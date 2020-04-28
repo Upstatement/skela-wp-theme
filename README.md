@@ -50,7 +50,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
-- CI setup for [Travis](https://travis-ci.com/) (with [deployment](bin/deploy))
+- CI setup with [GitHub Actions](https://help.github.com/en/actions)
 
 ## 💻 System Requirements
 
@@ -68,29 +68,55 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 2. Run `nvm install` to ensure you're using the correct version of Node.
 
-3. Run `composer update`
+3. If you're _not_ using Ups Dock, you can stop here! Otherwise...
 
-4. If you're _not_ using Ups Dock, you can stop here! Otherwise...
+4. Duplicate the contents of `.env.sample` into a new `.env` file
 
-5. Copy the `.env.sample` into a new `.env` file
+### Option 1: Contributing to Skela
 
-6. In `package.json` and `composer.json`, update repository and author information
+1. If you're installing this repository to contribute to Skela, all you need to do next is run the install command
 
-7. Run the theme command and follow the prompt, which will set up the project with your desired theme name
+   ```sh
+   ./bin/install
+   ```
+
+2. Once the install script succeeds, fire up your site with the start command
+
+   ```sh
+   ./bin/start
+   ```
+
+   Now you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
+
+   The default credentials for WP admin are `admin` / `password` (configurable via `docker-compose.yml`)
+
+### Option 2: Using Skela as a template for another project
+
+If you're using Skela as a template for another project, there's a few more steps to go through in order to set up the project to use your desired theme name.
+
+1. In `package.json` and `composer.json`, update repository and author information
+
+2. Run the rename theme command and follow the prompt, which will set up the project with your desired theme name
 
    ```shell
    ./bin/rename-theme
    ```
 
-8. Run the install command
+3. Run the install command
 
    ```shell
    ./bin/install
    ```
 
-   Once completed, you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
+4. Once the installation script has finished, run the start command
 
-   If prompted for a login, the default credentials (configurable via `docker-compose.yml`) is `admin` / `password`
+   ```shell
+   ./bin/start
+   ```
+
+   Now you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
+
+   The default credentials for WP admin are `admin` / `password` (configurable via `docker-compose.yml`)
 
 ### Activating ACF & WP Migrate Plugins (Optional)
 
