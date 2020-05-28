@@ -301,7 +301,7 @@ Read more details on [creating Gutenberg blocks using ACF](https://www.advancedc
     {
         return array(
             ...
-            'acf/acfBlock',
+            'acf/acf-block',
             ...
         );
     }
