@@ -286,7 +286,7 @@ Read more details on [creating Gutenberg blocks using ACF](https://www.advancedc
 
    There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields.
 
-   > Note that in order to get this example to work, you need to create an ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF Block.
+   > Note that in order to get this example to work, you need to create an ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF Block. Be sure to keep your block name all lowercase. ACF drops all uppercase letters and your block might not appear as an option if the names are mismatched. 
 
 2. Create a new twig file to render the ACF fields.
 
