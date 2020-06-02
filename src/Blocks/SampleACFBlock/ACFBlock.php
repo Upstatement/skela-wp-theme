@@ -29,7 +29,7 @@ class ACFBlock
         if (function_exists('acf_register_block_type')) {
             acf_register_block_type(
                 array(
-                    'name'            => 'acfBlock',
+                    'name'            => 'acf-block',
                     'title'           => __('ACF Block'),
                     'description'     => __('A custom block that incorporates ACF fields.'),
                     'render_callback' => array($this, 'renderACFBlock'),
