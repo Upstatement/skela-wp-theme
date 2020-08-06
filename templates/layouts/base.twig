@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-us">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>{% if wp_title %}{{ wp_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
-  {{ function('wp_head') }}
 
-  <link rel="stylesheet" href="{{ theme.link }}/dist/app.css?v={{ css_last_modified }}" type="text/css" media="all" />
-</head>
+{% include "includes/head.twig" %}
 
 <body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %}">
 
@@ -27,3 +21,5 @@
   {{ function('wp_footer') }}
 
 </body>
+
+</html>
