@@ -138,7 +138,7 @@ Once you've filed the PR:
 - One or more maintainers will use GitHub's review feature to review your PR.
 - If the maintainer asks for any changes, edit your changes, push, and ask for another review. Additional tags (such as `needs-tests`) will be added depending on the review.
 - If the maintainer decides to pass on your PR, they will thank you for the contribution and explain why they won't be accepting the changes. That's ok! We still really appreciate you taking the time to do it, and we don't take that lightly.
-- If your PR gets accepted, it will be marked as such, and merged into the `master` branch soon after. Your contribution will be distributed to the masses next time the maintainers [tag a release](#tag-a-release)
+- If your PR gets accepted, it will be marked as such, and merged into the `main` branch soon after. Your contribution will be distributed to the masses next time the maintainers [tag a release](#tag-a-release)
 
 ## Provide Support on Issues
 
@@ -198,7 +198,7 @@ To clean up issues and PRs:
   - not marked as `starter` or `help wanted` (these might stick around for a while, in general, as they're intended to be available)
   - no explicit messages in the comments asking for it to be left open
   - does not belong to a milestone
-- Leave a message when closing saying "Cleaning up stale issue. Please reopen or ping us if and when you're ready to resume this. See the [contributing guidelines](https://github.com/Upstatement/skela-wp-theme/blob/master/CONTRIBUTING.md#clean-up-issues-and-prs) for more details."
+- Leave a message when closing saying "Cleaning up stale issue. Please reopen or ping us if and when you're ready to resume this. See the [contributing guidelines](https://github.com/Upstatement/skela-wp-theme/blob/main/CONTRIBUTING.md#clean-up-issues-and-prs) for more details."
 
 ## Review Pull Requests
 
