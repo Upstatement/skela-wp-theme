@@ -16,15 +16,15 @@ define('SKELA_SITE_NAME', get_bloginfo('name'));
 define('SKELA_THEME_VERSION', wp_get_theme()->get('Version'));
 
 /**
+ * Use Dotenv to set required environment variables and load .env file when present.
+ */
+Dotenv\Dotenv::create(__DIR__)->safeLoad();
+
+/**
  * Set up our global environment constant and load its config first
  * Default: production
  */
 define('WP_ENV', getenv('WP_ENV') ?: 'production');
-
-/**
- * Use Dotenv to set required environment variables and load .env file when present.
- */
-Dotenv\Dotenv::create(__DIR__)->safeLoad();
 
 $timber = new Timber\Timber();
 Timber::$dirname = array('templates');

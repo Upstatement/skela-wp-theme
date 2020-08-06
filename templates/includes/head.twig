@@ -1,0 +1,8 @@
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>{% if wp_title %}{{ wp_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+  <link rel="stylesheet" href="{{ theme.link }}/dist/app.css?v={{ theme_version }}" type="text/css" media="all" />
+
+  {{ function('wp_head') }}
+</head>

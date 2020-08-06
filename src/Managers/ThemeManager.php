@@ -18,6 +18,9 @@ class ThemeManager
     public function __construct(array $managers)
     {
         $this->managers = $managers;
+
+        add_filter('timber/context', array($this, 'addWpEnvToContext'));
+        add_filter('timber/context', array($this, 'addThemeVersionToContext'));
         add_filter('timber/context', array($this, 'addIsHomeToContext'));
         add_filter('timber/context', array($this, 'addMenusToContext'));
         add_filter('timber/context', array($this, 'addACFOptionsToContext'));
@@ -79,6 +82,34 @@ class ThemeManager
 
         wp_enqueue_script('vendor', SKELA_THEME_URL . '/dist/vendor.js', array(), SKELA_THEME_VERSION, false);
         wp_enqueue_script('admin.js', SKELA_THEME_URL . '/dist/admin.js', array(), SKELA_THEME_VERSION, false);
+    }
+
+    /**
+     * Adds ability to check the environment in a twig file
+     *
+     * @param array $context Timber context
+     *
+     * @return array
+     */
+    public function addWpEnvToContext($context)
+    {
+        $context['wp_env'] = WP_ENV;
+
+        return $context;
+    }
+
+    /**
+     * Expose current theme version to Timber context
+     *
+     * @param array $context Timber context
+     *
+     * @return array
+     */
+    public function addThemeVersionToContext($context)
+    {
+        $context['theme_version'] = SKELA_THEME_VERSION;
+
+        return $context;
     }
 
     /**
