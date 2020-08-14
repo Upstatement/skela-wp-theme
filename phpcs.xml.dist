@@ -9,21 +9,65 @@
   <exclude-pattern>*.css</exclude-pattern>
 
   <!-- Don't hide tokenizer exceptions -->
-    <rule ref="Internal.Tokenizer.Exception">
-        <type>error</type>
-    </rule>
+  <rule ref="Internal.Tokenizer.Exception">
+    <type>error</type>
+  </rule>
 
-    <!-- Include the whole PEAR standard -->
-    <rule ref="PEAR">
-        <exclude name="PEAR.NamingConventions.ValidFunctionName" />
-        <exclude name="PEAR.NamingConventions.ValidVariableName" />
-        <exclude name="PEAR.Commenting.ClassComment" />
-        <exclude name="PEAR.Commenting.FileComment" />
-        <exclude name="PEAR.Commenting.InlineComment" />
-        <exclude name="PEAR.WhiteSpace.ScopeIndent" />
-    </rule>
+  <!-- Include the WordPress-Extra standard. -->
+  <rule ref="WordPress-Extra">
+    <!--
+    We may want a middle ground though. The best way to do this is add the
+    entire ruleset, then rule by rule, remove ones that don't suit a project.
+    We can do this by running `phpcs` with the '-s' flag, which allows us to
+    see the names of the sniffs reporting errors.
+    Once we know the sniff names, we can opt to exclude sniffs which don't
+    suit our project like so.
+    The below two examples just show how you can exclude rules.
+    They are not intended as advice about which sniffs to exclude.
+    -->
 
+    <!--
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
+    <exclude name="WordPress.Security.EscapeOutput"/>
+    -->
+  </rule>
 
+  <!-- Let's also check that everything is properly documented. -->
+  <rule ref="WordPress-Docs"/>
 
+  <!-- Add in some extra rules from other standards. -->
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+  <rule ref="Generic.Commenting.Todo"/>
+
+  <config name="minimum_supported_wp_version" value="5.0"/>
+
+  <!-- Text domains -->
+  <!-- <rule ref="WordPress.WP.I18n">
+    <properties>
+      <property name="text_domain" type="array">
+        <element value="my-textdomain"/>
+        <element value="library-textdomain"/>
+      </property>
+    </properties>
+  </rule> -->
+
+  <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+    <exclude name="WordPress.NamingConventions.PrefixAllGlobals" />
+  </rule>
+
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+      <property name="lineLimit" value="85"/>
+      <property name="absoluteLineLimit" value="0"/>
+    </properties>
+  </rule>
+
+  <!-- Add some custom exclusions to filename rules to enable proper namespacing. -->
+  <rule ref="WordPress.Files.FileName">
+    <properties>
+      <property name="strict_class_file_names" value="false"/>
+    </properties>
+    <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+  </rule>
 
 </ruleset>
