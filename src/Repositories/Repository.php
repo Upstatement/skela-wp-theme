@@ -1,145 +1,145 @@
 <?php
 /**
- * Parent repository class. Provides a very basic, fluent interface for interacting with PostCollection/PostQuery classes.
+ * Parent repository class. Provides a very basic, fluent interface for interacting
+ * with PostCollection/PostQuery classes.
+ *
+ * @package Skela
  */
+
 namespace Skela\Repositories;
 
 use Timber\PostCollection;
 use Timber\PostQuery;
 
-class Repository
-{
-    private $resultSet = [];
+/** Class */
+class Repository {
+	/**
+	 * List of posts.
+	 *
+	 * @var array
+	 */
+	private $result_set = array();
 
-    /**
-     * Returns a list or collection of posts.
-     *
-     * @return array|PostCollection
-     */
-    public function get()
-    {
-        return $this->resultSet;
-    }
+	/**
+	 * Returns a list or collection of posts.
+	 *
+	 * @return array|PostCollection
+	 */
+	public function get() {
+		return $this->result_set;
+	}
 
-    /**
-     * Returns the first item in a collection. Returns null if there are 0 items in the collection.
-     *
-     * @return mixed
-     */
-    public function first()
-    {
-        $localArray = $this->get();
+	/**
+	 * Returns the first item in a collection. Returns null if there are 0 items in
+	 * the collection.
+	 *
+	 * @return mixed
+	 */
+	public function first() {
+		$local_array = $this->get();
+		return isset( $local_array[0] ) ? $local_array[0] : null;
+	}
 
-        return isset($localArray[0]) ? $localArray[0] : null;
-    }
+	/**
+	 * Returns a slice of the collection starting at the given index. Similar to
+	 * Laravel's slice().
+	 *
+	 * @param int $start Start index.
+	 *
+	 * @return array
+	 */
+	public function slice( $start ) {
+		$local_array = $this->get();
 
-    /**
-     * Returns a slice of the collection starting at the given index. Similar to Laravel's slice().
-     *
-     * @param int $start Start index
-     *
-     * @return array
-     */
-    public function slice($start)
-    {
-        $localArray = $this->get();
+		if ( count( $local_array ) < 1 ) {
+			return array();
+		}
 
-        if (count($localArray) < 1) {
-            return [];
-        }
+		if ( is_object( $local_array ) && $local_array instanceof PostCollection ) {
+			$local_array = $local_array->getArrayCopy();
+		}
 
-        if (is_object($localArray) && $localArray instanceof PostCollection) {
-            $localArray = $localArray->getArrayCopy();
-        }
+		return array_slice( $local_array, $start );
+	}
 
-        return array_slice($localArray, $start);
-    }
+	/**
+	 * Shuffles (and slices) the result set.
+	 *
+	 * @param integer $and_slice Index to slice the array at (optional).
+	 *
+	 * @return array
+	 */
+	public function shuffle( $and_slice = 0 ) {
+		$local_array = $this->get();
 
-    /**
-     * Shuffles (and slices) the result set.
-     *
-     * @param integer $andSlice - optional
-     *
-     * @return array
-     */
-    public function shuffle($andSlice = 0)
-    {
-        $localArray = $this->get();
+		if ( count( $local_array ) < 1 ) {
+			return array();
+		}
 
-        if (count($localArray) < 1) {
-            return [];
-        }
+		if ( is_object( $local_array ) && $local_array instanceof PostCollection ) {
+			$local_array = $local_array->getArrayCopy();
+		}
 
-        if (is_object($localArray) && $localArray instanceof PostCollection) {
-            $localArray = $localArray->getArrayCopy();
-        }
+		shuffle( $local_array );
 
-        shuffle($localArray);
+		if ( $and_slice < 1 ) {
+			return $local_array;
+		}
 
-        if ($andSlice < 1) {
-            return $localArray;
-        }
+		return array_slice( $local_array, 0, $and_slice );
+	}
 
-        return array_slice($localArray, 0, $andSlice);
-    }
+	/**
+	 * Runs a query.
+	 *
+	 * @param array  $params    WP Query params.
+	 * @param string $post_class Post class to return.
+	 *
+	 * @return Repository
+	 */
+	protected function query( array $params, $post_class = '\Timber\Post' ) {
 
-    /**
-     * Runs a query.
-     *
-     * @param array  $params    WP Query params
-     * @param string $postClass Post class to return
-     *
-     * @return Repository
-     */
-    protected function query(array $params, $postClass = '\Timber\Post')
-    {
+		// Clear old result sets.
+		$this->reset();
 
-        // Clear old result sets.
-        $this->reset();
+		$cache_key    = __FUNCTION__ . md5( http_build_query( $params ) );
+		$cached_posts = wp_cache_get( $cache_key, __CLASS__ );
 
-        $cacheKey = __FUNCTION__ . md5(http_build_query($params));
-        $cachedPosts = wp_cache_get($cacheKey, __CLASS__);
+		if ( false !== $cached_posts && count( $cached_posts ) > 0 ) {
+			// Use cached results.
+			return $this->result_set( $cached_posts );
+		}
 
-        if ($cachedPosts !== false && count($cachedPosts) > 0) {
+		$posts = new PostQuery( $params, $post_class );
 
-            // Use cached results.
-            return $this->resultSet($cachedPosts);
-        }
+		// Cache our results.
+		if ( count( $posts ) > 0 ) {
+			wp_cache_set( $cache_key, $posts, __CLASS__ );
+		}
 
-        $posts = new PostQuery($params, $postClass);
+		return $this->result_set( $posts );
+	}
 
-        // Cache our results.
-        if (count($posts) > 0) {
-            wp_cache_set($cacheKey, $posts, __CLASS__);
-        }
+	/**
+	 * Clears the current result set.
+	 *
+	 * @return Repository
+	 */
+	protected function reset() {
+		$this->result_set = array();
+		return $this;
+	}
 
-        return $this->resultSet($posts);
-    }
-
-    /**
-     * Clears the current result set.
-     *
-     * @return Repository
-     */
-    protected function reset()
-    {
-        $this->resultSet = [];
-
-        return $this;
-    }
-
-    /**
-     * Returns current result set
-     *
-     * @param array|PostCollection $resultSet Result set
-     *
-     * @return Repository
-     */
-    protected function resultSet($resultSet = [])
-    {
-        $this->resultSet = $resultSet;
-
-        return $this;
-    }
+	/**
+	 * Returns current result set
+	 *
+	 * @param array|PostCollection $result_set Result set.
+	 *
+	 * @return Repository
+	 */
+	protected function result_set( $result_set = array() ) {
+		$this->result_set = $result_set;
+		return $this;
+	}
 
 }
