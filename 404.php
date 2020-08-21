@@ -2,6 +2,7 @@
 /**
  * Generic 404 page controller.
  *
+ * @package Skela
  */
 
 $context = Timber::context();
@@ -10,4 +11,4 @@ $context = Timber::context();
 $context['wp_title'] = '404 Not Found';
 
 // Render view.
-Timber::render('pages/404.twig', $context);
+Timber::render( 'pages/404.twig', $context );
