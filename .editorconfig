@@ -14,3 +14,4 @@ trim_trailing_whitespace = true
 # https://github.com/pixelandtonic/CodingStandards
 [*.php]
 indent_size = 4
+indent_style = tab
