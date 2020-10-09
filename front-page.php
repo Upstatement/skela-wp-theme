@@ -9,8 +9,8 @@ use Skela\Repositories\PostTypeRepository;
 
 $context = Timber::context();
 
-$post_repo = new PostTypeRepository();
-$latest_posts = $post_repo->latest_posts( 10, null, [], null )->get();
+$post_repo        = new PostTypeRepository();
+$latest_posts     = $post_repo->latest_posts( 10, null, array(), null )->get();
 $context['posts'] = $latest_posts;
 
 // Render view.

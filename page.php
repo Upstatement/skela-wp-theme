@@ -5,10 +5,8 @@
  * @package Skela
  */
 
-$context = Timber::context();
-
-$page = Timber::get_post();
-
-$context['page'] = $page;
+$context         = Timber::context();
+$_page           = Timber::get_post();
+$context['page'] = $_page;
 
 Timber::render( 'pages/page.twig', $context );
