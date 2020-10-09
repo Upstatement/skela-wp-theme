@@ -5,6 +5,14 @@
   <!-- Where to sniff -->
   <file>./src/</file>
 
+  <!-- Optionally add the template files in the root -->
+  <file>./404.php</file>
+  <file>./front-page.php</file>
+  <file>./functions.php</file>
+  <file>./index.php</file>
+  <file>./page.php</file>
+  <file>./single.php</file>
+
   <exclude-pattern>*.js</exclude-pattern>
   <exclude-pattern>*.css</exclude-pattern>
 
