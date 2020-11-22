@@ -47,6 +47,6 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
     "wp-coding-standards/wpcs": "*",
     "szepeviktor/phpstan-wordpress": "^0.7.1",
-    "php-stubs/acf-pro-stubs": "v5.8.9.1"
+    "php-stubs/acf-pro-stubs": "^5.8"
   }
 }
