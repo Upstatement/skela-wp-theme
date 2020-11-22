@@ -1,0 +1,13 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    # TODO Add types inside arrays
+    checkMissingIterableValueType: false
+    bootstrapFiles:
+        - tests/phpstan/bootstrap.php
+    scanFiles:
+        - vendor/paulthewalton/acf-pro-stubs/acf-pro-stubs.php
+    paths:
+        - src/
