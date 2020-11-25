@@ -1,22 +1,28 @@
-# folders
-vendor
-dist
-uploads/*
-!uploads/.gitkeep
-plugins/*
-!plugins/.gitkeep
+# OS
+.DS_Store
+Thumbs.db
 
-# files
-.env
-min-manifest.json
+# IDE and local environment
+/.vscode/
 
-# caching and debuging
-/node_modules
+# Packages
+/composer.lock
+/vendor/
+/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Application
+.env
+min-manifest.json
+/uploads/*
+!/uploads/.gitkeep
+/plugins/*
+!/plugins/.gitkeep
+
+# Tests
 .eslintcache
 
-# OS/IDE specific files
-.vscode/
-.DS_Store
+# Distribution
+/dist/
