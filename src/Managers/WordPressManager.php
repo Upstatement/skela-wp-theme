@@ -7,6 +7,8 @@
 
 namespace Skela\Managers;
 
+use WP_Error;
+
 /** Class */
 class WordPressManager {
 
@@ -26,7 +28,7 @@ class WordPressManager {
 	 * @return void
 	 */
 	public function cleanup() {
-		remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
+		remove_action( 'template_redirect', 'rest_output_link_header', 11 );
 		remove_action( 'template_redirect', 'wp_shortlink_header', 11 );
 		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
 		remove_action( 'wp_head', 'feed_links', 2 );

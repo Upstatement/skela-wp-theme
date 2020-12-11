@@ -16,7 +16,7 @@ class Repository {
 	/**
 	 * List of posts.
 	 *
-	 * @var array
+	 * @var array|PostCollection
 	 */
 	private $result_set = array();
 

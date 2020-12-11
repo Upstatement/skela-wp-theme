@@ -45,6 +45,8 @@
     "friendsofphp/php-cs-fixer": "^2.15",
     "symfony/var-dumper": "^4.3",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-    "wp-coding-standards/wpcs": "*"
+    "wp-coding-standards/wpcs": "*",
+    "szepeviktor/phpstan-wordpress": "^0.7.1",
+    "php-stubs/acf-pro-stubs": "^5.8"
   }
 }
