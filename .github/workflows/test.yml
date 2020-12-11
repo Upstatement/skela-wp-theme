@@ -33,5 +33,8 @@ jobs:
       - name: Lint PHP
         run: npm run lint:php
 
+      - name: Run static analysis
+        run: npm run phpstan
+
       - name: Check bundlesize
         run: npm run test:bundlesize
