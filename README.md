@@ -8,13 +8,16 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
 
 ## Table of Contents
 
-- [Skela](#skela)
+- [💀 Skela](#-skela)
   - [Table of Contents](#table-of-contents)
   - [🎁 What's in the Box](#-whats-in-the-box)
   - [💻 System Requirements](#-system-requirements)
   - [🛠 Installation](#-installation)
+    - [Option 1: Contributing to Skela](#option-1-contributing-to-skela)
+    - [Option 2: Using Skela as a template for another project](#option-2-using-skela-as-a-template-for-another-project)
+    - [Activating ACF & WP Migrate Plugins (Optional)](#activating-acf--wp-migrate-plugins-optional)
   - [🏃‍ Development Workflow](#-development-workflow)
-    - [Common wp-cli commands](#common-wp-cli-commands)
+    - [Common `wp-cli` commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
     - [Models](#models)
@@ -47,6 +50,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [carbon](https://carbon.nesbot.com/)
 - Linting and testing
   - JS, CSS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+  - Static analysis of PHP code with [PHPStan](https://phpstan.org/)
   - Accessibility testing with [pa11y](https://github.com/pa11y/pa11y)
   - Bundle size limiting with [bundlesize](https://github.com/siddharthkp/bundlesize)
   - [Husky](https://github.com/typicode/husky) to automatically run these lints and tests!
@@ -286,7 +290,7 @@ Read more details on [creating Gutenberg blocks using ACF](https://www.advancedc
 
    There is an example custom block under `src/Blocks/SampleACFBlock/ACFBlock.php`. This demonstrates creating a block using ACF functions that includes two fields.
 
-   > Note that in order to get this example to work, you need to create an ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF Block. Be sure to keep your block name all lowercase. ACF drops all uppercase letters and your block might not appear as an option if the names are mismatched. 
+   > Note that in order to get this example to work, you need to create an ACF field group containing two fields, `some_headline` and `some_text`, and then have the field group displayed if the block is equal to ACF Block. Be sure to keep your block name all lowercase. ACF drops all uppercase letters and your block might not appear as an option if the names are mismatched.
 
 2. Create a new twig file to render the ACF fields.
 

@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   lint:
-    name: Lint
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,11 +27,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Check bundlesize
+        run: npm run test:bundlesize
+
       - name: Lint scripts
         run: npm run lint:scripts
 
       - name: Lint PHP
         run: npm run lint:php
 
-      - name: Check bundlesize
-        run: npm run test:bundlesize
+      - name: Run static analysis
+        run: npm run phpstan
