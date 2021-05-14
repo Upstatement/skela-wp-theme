@@ -36,36 +36,31 @@
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",
-    "phpstan": "./vendor/bin/phpstan analyze --memory-limit 256M",
+    "phpstan": "./vendor/bin/phpstan analyze --memory-limit 300M",
     "test:bundlesize": "bundlesize",
-    "test:a11y": "node tests/pa11y.js"
+    "test:a11y": "node tests/pa11y.js",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run lint:php"
-    }
   },
   "dependencies": {
     "lazysizes": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.14.2",
+    "@babel/eslint-parser": "^7.14.2",
     "@babel/plugin-transform-react-jsx": "^7.12.11",
     "@babel/preset-env": "^7.12.11",
-    "@upstatement/eslint-config": "^0.4.3",
-    "@upstatement/prettier-config": "^0.3.0",
+    "@upstatement/eslint-config": "^1.0.1",
+    "@upstatement/prettier-config": "^1.0.0",
     "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.13",
@@ -73,15 +68,15 @@
     "bundlesize": "^0.17.2",
     "css-loader": "^3.6.0",
     "dotenv-webpack": "^1.8.0",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
     "file-loader": "^5.0.2",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "pa11y": "^5.1.0",
     "postcss-loader": "^3.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.3.0",
     "sass": "^1.30.0",
     "sass-loader": "7.*",
     "webpack": "^4.44.2",

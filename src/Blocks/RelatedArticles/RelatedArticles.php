@@ -45,7 +45,7 @@ class RelatedArticles {
 					'category'        => 'widgets',
 					'icon'            => array(
 						'background' => '#ecf6f6',
-						'src' => 'list-view',
+						'src'        => 'list-view',
 					),
 					'keywords'        => array( 'related', 'articles' ),
 					'mode'            => 'edit',

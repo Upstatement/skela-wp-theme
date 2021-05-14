@@ -29,7 +29,7 @@ Dotenv\Dotenv::create( __DIR__ )->safeLoad();
  */
 define( 'WP_ENV', getenv( 'WP_ENV' ) ? getenv( 'WP_ENV' ) : 'production' );
 
-$timber = new Timber\Timber();
+$timber          = new Timber\Timber();
 Timber::$dirname = array( 'templates' );
 
 add_action(
