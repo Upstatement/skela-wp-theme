@@ -36,7 +36,7 @@
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",
-    "phpstan": "./vendor/bin/phpstan analyze --memory-limit 256M",
+    "phpstan": "./vendor/bin/phpstan analyze --memory-limit 300M",
     "test:bundlesize": "bundlesize",
     "test:a11y": "node tests/pa11y.js",
     "prepare": "husky install",
