@@ -8,6 +8,8 @@ parameters:
     bootstrapFiles:
         - tests/phpstan/bootstrap.php
     scanFiles:
-        - vendor/paulthewalton/acf-pro-stubs/acf-pro-stubs.php
+        - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
     paths:
         - src/
+    excludes_analyse:
+        - */node_modules/*
