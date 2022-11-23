@@ -15,8 +15,12 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [🛠 Installation](#-installation)
     - [Option 1: Contributing to Skela](#option-1-contributing-to-skela)
     - [Option 2: Using Skela as a template for another project](#option-2-using-skela-as-a-template-for-another-project)
-    - [Activating ACF & WP Migrate Plugins (Optional)](#activating-acf--wp-migrate-plugins-optional)
+    - [Activating ACF \& WP Migrate Plugins (Optional)](#activating-acf--wp-migrate-plugins-optional)
   - [🏃‍ Development Workflow](#-development-workflow)
+    - [Debugging](#debugging)
+      - [Twig Functions](#twig-functions)
+      - [Error Logs](#error-logs)
+      - [Debug Bar \& Timber Debug Bar Plugins](#debug-bar--timber-debug-bar-plugins)
     - [Common `wp-cli` commands](#common-wp-cli-commands)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
@@ -26,7 +30,11 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [📰 Gutenberg](#-gutenberg)
     - [Creating Custom ACF Blocks](#creating-custom-acf-blocks)
     - [Included Custom Blocks](#included-custom-blocks)
+  - [♿ Accessibility Testing](#-accessibility-testing)
+    - [Configuring pa11y](#configuring-pa11y)
   - [🌐 Configuring Multisite](#-configuring-multisite)
+    - [For Subdomain](#for-subdomain)
+    - [Caveats](#caveats)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
   - [About Upstatement](#about-upstatement)
@@ -130,71 +138,50 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 2. In `composer.json` add the following to the `"repositories"` array
 
-   ```text
+   ```json
+   {
+     "type": "composer",
+     "url": "https://composer.deliciousbrains.com"
+   },
    {
      "type": "package",
      "package": {
        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-       "version": "5.8.7",
+       "version": "5.12.3",
        "type": "wordpress-plugin",
        "dist": {
          "type": "zip",
-         "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.7"
+         "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.12.3"
        }
      }
    },
+   ```
+
+3. Replace `ACF_KEY` with your license key
+
+4. Create a file called `auth.json` in the root directory and populate it with your API credentials from [your Account settings page](https://deliciousbrains.com/my-account/settings/)
+
+   ```json
    {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro",
-       "type": "wordpress-plugin",
-       "version": "1.9.10",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.9.10"
-       }
-     }
-   },
-   {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro-cli",
-       "type": "wordpress-plugin",
-       "version": "1.3.5",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-cli-1.3.5.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL"
-       }
-     }
-   },
-   {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro-media-files",
-       "type": "wordpress-plugin",
-       "version": "1.4.15",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.4.15"
+     "http-basic": {
+       "composer.deliciousbrains.com": {
+         "username": "COMPOSER_API_KEY_USERNAME",
+         "password": "COMPOSER_API_KEY_PASSWORD"
        }
      }
    }
    ```
 
-3. Search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with their respective license keys
-
-4. Search and replace `SITE_URL` with your site's URL (i.e. `skela.ups.dock`)
-
 5. In `composer.json` add the following to the `"require"` object
 
    ```json
-   "advanced-custom-fields/advanced-custom-fields-pro": "5.8.7",
-   "deliciousbrains/wp-migrate-db-pro": "1.9.10",
-   "deliciousbrains/wp-migrate-db-pro-cli": "1.3.5",
-   "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.15",
+   "advanced-custom-fields/advanced-custom-fields-pro": "5.11.1",
+   "deliciousbrains-plugin/wp-migrate-db-pro": "^2.2",
+   "deliciousbrains-plugin/wp-migrate-db-pro-cli": "^1.6",
+   "deliciousbrains-plugin/wp-migrate-db-pro-media-files": "^2.1",
    ```
 
-6. While the container is up, run `./bin/composer install`
+6. While the container is up, run `./bin/composer update`
 
 ## 🏃‍ Development Workflow
 
@@ -206,15 +193,41 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
    ./bin/start
    ```
 
-   Not using Ups Dock? Run `npm run watch` instead
-
 3. Visit the localhost URL in your browser
 
-   By default this is https://localhost:3000/, which proxies your project's Ups Dock URL (i.e. https://skela.ups.dock)
+   By default this is <http://localhost:3000/>, which proxies your project's Ups Dock URL (i.e. <http://skela.ups.dock>)
 
-4. Access the WP Admin Dashboard at `/wp-admin` (i.e. https://skela.ups.dock/wp-admin)
+4. Access the WP Admin Dashboard at `/wp-admin` (i.e. <http://skela.ups.dock/wp-admin>)
 
 To shut down the container and development server, type `Ctrl+C`
+
+### Debugging
+
+<https://timber.github.io/docs/guides/debugging/#enable-debugging>
+
+#### Twig Functions
+
+In twig files, there are two common function you can use to print variables to the page: `dump()` and `print_r`.
+
+```html
+<pre>
+  {{ dump(your_variable) }}
+</pre>
+
+{{ your_variable | print_r }}
+```
+
+#### Error Logs
+
+The gitignored `logs/error.log` file is a good place to look when hitting “critical error” screens during development. You can print to them using the `error_log` function, and can track updates to them in realtime using the following command:
+
+```shell
+./bin/logs
+```
+
+#### Debug Bar & Timber Debug Bar Plugins
+
+For more in-depth information like showing query, cache, and other helpful debugging information, this repository includes the [Debug Bar](https://wordpress.org/plugins/debug-bar/) and [Timber Debug Bar](https://wordpress.org/plugins/debug-bar-timber/) plugins.
 
 ### Common `wp-cli` commands
 
@@ -329,9 +342,106 @@ These fields are managed using PHP in the file `/src/Managers/ACFManager.php`. Y
 3. Go to `Advanced Custom Fields -> Tools` and generate the PHP code
 4. Update the PHP code in `/src/Managers/ACFManager.php`. Make sure to only update the PHP code for one layout group at a time, as they are separated by function in the manager file.
 
+## ♿ Accessibility Testing
+
+[Pa11y](https://pa11y.org/) is an automated tool that audits our website's pages for accessibility issues according to [WCAG 2.1 AA](https://www.w3.org/TR/WCAG21/) standards. This tool captures machine detectable errors such as missing alt text, wrong heading order, browser errors, etc. For issues such as color contrast, keyboard navigation, or VoiceOver functionality, manual testing is advised.
+
+To run the tests, run the following command:
+
+```sh
+npm run test:a11y <url>
+```
+
+where `<url>` is a valid URL, or one of `local`, `staging` or `live`. Running the command without specifying the url will default to `local`.
+
+### Configuring pa11y
+
+The `package.json` file has preset configurations for pa11y under `testing.accessibility`.
+
+- `paths` (array): Paths appended to the specified URL.
+- `ignore.codes` (array): WCAG codes to ignore
+- `ignore.selectors` (array): CSS selectors to ignore
+
 ## 🌐 Configuring Multisite
 
-If you wish to enable WordPress Multsite, consult [this guide](MULTISITE.md).
+You can configure your install for multisite by setting the following environment variables in `docker-compose.yml`:
+
+```yaml
+services:
+  wordpress:
+    environment:
+      ...
+
+      # Configure WordPress for multisite
+      WORDPRESS_MULTISITE: 1
+
+      # Configure for subdomain routing
+      # Leave this commented out for subdirectory routing
+      # WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 1
+
+      ...
+```
+
+This can be done at anytime - before initial install or to convert an existing single site install to multisite. Note that if you are converting from single site to multisite you will need to restart your server with `./bin/start` in order for the change to take effect.
+
+### For Subdomain
+
+By default, multisite is configured to run in subdirectory mode:
+
+```text
+skela.ups.dock/site-1
+skela.ups.dock/site-2
+```
+
+If you are using Ups Dock, you can also configure it to run in subdomain mode with a few extra steps:
+
+```text
+site-1.skela.ups.dock
+site-2.skela.ups.dock
+```
+
+1. Uncomment the following environment variable in `docker-compose.yml`
+
+   ```yaml
+   WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 1
+   ```
+
+2. Update your `VIRTUAL_HOST` environment variable in `docker-compose.ups-dock.yml`
+
+   For subdomain mode to work, you need to tell Ups Dock to route all subdomains of `skela.ups.dock` to this container:
+
+   ```yaml
+   VIRTUAL_HOST: skela.ups.dock,*.skela.ups.dock
+   ```
+
+3. Update the SSL certificates generated by Ups Dock to include your four level subdomains
+
+   a. Navigate to your local copy of [Ups Dock](https://github.com/Upstatement/ups-dock)
+
+   ```shell
+   cd path/to/ups-dock
+   ```
+
+   b. Add your wildcard domain to the `[ alternate_names ]` section in `config/openssl.conf`
+
+   ```text
+   DNS.1 = ups.dock
+   DNS.2 = *.ups.dock
+   DNS.3 = *.skela.ups.dock
+   ```
+
+   c. Regenerate certs and restart Ups Dock
+
+   ```shell
+   ./bin/gen-certs.sh
+   docker-compose up -d
+   ```
+
+### Caveats
+
+- Subdomain installs won't work without Ups Dock (or another tool that allows you to map domains to Docker containers) as it will not work when your base domain is `localhost`
+
+For more details about everything these config vars do under the surface, consult [MULTISITE.md](multisite.md).
 
 ## 👨‍👩‍👧‍👦 Contributing
 
