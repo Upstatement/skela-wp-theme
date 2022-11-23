@@ -22,6 +22,7 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
       - [Error Logs](#error-logs)
       - [Debug Bar \& Timber Debug Bar Plugins](#debug-bar--timber-debug-bar-plugins)
     - [Common `wp-cli` commands](#common-wp-cli-commands)
+  - [� Deployment](#-deployment)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
     - [Models](#models)
@@ -84,6 +85,14 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 4. Duplicate the contents of `.env.sample` into a new `.env` file
 
+   If you **do not want to use Ups Dock**, change the `COMPOSE_FILE` line in your `.env` to be:
+
+   ```shell
+   COMPOSE_FILE=docker-compose.yml
+   ```
+
+   **TIP:** To prevent build errors, make sure there are no commented out lines including the `COMPOSE_FILE` variable in your `.env` file.
+
 ### Option 1: Contributing to Skela
 
 1. If you're installing this repository to contribute to Skela, all you need to do next is run the install command
@@ -106,13 +115,13 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 If you're using Skela as a template for another project, there's a few more steps to go through in order to set up the project to use your desired theme name.
 
-1. In `package.json` and `composer.json`, update repository and author information
-
-2. Run the rename theme command and follow the prompt, which will set up the project with your desired theme name
+1. Run the rename theme command and follow the prompt, which will set up the project with your desired theme name
 
    ```shell
    ./bin/rename-theme
    ```
+
+2. In `package.json` and `composer.json`, update repository and author information
 
 3. Run the install command
 
@@ -126,9 +135,21 @@ If you're using Skela as a template for another project, there's a few more step
    ./bin/start
    ```
 
-   Now you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
+5. In another terminal tab, run the setup theme command, which will activate your theme and update the seed database
 
-   The default credentials for WP admin are `admin` / `password` (configurable via `docker-compose.yml`)
+   ```shell
+   ./bin/setup-theme
+   ```
+
+The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <http://skela.ups.dock> if you're using Ups Dock, or <http://localhost:8888> if you're not.
+
+To access WP admin, visit `/wp-admin`. The default credentials are `admin` / `password` (configurable via `docker-compose.yml`)
+
+**(Optional)** If you're running an Ups Dock build and you want to re-export the seed database without Ups Dock URLs, run the following command:
+
+```shell
+./bin/db-to-no-upsdock
+```
 
 ### Activating ACF & WP Migrate Plugins (Optional)
 
@@ -231,7 +252,7 @@ For more in-depth information like showing query, cache, and other helpful debug
 
 ### Common `wp-cli` commands
 
-If you've installed this theme using Ups Dock, you can run `wp-cli` by typing `./bin/wp [command]`.
+If you've installed this theme using Ups Dock, you can use [WP CLI](https://developer.wordpress.org/cli/commands/cli/) with the [`wp` script](/blob/main/bin/wp).
 
 Start the Docker containers with `./bin/start` and then run any of the following commands in a separate shell:
 
@@ -239,23 +260,41 @@ Start the Docker containers with `./bin/start` and then run any of the following
 ./bin/wp [command]
 ```
 
-To export the database, use the following command:
+To update the local WordPress version:
 
 ```shell
-./bin/wp db export - > docker/conf/mysql/init.sql
+./bin/wp core update
 ```
 
-To export the database and gzip it, use the following command:
+To export the database:
 
 ```shell
-./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz
+./bin/wp db export - > docker/conf/mysql/init-ups-dock.sql
 ```
 
-To SSH into the WordPress container, use the following command:
+To export the database and gzip it:
+
+```shell
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz
+```
+
+To SSH into the WordPress container:
 
 ```shell
 docker-compose exec wordpress /bin/bash
 ```
+
+## 🚀 Deployment
+
+When creating a deployment, we recommend generating a new release for your project with an appropriate version bump to the theme's version. This will help facilitate cache-busting for static assets, which receive the theme's version as a query string appended to the end of the path.
+
+You can use the following script to bump the version numbers in this project's `package.json` and the theme's `style.css` (which is where the theme pulls the canonical version from):
+
+```sh
+./bin/versionbump [<newversionnumber> | major | minor | patch | premajor | preminor | prepatch | prerelease]
+```
+
+By default, running the script with no arguments will result in a patch version bump (so, from `1.0.1` to `1.0.2`). The script utilizes [`npm-version`](https://docs.npmjs.com/cli/v7/commands/npm-version) behind the scenes to define the new version number; see [those docs](https://docs.npmjs.com/cli/v7/commands/npm-version) for more information on the available version options.
 
 ## 🔄 Object-Oriented Approach
 

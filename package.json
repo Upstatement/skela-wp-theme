@@ -30,9 +30,9 @@
     "last 2 versions"
   ],
   "scripts": {
-    "dev": "NODE_ENV=development webpack --progress --hide-modules --mode development",
-    "watch": "NODE_ENV=development webpack --progress --hide-modules --watch --mode development",
     "build": "NODE_ENV=production webpack --progress --hide-modules --mode production",
+    "start": "NODE_ENV=development webpack --hide-modules --watch --mode development",
+    "start:ups-dock": "NODE_ENV=development webpack --hide-modules --watch --mode development --env.platform=ups-dock",
     "lint:scripts": "eslint static/js/**/*.js --cache",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
     "fix:php": "./vendor/bin/phpcbf",
