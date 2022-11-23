@@ -9,14 +9,18 @@ services:
       - ./:/var/www/html/wp-content/themes/${WORDPRESS_THEME_NAME}:cached
       - ./plugins:/var/www/html/wp-content/plugins:cached
       - ./uploads:/var/www/html/wp-content/uploads:cached
+      - ./docker/conf:/var/www/html/conf
       - ./logs:/var/www/html/logs
+      - ./docker/scripts:/var/www/html/scripts
     depends_on:
       db:
         condition: service_healthy
+    ports:
+      - '8888:80'
     environment:
       # WordPress install configuration
       WORDPRESS_TITLE: 'Skela'
-      WORDPRESS_URL: https://skela.ups.dock
+      WORDPRESS_URL: http://localhost:8888
       WORDPRESS_ADMIN_USER: admin
       WORDPRESS_ADMIN_EMAIL: admin@example.com
       WORDPRESS_ADMIN_PASSWORD: password
@@ -30,15 +34,14 @@ services:
       # Defined in `.env`, which is automatically loaded by `docker-compose`
       # See https://docs.docker.com/compose/environment-variables/#the-env-file
       WORDPRESS_THEME_NAME: ${WORDPRESS_THEME_NAME}
+      WP_ENV: ${WP_ENV}
 
-      # Runtime configuration for upstatement/ups-dock
-      # See https://github.com/upstatement/ups-dock
-      UPS_DOCK_NAME: Skela
+      # Configure WordPress for multisite
+      # WORDPRESS_MULTISITE: 1
 
-      # Runtime configuration for jwilder/nginx-proxy
-      # See https://github.com/jwilder/nginx-proxy
-      VIRTUAL_HOST: skela.ups.dock
-      HTTPS_METHOD: noredirect
+      # Configure for subdomain routing
+      # Leave this commented out for subdirectory routing
+      # WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 1
 
       # Runtime configuration for richarvey/nginx-php-fpm
       # See https://github.com/richarvey/nginx-php-fpm
@@ -52,10 +55,6 @@ services:
 
       # Set the time zone
       TZ: America/New_York
-
-    networks:
-      - proxy
-      - default
   db:
     image: mysql/mysql-server:8.0.27
     volumes:
