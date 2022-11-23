@@ -11,7 +11,8 @@ services:
       - ./uploads:/var/www/html/wp-content/uploads:cached
       - ./logs:/var/www/html/logs
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       # WordPress install configuration
       WORDPRESS_TITLE: 'Skela'
@@ -56,11 +57,11 @@ services:
       - proxy
       - default
   db:
-    image: mysql:5.7
+    image: mysql/mysql-server:8.0.27
     volumes:
       # Export an initial DB seed using `wp db export` and load it automatically on first install
       # See https://hub.docker.com/_/mysql
-      # - ./docker/conf/mysql/init.sql.gz:/docker-entrypoint-initdb.d/init.sql.gz
+      # - ./docker/conf/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
     environment:
       # See https://hub.docker.com/_/mysql/
@@ -70,7 +71,3 @@ services:
       MYSQL_PASSWORD: wordpress
 volumes:
   db_data:
-networks:
-  proxy:
-    name: ups-dock
-    external: true

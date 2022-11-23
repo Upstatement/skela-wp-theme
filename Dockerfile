@@ -1,11 +1,14 @@
-FROM richarvey/nginx-php-fpm:1.9.0
+# Note: 1.10.4 fails to initialize
+# https://gitlab.com/ric_harvey/nginx-php-fpm/-/issues/307
+FROM richarvey/nginx-php-fpm:1.10.3
 
-RUN apk update && apk add \
+RUN apk upgrade && apk update && apk add \
   mysql-client \
   openssl \
   msmtp \
   less \
-  tzdata
+  tzdata \
+  mariadb-connector-c
 
 # Configure msmtp
 RUN { \
