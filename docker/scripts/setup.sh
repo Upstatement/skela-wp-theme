@@ -28,11 +28,12 @@ define('WP_HOME',    \$url);
 define('WP_SITEURL', \$url);
 
 /* Logging */
-define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', '/var/www/html/logs/error.log');
 define('WP_DEBUG_DISPLAY', false);
 PHP
-fi
+
+echo "Setting WP_DEBUG to true..."
+wp config set WP_DEBUG true --raw
 
 # Run WP install if it's not already installed.
 if ! $(wp core is-installed); then
