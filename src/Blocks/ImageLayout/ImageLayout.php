@@ -18,7 +18,7 @@
 namespace Skela\Blocks\ImageLayout;
 
 use Timber\Timber;
-use Timber\Image;
+use Timber\Image as TimberImage;
 use Timber\PostQuery;
 
 /** Class */
@@ -68,8 +68,10 @@ class ImageLayout {
 
 		$context['images'] = array_map(
 			function ( $image ) {
-				return new Image( $image['id'] );
+				// @phpstan-ignore-next-line
+				return new TimberImage( $image['id'] );
 			},
+			// @phpstan-ignore-next-line
 			get_field( 'imageLayoutImages' )
 		);
 
