@@ -6,7 +6,6 @@ Thumbs.db
 /.vscode/
 
 # Packages
-/composer.lock
 /vendor/
 /node_modules/
 npm-debug.log*
