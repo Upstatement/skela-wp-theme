@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz

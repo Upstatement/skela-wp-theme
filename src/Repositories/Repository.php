@@ -30,8 +30,8 @@ class Repository {
 	}
 
 	/**
-	 * Returns the first item in a collection. Returns null if there are 0 items in
-	 * the collection.
+	 * Returns the first item in a collection.
+	 * Returns null if there are 0 items in the collection.
 	 *
 	 * @return mixed
 	 */
@@ -41,8 +41,8 @@ class Repository {
 	}
 
 	/**
-	 * Returns a slice of the collection starting at the given index. Similar to
-	 * Laravel's slice().
+	 * Returns a slice of the collection starting at the given index.
+	 * Similar to Laravel's slice().
 	 *
 	 * @param int $start Start index.
 	 *
@@ -92,20 +92,19 @@ class Repository {
 	/**
 	 * Runs a query.
 	 *
-	 * @param array  $params    WP Query params.
+	 * @param array  $params WP Query params.
 	 * @param string $post_class Post class to return.
 	 *
 	 * @return Repository
 	 */
 	protected function query( array $params, $post_class = '\Timber\Post' ) {
-
 		// Clear old result sets.
 		$this->reset();
 
 		$cache_key    = __FUNCTION__ . md5( http_build_query( $params ) );
-		$cached_posts = wp_cache_get( $cache_key, __CLASS__ );
+		$cached_posts = wp_cache_get( $cache_key, __CLASS__, false, $found_in_cache );
 
-		if ( false !== $cached_posts && count( $cached_posts ) > 0 ) {
+		if ( $found_in_cache && is_array( $cached_posts ) && count( $cached_posts ) > 0 ) {
 			// Use cached results.
 			return $this->result_set( $cached_posts );
 		}

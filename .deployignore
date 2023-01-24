@@ -7,6 +7,7 @@ composer.json
 composer.lock
 docker
 docker-compose.yml
+docker-compose.ups-dock.yml
 Dockerfile
 node_modules
 wp-content

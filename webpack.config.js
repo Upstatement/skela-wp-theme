@@ -5,7 +5,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 
-module.exports = {
+module.exports = env => ({
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 
   entry: {
@@ -90,7 +90,11 @@ module.exports = {
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
-      proxy: 'http://skela.ups.dock',
+      proxy: env
+        ? env.platform === 'ups-dock'
+          ? 'http://skela.ups.dock'
+          : 'http://localhost:8888/'
+        : 'http://localhost:8888/',
       files: ['dist/**/*.+(css|js)', '*.php', 'templates/**/*.twig'],
       open: false,
     }),
@@ -102,4 +106,4 @@ module.exports = {
   ],
 
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'inline-source-map',
-};
+});

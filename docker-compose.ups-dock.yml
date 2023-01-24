@@ -1,0 +1,28 @@
+version: '3.6'
+services:
+  wordpress:
+    environment:
+      # WordPress install configuration
+      WORDPRESS_URL: https://skela.ups.dock
+
+      # Runtime configuration for upstatement/ups-dock
+      # See https://github.com/upstatement/ups-dock
+      UPS_DOCK_NAME: Skela
+
+      # Runtime configuration for jwilder/nginx-proxy
+      # See https://github.com/jwilder/nginx-proxy
+      VIRTUAL_HOST: skela.ups.dock
+      HTTPS_METHOD: noredirect
+
+    networks:
+      - proxy
+      - default
+  db:
+    volumes:
+      # Export an initial DB seed using `wp db export` and load it automatically on first install
+      # See https://hub.docker.com/_/mysql
+      - ./docker/conf/mysql/init-ups-dock.sql:/docker-entrypoint-initdb.d/init.sql
+networks:
+  proxy:
+    name: ups-dock
+    external: true

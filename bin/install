@@ -7,6 +7,11 @@ create_containers() {
   docker-compose up -d
 }
 
+# echo "Unzipping database seed scripts..."
+# echo
+# gunzip -kf docker/conf/mysql/*.sql.gz
+# echo
+
 echo "Bringing up project containers..."
 echo
 create_containers

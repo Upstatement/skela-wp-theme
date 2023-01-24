@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./bin/wp search-replace skela.ups.dock localhost:8888
+./bin/wp search-replace https://localhost:8888 http://localhost:8888
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz

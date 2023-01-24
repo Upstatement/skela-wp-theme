@@ -39,7 +39,7 @@ class ThemeManager {
 		add_action( 'admin_menu', array( $this, 'add_documentation_menu_item' ) );
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 
-		add_action( 'init', array( $this, 'register_options' ), 1, 3 );
+		add_action( 'init', array( $this, 'register_options' ) );
 
 		add_filter( 'acf/fields/relationship/query', array( $this, 'post_relationship_query' ), 10, 3 );
 	}

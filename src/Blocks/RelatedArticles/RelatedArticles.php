@@ -72,25 +72,21 @@ class RelatedArticles {
 
 		$context['relatedArticlesHeader'] = get_field( 'header_text' );
 
-		if ( ! empty( $related_articles ) ) {
-			if ( is_array( $related_articles ) && count( $related_articles ) > 0 ) {
-				foreach ( $related_articles as $article ) {
-					if ( ! empty( $article['related_article'] ) ) {
-
-						$related_article_ids[] = $article['related_article']->ID;
-					}
+		if ( ! empty( $related_articles ) && is_array( $related_articles ) ) {
+			foreach ( $related_articles as $article ) {
+				if ( ! empty( $article['related_article'] ) ) {
+					$related_article_ids[] = $article['related_article']->ID;
 				}
+			}
+			// Set query args.
+			if ( ! empty( $related_article_ids ) ) {
+				$args = array(
+					'post_status' => 'publish',
+					'post__in'    => $related_article_ids,
+					'orderby'     => 'post__in',
+				);
 
-				// Set query args.
-				if ( ! empty( $related_article_ids ) ) {
-					$args = array(
-						'post_status' => 'publish',
-						'post__in'    => $related_article_ids,
-						'orderby'     => 'post__in',
-					);
-
-					$context['relatedArticles'] = new PostQuery( $args );
-				}
+				$context['relatedArticles'] = new PostQuery( $args );
 			}
 		}
 

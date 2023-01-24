@@ -15,9 +15,14 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [🛠 Installation](#-installation)
     - [Option 1: Contributing to Skela](#option-1-contributing-to-skela)
     - [Option 2: Using Skela as a template for another project](#option-2-using-skela-as-a-template-for-another-project)
-    - [Activating ACF & WP Migrate Plugins (Optional)](#activating-acf--wp-migrate-plugins-optional)
+    - [Activating ACF \& WP Migrate Plugins (Optional)](#activating-acf--wp-migrate-plugins-optional)
   - [🏃‍ Development Workflow](#-development-workflow)
+    - [Debugging](#debugging)
+      - [Twig Functions](#twig-functions)
+      - [Error Logs](#error-logs)
+      - [Debug Bar \& Timber Debug Bar Plugins](#debug-bar--timber-debug-bar-plugins)
     - [Common `wp-cli` commands](#common-wp-cli-commands)
+  - [� Deployment](#-deployment)
   - [🔄 Object-Oriented Approach](#-object-oriented-approach)
     - [Managers](#managers)
     - [Models](#models)
@@ -26,7 +31,11 @@ Note that this repository is _just_ for your WordPress theme. The WordPress inst
   - [📰 Gutenberg](#-gutenberg)
     - [Creating Custom ACF Blocks](#creating-custom-acf-blocks)
     - [Included Custom Blocks](#included-custom-blocks)
+  - [♿ Accessibility Testing](#-accessibility-testing)
+    - [Configuring pa11y](#configuring-pa11y)
   - [🌐 Configuring Multisite](#-configuring-multisite)
+    - [For Subdomain](#for-subdomain)
+    - [Caveats](#caveats)
   - [👨‍👩‍👧‍👦 Contributing](#-contributing)
   - [📗 Code of Conduct](#-code-of-conduct)
   - [About Upstatement](#about-upstatement)
@@ -76,6 +85,14 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 4. Duplicate the contents of `.env.sample` into a new `.env` file
 
+   If you **do not want to use Ups Dock**, change the `COMPOSE_FILE` line in your `.env` to be:
+
+   ```shell
+   COMPOSE_FILE=docker-compose.yml
+   ```
+
+   **TIP:** To prevent build errors, make sure there are no commented out lines including the `COMPOSE_FILE` variable in your `.env` file.
+
 ### Option 1: Contributing to Skela
 
 1. If you're installing this repository to contribute to Skela, all you need to do next is run the install command
@@ -98,13 +115,13 @@ We recommend our very own Docker setup called Ups Dock. To install it follow the
 
 If you're using Skela as a template for another project, there's a few more steps to go through in order to set up the project to use your desired theme name.
 
-1. In `package.json` and `composer.json`, update repository and author information
-
-2. Run the rename theme command and follow the prompt, which will set up the project with your desired theme name
+1. Run the rename theme command and follow the prompt, which will set up the project with your desired theme name
 
    ```shell
    ./bin/rename-theme
    ```
+
+2. In `package.json` and `composer.json`, update repository and author information
 
 3. Run the install command
 
@@ -118,9 +135,21 @@ If you're using Skela as a template for another project, there's a few more step
    ./bin/start
    ```
 
-   Now you should be able to access your WordPress site on [`ups.dock`](http://ups.dock)!
+5. In another terminal tab, run the setup theme command, which will activate your theme and update the seed database
 
-   The default credentials for WP admin are `admin` / `password` (configurable via `docker-compose.yml`)
+   ```shell
+   ./bin/setup-theme
+   ```
+
+The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <http://skela.ups.dock> if you're using Ups Dock, or <http://localhost:8888> if you're not.
+
+To access WP admin, visit `/wp-admin`. The default credentials are `admin` / `password` (configurable via `docker-compose.yml`)
+
+**(Optional)** If you're running an Ups Dock build and you want to re-export the seed database without Ups Dock URLs, run the following command:
+
+```shell
+./bin/db-to-no-upsdock
+```
 
 ### Activating ACF & WP Migrate Plugins (Optional)
 
@@ -130,71 +159,50 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
 
 2. In `composer.json` add the following to the `"repositories"` array
 
-   ```text
+   ```json
+   {
+     "type": "composer",
+     "url": "https://composer.deliciousbrains.com"
+   },
    {
      "type": "package",
      "package": {
        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-       "version": "5.8.7",
+       "version": "5.12.3",
        "type": "wordpress-plugin",
        "dist": {
          "type": "zip",
-         "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.8.7"
+         "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=ACF_KEY&t=5.12.3"
        }
      }
    },
+   ```
+
+3. Replace `ACF_KEY` with your license key
+
+4. Create a file called `auth.json` in the root directory and populate it with your API credentials from [your Account settings page](https://deliciousbrains.com/my-account/settings/)
+
+   ```json
    {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro",
-       "type": "wordpress-plugin",
-       "version": "1.9.10",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.9.10"
-       }
-     }
-   },
-   {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro-cli",
-       "type": "wordpress-plugin",
-       "version": "1.3.5",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-cli-1.3.5.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL"
-       }
-     }
-   },
-   {
-     "type": "package",
-     "package": {
-       "name": "deliciousbrains/wp-migrate-db-pro-media-files",
-       "type": "wordpress-plugin",
-       "version": "1.4.15",
-       "dist": {
-         "type": "zip",
-         "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=WP_MIGRATE_KEY&site_url=SITE_URL?v=1.4.15"
+     "http-basic": {
+       "composer.deliciousbrains.com": {
+         "username": "COMPOSER_API_KEY_USERNAME",
+         "password": "COMPOSER_API_KEY_PASSWORD"
        }
      }
    }
    ```
 
-3. Search and replace `ACF_KEY` and `WP_MIGRATE_KEY` with their respective license keys
-
-4. Search and replace `SITE_URL` with your site's URL (i.e. `skela.ups.dock`)
-
 5. In `composer.json` add the following to the `"require"` object
 
    ```json
-   "advanced-custom-fields/advanced-custom-fields-pro": "5.8.7",
-   "deliciousbrains/wp-migrate-db-pro": "1.9.10",
-   "deliciousbrains/wp-migrate-db-pro-cli": "1.3.5",
-   "deliciousbrains/wp-migrate-db-pro-media-files": "1.4.15",
+   "advanced-custom-fields/advanced-custom-fields-pro": "5.11.1",
+   "deliciousbrains-plugin/wp-migrate-db-pro": "^2.2",
+   "deliciousbrains-plugin/wp-migrate-db-pro-cli": "^1.6",
+   "deliciousbrains-plugin/wp-migrate-db-pro-media-files": "^2.1",
    ```
 
-6. While the container is up, run `./bin/composer install`
+6. While the container is up, run `./bin/composer update`
 
 ## 🏃‍ Development Workflow
 
@@ -206,19 +214,45 @@ If you would like to use the [Advanced Custom Fields (ACF)](https://www.advanced
    ./bin/start
    ```
 
-   Not using Ups Dock? Run `npm run watch` instead
-
 3. Visit the localhost URL in your browser
 
-   By default this is https://localhost:3000/, which proxies your project's Ups Dock URL (i.e. https://skela.ups.dock)
+   By default this is <http://localhost:3000/>, which proxies your project's Ups Dock URL (i.e. <http://skela.ups.dock>)
 
-4. Access the WP Admin Dashboard at `/wp-admin` (i.e. https://skela.ups.dock/wp-admin)
+4. Access the WP Admin Dashboard at `/wp-admin` (i.e. <http://skela.ups.dock/wp-admin>)
 
 To shut down the container and development server, type `Ctrl+C`
 
+### Debugging
+
+<https://timber.github.io/docs/guides/debugging/#enable-debugging>
+
+#### Twig Functions
+
+In twig files, there are two common function you can use to print variables to the page: `dump()` and `print_r`.
+
+```html
+<pre>
+  {{ dump(your_variable) }}
+</pre>
+
+{{ your_variable | print_r }}
+```
+
+#### Error Logs
+
+The gitignored `logs/error.log` file is a good place to look when hitting “critical error” screens during development. You can print to them using the `error_log` function, and can track updates to them in realtime using the following command:
+
+```shell
+./bin/logs
+```
+
+#### Debug Bar & Timber Debug Bar Plugins
+
+For more in-depth information like showing query, cache, and other helpful debugging information, this repository includes the [Debug Bar](https://wordpress.org/plugins/debug-bar/) and [Timber Debug Bar](https://wordpress.org/plugins/debug-bar-timber/) plugins.
+
 ### Common `wp-cli` commands
 
-If you've installed this theme using Ups Dock, you can run `wp-cli` by typing `./bin/wp [command]`.
+If you've installed this theme using Ups Dock, you can use [WP CLI](https://developer.wordpress.org/cli/commands/cli/) with the [`wp` script](/blob/main/bin/wp).
 
 Start the Docker containers with `./bin/start` and then run any of the following commands in a separate shell:
 
@@ -226,23 +260,41 @@ Start the Docker containers with `./bin/start` and then run any of the following
 ./bin/wp [command]
 ```
 
-To export the database, use the following command:
+To update the local WordPress version:
 
 ```shell
-./bin/wp db export - > docker/conf/mysql/init.sql
+./bin/wp core update
 ```
 
-To export the database and gzip it, use the following command:
+To export the database:
 
 ```shell
-./bin/wp db export - | gzip -3 > docker/conf/mysql/init.sql.gz
+./bin/wp db export - > docker/conf/mysql/init-ups-dock.sql
 ```
 
-To SSH into the WordPress container, use the following command:
+To export the database and gzip it:
+
+```shell
+./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz
+```
+
+To SSH into the WordPress container:
 
 ```shell
 docker-compose exec wordpress /bin/bash
 ```
+
+## 🚀 Deployment
+
+When creating a deployment, we recommend generating a new release for your project with an appropriate version bump to the theme's version. This will help facilitate cache-busting for static assets, which receive the theme's version as a query string appended to the end of the path.
+
+You can use the following script to bump the version numbers in this project's `package.json` and the theme's `style.css` (which is where the theme pulls the canonical version from):
+
+```sh
+./bin/versionbump [<newversionnumber> | major | minor | patch | premajor | preminor | prepatch | prerelease]
+```
+
+By default, running the script with no arguments will result in a patch version bump (so, from `1.0.1` to `1.0.2`). The script utilizes [`npm-version`](https://docs.npmjs.com/cli/v7/commands/npm-version) behind the scenes to define the new version number; see [those docs](https://docs.npmjs.com/cli/v7/commands/npm-version) for more information on the available version options.
 
 ## 🔄 Object-Oriented Approach
 
@@ -329,9 +381,106 @@ These fields are managed using PHP in the file `/src/Managers/ACFManager.php`. Y
 3. Go to `Advanced Custom Fields -> Tools` and generate the PHP code
 4. Update the PHP code in `/src/Managers/ACFManager.php`. Make sure to only update the PHP code for one layout group at a time, as they are separated by function in the manager file.
 
+## ♿ Accessibility Testing
+
+[Pa11y](https://pa11y.org/) is an automated tool that audits our website's pages for accessibility issues according to [WCAG 2.1 AA](https://www.w3.org/TR/WCAG21/) standards. This tool captures machine detectable errors such as missing alt text, wrong heading order, browser errors, etc. For issues such as color contrast, keyboard navigation, or VoiceOver functionality, manual testing is advised.
+
+To run the tests, run the following command:
+
+```sh
+npm run test:a11y <url>
+```
+
+where `<url>` is a valid URL, or one of `local`, `staging` or `live`. Running the command without specifying the url will default to `local`.
+
+### Configuring pa11y
+
+The `package.json` file has preset configurations for pa11y under `testing.accessibility`.
+
+- `paths` (array): Paths appended to the specified URL.
+- `ignore.codes` (array): WCAG codes to ignore
+- `ignore.selectors` (array): CSS selectors to ignore
+
 ## 🌐 Configuring Multisite
 
-If you wish to enable WordPress Multsite, consult [this guide](MULTISITE.md).
+You can configure your install for multisite by setting the following environment variables in `docker-compose.yml`:
+
+```yaml
+services:
+  wordpress:
+    environment:
+      ...
+
+      # Configure WordPress for multisite
+      WORDPRESS_MULTISITE: 1
+
+      # Configure for subdomain routing
+      # Leave this commented out for subdirectory routing
+      # WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 1
+
+      ...
+```
+
+This can be done at anytime - before initial install or to convert an existing single site install to multisite. Note that if you are converting from single site to multisite you will need to restart your server with `./bin/start` in order for the change to take effect.
+
+### For Subdomain
+
+By default, multisite is configured to run in subdirectory mode:
+
+```text
+skela.ups.dock/site-1
+skela.ups.dock/site-2
+```
+
+If you are using Ups Dock, you can also configure it to run in subdomain mode with a few extra steps:
+
+```text
+site-1.skela.ups.dock
+site-2.skela.ups.dock
+```
+
+1. Uncomment the following environment variable in `docker-compose.yml`
+
+   ```yaml
+   WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 1
+   ```
+
+2. Update your `VIRTUAL_HOST` environment variable in `docker-compose.ups-dock.yml`
+
+   For subdomain mode to work, you need to tell Ups Dock to route all subdomains of `skela.ups.dock` to this container:
+
+   ```yaml
+   VIRTUAL_HOST: skela.ups.dock,*.skela.ups.dock
+   ```
+
+3. Update the SSL certificates generated by Ups Dock to include your four level subdomains
+
+   a. Navigate to your local copy of [Ups Dock](https://github.com/Upstatement/ups-dock)
+
+   ```shell
+   cd path/to/ups-dock
+   ```
+
+   b. Add your wildcard domain to the `[ alternate_names ]` section in `config/openssl.conf`
+
+   ```text
+   DNS.1 = ups.dock
+   DNS.2 = *.ups.dock
+   DNS.3 = *.skela.ups.dock
+   ```
+
+   c. Regenerate certs and restart Ups Dock
+
+   ```shell
+   ./bin/gen-certs.sh
+   docker-compose up -d
+   ```
+
+### Caveats
+
+- Subdomain installs won't work without Ups Dock (or another tool that allows you to map domains to Docker containers) as it will not work when your base domain is `localhost`
+
+For more details about everything these config vars do under the surface, consult [MULTISITE.md](multisite.md).
 
 ## 👨‍👩‍👧‍👦 Contributing
 

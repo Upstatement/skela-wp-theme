@@ -2,6 +2,17 @@
 
 set -e
 
+read_var() {
+  if [ -z "$1" ]; then
+    echo "environment variable name is required"
+    return
+  fi
+
+  local VAR=$(grep $1 ".env" | xargs)
+  IFS="=" read -ra VAR <<< "$VAR"
+  echo ${VAR[1]}
+}
+
 stop_containers() {
   echo "Shutting off containers..."
   echo
@@ -17,7 +28,14 @@ echo
 docker-compose up -d
 echo
 
-echo "Running build watch script..."
+COMPOSE_FILE=$(read_var COMPOSE_FILE)
+NO_UPS_DOCK_FILE="docker-compose.yml"
+
+echo "Running start script..."
 echo
-npm run watch
+if [[ "$COMPOSE_FILE" == "$NO_UPS_DOCK_FILE" ]]; then
+  npm start
+else
+  npm run start:ups-dock
+fi
 echo

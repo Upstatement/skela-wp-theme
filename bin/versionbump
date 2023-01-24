@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" = "help" ]; then
+	echo "Usage: $(basename $0) [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease]"
+  exit
+fi
+
+RELEASE=$1
+
+if [ -z "$1" ]; then
+  RELEASE="patch"
+fi
+
+CURRENT_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')
+
+# Update the npm version
+NEW_VERSION=$(npm version ${RELEASE} --no-git-tag-version)
+NEW_VERSION=$(echo "${NEW_VERSION}" | sed -e 's/^v//g')
+
+# Update the css version
+sed -i '' -E "s/(Version:[[:space:]]).+/\1${NEW_VERSION}/g" "style.css"

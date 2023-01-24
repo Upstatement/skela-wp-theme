@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "Activating your WordPress theme..."
+echo
+./bin/wp theme activate "REPLACE_ME_THEMENAME"
+echo
+
+echo "Updating site name..."
+echo
+./bin/wp option update blogname "REPLACE_ME_BLOGNAME"
+echo
+
+echo "Updating seed database URLs..."
+echo
+./bin/wp search-replace skela.ups.dock REPLACE_ME.ups.dock
+echo
+
+echo "Exporting updated seed database..."
+echo
+./bin/export-db
+echo
